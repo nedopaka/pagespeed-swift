@@ -13,10 +13,13 @@ struct PageSpeedResponse: Codable {
     let captchaResult: String
     let kind: String
     let id: String
+    // horizontal charts FCP, FID
     let loadingExperience: LoadingExperience
+    // horizontal charts FCP, FID origin
     let originLoadingExperience: LoadingExperience
+    // overall scores, details
     let lighthouseResult: LighthouseResult
-    let analysisUtcTimestamp: String
+    let analysisUTCTimestamp: String
 
     enum CodingKeys: String, CodingKey {
         case captchaResult = "captchaResult"
@@ -25,20 +28,81 @@ struct PageSpeedResponse: Codable {
         case loadingExperience = "loadingExperience"
         case originLoadingExperience = "originLoadingExperience"
         case lighthouseResult = "lighthouseResult"
-        case analysisUtcTimestamp = "analysisUTCTimestamp"
+        case analysisUTCTimestamp = "analysisUTCTimestamp"
     }
 }
 
+// MARK: - =========== LoadingExperience JSON ===========
+
+// MARK: - LoadingExperience
+struct LoadingExperience: Codable {
+    let id: String
+    // horizontal charts FCP, FID
+    let metrics: LoadingExperienceMetrics
+    let overallCategory: String
+    let initialURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case metrics = "metrics"
+        case overallCategory = "overall_category"
+        case initialURL = "initial_url"
+    }
+}
+
+// MARK: - LoadingExperienceMetrics
+struct LoadingExperienceMetrics: Codable {
+    // horizontal charts FCP, FID
+    let firstContentfulPaintMS: FirstMS
+    let firstInputDelayMS: FirstMS
+
+    enum CodingKeys: String, CodingKey {
+        case firstContentfulPaintMS = "FIRST_CONTENTFUL_PAINT_MS"
+        case firstInputDelayMS = "FIRST_INPUT_DELAY_MS"
+    }
+}
+
+// MARK: - FirstMS
+struct FirstMS: Codable {
+    // horizontal charts FCP, FID - overall time in ms
+    let percentile: Int
+    let distributions: [Distribution]
+    let category: String
+
+    enum CodingKeys: String, CodingKey {
+        case percentile = "percentile"
+        case distributions = "distributions"
+        case category = "category"
+    }
+}
+
+// MARK: - Distribution
+struct Distribution: Codable {
+    let min: Int
+    let max: Int?
+    // horizontal charts FCP, FID
+    let proportion: Double
+
+    enum CodingKeys: String, CodingKey {
+        case min = "min"
+        case max = "max"
+        case proportion = "proportion"
+    }
+}
+
+// MARK: - =========== LighthouseResult JSON ===========
+
 // MARK: - LighthouseResult
 struct LighthouseResult: Codable {
-    let requestedUrl: String
-    let finalUrl: String
+    let requestedURL: String
+    let finalURL: String
     let lighthouseVersion: String
     let userAgent: String
     let fetchTime: String
     let environment: Environment
     let runWarnings: [JSONAny]
     let configSettings: ConfigSettings
+    // Time to Interactive (interactive), FCP, FMP, Speed Index, First CPU Idle, max-potential-fid
     let audits: Audits
     let categories: Categories
     let categoryGroups: CategoryGroups
@@ -46,8 +110,8 @@ struct LighthouseResult: Codable {
     let i18N: I18N
 
     enum CodingKeys: String, CodingKey {
-        case requestedUrl = "requestedUrl"
-        case finalUrl = "finalUrl"
+        case requestedURL = "requestedUrl"
+        case finalURL = "finalUrl"
         case lighthouseVersion = "lighthouseVersion"
         case userAgent = "userAgent"
         case fetchTime = "fetchTime"
@@ -62,828 +126,16 @@ struct LighthouseResult: Codable {
     }
 }
 
-// MARK: - Audits
-struct Audits: Codable {
-    let redirects: BootupTime
-    let userTimings: BootupTime
-    let firstMeaningfulPaint: CriticalRequestChains
-    let resourceSummary: BootupTime
-    let efficientAnimatedContent: EfficientAnimatedContent
-    let finalScreenshot: FinalScreenshot
-    let metrics: CriticalRequestChains
-    let timeToFirstByte: DOMSize
-    let renderBlockingResources: BootupTime
-    let usesTextCompression: DOMSize
-    let usesOptimizedImages: CriticalRequestChains
-    let networkRequests: DOMSize
-    let usesLongCacheTtl: CriticalRequestChains
-    let maxPotentialFid: CriticalRequestChains
-    let interactive: DOMSize
-    let screenshotThumbnails: Diagnostics
-    let thirdPartySummary: BootupTime
-    let networkRtt: BootupTime
-    let mainThreadTasks: DOMSize
-    let fontDisplay: DOMSize
-    let totalBlockingTime: EfficientAnimatedContent
-    let estimatedInputLatency: BootupTime
-    let usesRelPreconnect: DOMSize
-    let unminifiedCss: EfficientAnimatedContent
-    let bootupTime: BootupTime
-    let networkServerLatency: BootupTime
-    let offscreenImages: BootupTime
-    let usesResponsiveImages: DOMSize
-    let speedIndex: BootupTime
-    let unusedCssRules: BootupTime
-    let firstCpuIdle: CriticalRequestChains
-    let totalByteWeight: EfficientAnimatedContent
-    let mainthreadWorkBreakdown: DOMSize
-    let firstContentfulPaint: CriticalRequestChains
-    let usesWebpImages: EfficientAnimatedContent
-    let diagnostics: Diagnostics
-    let criticalRequestChains: CriticalRequestChains
-    let domSize: DOMSize
-    let usesRelPreload: DOMSize
-    let performanceBudget: Diagnostics
-    let unminifiedJavascript: BootupTime
+// MARK: - Environment
+struct Environment: Codable {
+    let networkUserAgent: String
+    let hostUserAgent: String
+    let benchmarkIndex: Int
 
     enum CodingKeys: String, CodingKey {
-        case redirects = "redirects"
-        case userTimings = "user-timings"
-        case firstMeaningfulPaint = "first-meaningful-paint"
-        case resourceSummary = "resource-summary"
-        case efficientAnimatedContent = "efficient-animated-content"
-        case finalScreenshot = "final-screenshot"
-        case metrics = "metrics"
-        case timeToFirstByte = "time-to-first-byte"
-        case renderBlockingResources = "render-blocking-resources"
-        case usesTextCompression = "uses-text-compression"
-        case usesOptimizedImages = "uses-optimized-images"
-        case networkRequests = "network-requests"
-        case usesLongCacheTtl = "uses-long-cache-ttl"
-        case maxPotentialFid = "max-potential-fid"
-        case interactive = "interactive"
-        case screenshotThumbnails = "screenshot-thumbnails"
-        case thirdPartySummary = "third-party-summary"
-        case networkRtt = "network-rtt"
-        case mainThreadTasks = "main-thread-tasks"
-        case fontDisplay = "font-display"
-        case totalBlockingTime = "total-blocking-time"
-        case estimatedInputLatency = "estimated-input-latency"
-        case usesRelPreconnect = "uses-rel-preconnect"
-        case unminifiedCss = "unminified-css"
-        case bootupTime = "bootup-time"
-        case networkServerLatency = "network-server-latency"
-        case offscreenImages = "offscreen-images"
-        case usesResponsiveImages = "uses-responsive-images"
-        case speedIndex = "speed-index"
-        case unusedCssRules = "unused-css-rules"
-        case firstCpuIdle = "first-cpu-idle"
-        case totalByteWeight = "total-byte-weight"
-        case mainthreadWorkBreakdown = "mainthread-work-breakdown"
-        case firstContentfulPaint = "first-contentful-paint"
-        case usesWebpImages = "uses-webp-images"
-        case diagnostics = "diagnostics"
-        case criticalRequestChains = "critical-request-chains"
-        case domSize = "dom-size"
-        case usesRelPreload = "uses-rel-preload"
-        case performanceBudget = "performance-budget"
-        case unminifiedJavascript = "unminified-javascript"
-    }
-}
-
-// MARK: - BootupTime
-struct BootupTime: Codable {
-    let id: String
-    let title: String
-    let bootupTimeDescription: String
-    let score: Double?
-    let scoreDisplayMode: ScoreDisplayMode
-    let displayValue: String?
-    let details: PurpleDetails?
-    let numericValue: Double?
-    let warnings: [JSONAny]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case bootupTimeDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case displayValue = "displayValue"
-        case details = "details"
-        case numericValue = "numericValue"
-        case warnings = "warnings"
-    }
-}
-
-// MARK: - PurpleDetails
-struct PurpleDetails: Codable {
-    let headings: [PurpleHeading]
-    let type: TypeEnum
-    let items: [PurpleItem]
-    let summary: PurpleSummary?
-    let overallSavingsMs: Int?
-    let overallSavingsBytes: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case headings = "headings"
-        case type = "type"
-        case items = "items"
-        case summary = "summary"
-        case overallSavingsMs = "overallSavingsMs"
-        case overallSavingsBytes = "overallSavingsBytes"
-    }
-}
-
-// MARK: - PurpleHeading
-struct PurpleHeading: Codable {
-    let text: String?
-    let key: String
-    let itemType: String?
-    let granularity: Double?
-    let label: String?
-    let valueType: String?
-
-    enum CodingKeys: String, CodingKey {
-        case text = "text"
-        case key = "key"
-        case itemType = "itemType"
-        case granularity = "granularity"
-        case label = "label"
-        case valueType = "valueType"
-    }
-}
-
-// MARK: - PurpleItem
-struct PurpleItem: Codable {
-    let url: String?
-    let total: Double?
-    let scripting: Double?
-    let scriptParseCompile: Double?
-    let wastedMs: Int?
-    let resourceType: String?
-    let label: String?
-    let size: Int?
-    let requestCount: Int?
-    let mainThreadTime: Double?
-    let transferSize: Int?
-    let blockingTime: Double?
-    let entity: Entity?
-    let duration: Double?
-    let timingType: String?
-    let startTime: Double?
-    let name: String?
-
-    enum CodingKeys: String, CodingKey {
-        case url = "url"
-        case total = "total"
-        case scripting = "scripting"
-        case scriptParseCompile = "scriptParseCompile"
-        case wastedMs = "wastedMs"
-        case resourceType = "resourceType"
-        case label = "label"
-        case size = "size"
-        case requestCount = "requestCount"
-        case mainThreadTime = "mainThreadTime"
-        case transferSize = "transferSize"
-        case blockingTime = "blockingTime"
-        case entity = "entity"
-        case duration = "duration"
-        case timingType = "timingType"
-        case startTime = "startTime"
-        case name = "name"
-    }
-}
-
-// MARK: - Entity
-struct Entity: Codable {
-    let type: String
-    let text: String
-    let url: String
-
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case text = "text"
-        case url = "url"
-    }
-}
-
-// MARK: - PurpleSummary
-struct PurpleSummary: Codable {
-    let wastedMs: Double
-    let wastedBytes: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case wastedMs = "wastedMs"
-        case wastedBytes = "wastedBytes"
-    }
-}
-
-enum TypeEnum: String, Codable {
-    case opportunity = "opportunity"
-    case table = "table"
-}
-
-enum ScoreDisplayMode: String, Codable {
-    case binary = "binary"
-    case informative = "informative"
-    case numeric = "numeric"
-}
-
-// MARK: - CriticalRequestChains
-struct CriticalRequestChains: Codable {
-    let id: String
-    let title: String
-    let criticalRequestChainsDescription: String
-    let score: Double?
-    let scoreDisplayMode: ScoreDisplayMode
-    let displayValue: String?
-    let details: CriticalRequestChainsDetails?
-    let numericValue: Double?
-    let warnings: [JSONAny]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case criticalRequestChainsDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case displayValue = "displayValue"
-        case details = "details"
-        case numericValue = "numericValue"
-        case warnings = "warnings"
-    }
-}
-
-// MARK: - CriticalRequestChainsDetails
-struct CriticalRequestChainsDetails: Codable {
-    let chains: Chains?
-    let longestChain: LongestChain?
-    let type: String
-    let items: [FluffyItem]?
-    let summary: FluffySummary?
-    let headings: [JSONAny]?
-    let overallSavingsMs: Int?
-    let overallSavingsBytes: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case chains = "chains"
-        case longestChain = "longestChain"
-        case type = "type"
-        case items = "items"
-        case summary = "summary"
-        case headings = "headings"
-        case overallSavingsMs = "overallSavingsMs"
-        case overallSavingsBytes = "overallSavingsBytes"
-    }
-}
-
-// MARK: - Chains
-struct Chains: Codable {
-    let the40D0A89E63C918B71228E3446894332F: The40D0A89E63C918B71228E3446894332F
-
-    enum CodingKeys: String, CodingKey {
-        case the40D0A89E63C918B71228E3446894332F = "40D0A89E63C918B71228E3446894332F"
-    }
-}
-
-// MARK: - The40D0A89E63C918B71228E3446894332F
-struct The40D0A89E63C918B71228E3446894332F: Codable {
-    let children: Children
-    let request: Request
-
-    enum CodingKeys: String, CodingKey {
-        case children = "children"
-        case request = "request"
-    }
-}
-
-// MARK: - Children
-struct Children: Codable {
-    let the40D0A89E63C918B71228E3446894332FRedirect: The40D0A89E63C918B71228E3446894332FRedirect
-
-    enum CodingKeys: String, CodingKey {
-        case the40D0A89E63C918B71228E3446894332FRedirect = "40D0A89E63C918B71228E3446894332F:redirect"
-    }
-}
-
-// MARK: - The40D0A89E63C918B71228E3446894332FRedirect
-struct The40D0A89E63C918B71228E3446894332FRedirect: Codable {
-    let request: Request
-
-    enum CodingKeys: String, CodingKey {
-        case request = "request"
-    }
-}
-
-// MARK: - Request
-struct Request: Codable {
-    let url: String
-    let responseReceivedTime: Double
-    let endTime: Double
-    let startTime: Double
-    let transferSize: Int
-
-    enum CodingKeys: String, CodingKey {
-        case url = "url"
-        case responseReceivedTime = "responseReceivedTime"
-        case endTime = "endTime"
-        case startTime = "startTime"
-        case transferSize = "transferSize"
-    }
-}
-
-// MARK: - FluffyItem
-struct FluffyItem: Codable {
-    let observedDomContentLoadedTs: Int?
-    let observedSpeedIndex: Int?
-    let estimatedInputLatency: Int?
-    let totalBlockingTime: Int?
-    let observedFirstPaint: Int?
-    let observedLastVisualChange: Int?
-    let firstContentfulPaint: Int?
-    let observedFirstPaintTs: Int?
-    let speedIndex: Int?
-    let observedSpeedIndexTs: Int?
-    let observedFirstContentfulPaint: Int?
-    let observedNavigationStartTs: Int?
-    let observedLargestContentfulPaintTs: Int?
-    let observedFirstVisualChange: Int?
-    let observedLoadTs: Int?
-    let firstMeaningfulPaint: Int?
-    let observedFirstMeaningfulPaint: Int?
-    let observedTraceEnd: Int?
-    let firstCpuIdle: Int?
-    let observedTraceEndTs: Int?
-    let observedFirstMeaningfulPaintTs: Int?
-    let observedDomContentLoaded: Int?
-    let observedFirstVisualChangeTs: Int?
-    let observedNavigationStart: Int?
-    let interactive: Int?
-    let observedFirstContentfulPaintTs: Int?
-    let observedLastVisualChangeTs: Int?
-    let observedLoad: Int?
-    let observedLargestContentfulPaint: Int?
-    let lcpInvalidated: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case observedDomContentLoadedTs = "observedDomContentLoadedTs"
-        case observedSpeedIndex = "observedSpeedIndex"
-        case estimatedInputLatency = "estimatedInputLatency"
-        case totalBlockingTime = "totalBlockingTime"
-        case observedFirstPaint = "observedFirstPaint"
-        case observedLastVisualChange = "observedLastVisualChange"
-        case firstContentfulPaint = "firstContentfulPaint"
-        case observedFirstPaintTs = "observedFirstPaintTs"
-        case speedIndex = "speedIndex"
-        case observedSpeedIndexTs = "observedSpeedIndexTs"
-        case observedFirstContentfulPaint = "observedFirstContentfulPaint"
-        case observedNavigationStartTs = "observedNavigationStartTs"
-        case observedLargestContentfulPaintTs = "observedLargestContentfulPaintTs"
-        case observedFirstVisualChange = "observedFirstVisualChange"
-        case observedLoadTs = "observedLoadTs"
-        case firstMeaningfulPaint = "firstMeaningfulPaint"
-        case observedFirstMeaningfulPaint = "observedFirstMeaningfulPaint"
-        case observedTraceEnd = "observedTraceEnd"
-        case firstCpuIdle = "firstCPUIdle"
-        case observedTraceEndTs = "observedTraceEndTs"
-        case observedFirstMeaningfulPaintTs = "observedFirstMeaningfulPaintTs"
-        case observedDomContentLoaded = "observedDomContentLoaded"
-        case observedFirstVisualChangeTs = "observedFirstVisualChangeTs"
-        case observedNavigationStart = "observedNavigationStart"
-        case interactive = "interactive"
-        case observedFirstContentfulPaintTs = "observedFirstContentfulPaintTs"
-        case observedLastVisualChangeTs = "observedLastVisualChangeTs"
-        case observedLoad = "observedLoad"
-        case observedLargestContentfulPaint = "observedLargestContentfulPaint"
-        case lcpInvalidated = "lcpInvalidated"
-    }
-}
-
-// MARK: - LongestChain
-struct LongestChain: Codable {
-    let transferSize: Int
-    let duration: Double
-    let length: Int
-
-    enum CodingKeys: String, CodingKey {
-        case transferSize = "transferSize"
-        case duration = "duration"
-        case length = "length"
-    }
-}
-
-// MARK: - FluffySummary
-struct FluffySummary: Codable {
-    let wastedBytes: Int
-
-    enum CodingKeys: String, CodingKey {
-        case wastedBytes = "wastedBytes"
-    }
-}
-
-// MARK: - Diagnostics
-struct Diagnostics: Codable {
-    let id: String
-    let title: String
-    let diagnosticsDescription: String
-    let score: JSONNull?
-    let scoreDisplayMode: String
-    let details: DiagnosticsDetails?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case diagnosticsDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case details = "details"
-    }
-}
-
-// MARK: - DiagnosticsDetails
-struct DiagnosticsDetails: Codable {
-    let type: String
-    let items: [TentacledItem]
-    let scale: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case items = "items"
-        case scale = "scale"
-    }
-}
-
-// MARK: - TentacledItem
-struct TentacledItem: Codable {
-    let numTasks: Int?
-    let numTasksOver10Ms: Int?
-    let rtt: Double?
-    let numFonts: Int?
-    let maxRtt: Double?
-    let numTasksOver500Ms: Int?
-    let numScripts: Int?
-    let maxServerLatency: JSONNull?
-    let numStylesheets: Int?
-    let numTasksOver100Ms: Int?
-    let throughput: Double?
-    let numTasksOver25Ms: Int?
-    let numTasksOver50Ms: Int?
-    let numRequests: Int?
-    let totalTaskTime: Double?
-    let mainDocumentTransferSize: Int?
-    let totalByteWeight: Int?
-    let timing: Int?
-    let timestamp: Int?
-    let data: String?
-
-    enum CodingKeys: String, CodingKey {
-        case numTasks = "numTasks"
-        case numTasksOver10Ms = "numTasksOver10ms"
-        case rtt = "rtt"
-        case numFonts = "numFonts"
-        case maxRtt = "maxRtt"
-        case numTasksOver500Ms = "numTasksOver500ms"
-        case numScripts = "numScripts"
-        case maxServerLatency = "maxServerLatency"
-        case numStylesheets = "numStylesheets"
-        case numTasksOver100Ms = "numTasksOver100ms"
-        case throughput = "throughput"
-        case numTasksOver25Ms = "numTasksOver25ms"
-        case numTasksOver50Ms = "numTasksOver50ms"
-        case numRequests = "numRequests"
-        case totalTaskTime = "totalTaskTime"
-        case mainDocumentTransferSize = "mainDocumentTransferSize"
-        case totalByteWeight = "totalByteWeight"
-        case timing = "timing"
-        case timestamp = "timestamp"
-        case data = "data"
-    }
-}
-
-// MARK: - DOMSize
-struct DOMSize: Codable {
-    let id: String
-    let title: String
-    let domSizeDescription: String
-    let score: Double?
-    let scoreDisplayMode: ScoreDisplayMode
-    let displayValue: String?
-    let details: FluffyDetails?
-    let numericValue: Double?
-    let warnings: [JSONAny]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case domSizeDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case displayValue = "displayValue"
-        case details = "details"
-        case numericValue = "numericValue"
-        case warnings = "warnings"
-    }
-}
-
-// MARK: - FluffyDetails
-struct FluffyDetails: Codable {
-    let headings: [FluffyHeading]
-    let type: TypeEnum
-    let items: [StickyItem]
-    let overallSavingsMs: Double?
-    let overallSavingsBytes: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case headings = "headings"
-        case type = "type"
-        case items = "items"
-        case overallSavingsMs = "overallSavingsMs"
-        case overallSavingsBytes = "overallSavingsBytes"
-    }
-}
-
-// MARK: - FluffyHeading
-struct FluffyHeading: Codable {
-    let key: String
-    let itemType: String?
-    let text: String?
-    let granularity: Int?
-    let displayUnit: String?
-    let valueType: String?
-    let label: String?
-
-    enum CodingKeys: String, CodingKey {
-        case key = "key"
-        case itemType = "itemType"
-        case text = "text"
-        case granularity = "granularity"
-        case displayUnit = "displayUnit"
-        case valueType = "valueType"
-        case label = "label"
-    }
-}
-
-// MARK: - StickyItem
-struct StickyItem: Codable {
-    let statistic: String?
-    let value: String?
-    let element: Element?
-    let startTime: Double?
-    let duration: Double?
-    let group: String?
-    let groupLabel: String?
-    let mimeType: String?
-    let endTime: Double?
-    let resourceSize: Int?
-    let transferSize: Int?
-    let url: String?
-    let statusCode: Int?
-    let resourceType: String?
-    let totalBytes: Int?
-    let wastedBytes: Int?
-    let wastedPercent: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case statistic = "statistic"
-        case value = "value"
-        case element = "element"
-        case startTime = "startTime"
-        case duration = "duration"
-        case group = "group"
-        case groupLabel = "groupLabel"
-        case mimeType = "mimeType"
-        case endTime = "endTime"
-        case resourceSize = "resourceSize"
-        case transferSize = "transferSize"
-        case url = "url"
-        case statusCode = "statusCode"
-        case resourceType = "resourceType"
-        case totalBytes = "totalBytes"
-        case wastedBytes = "wastedBytes"
-        case wastedPercent = "wastedPercent"
-    }
-}
-
-// MARK: - Element
-struct Element: Codable {
-    let type: String
-    let value: String
-
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case value = "value"
-    }
-}
-
-// MARK: - EfficientAnimatedContent
-struct EfficientAnimatedContent: Codable {
-    let id: String
-    let title: String
-    let efficientAnimatedContentDescription: String
-    let score: Int
-    let scoreDisplayMode: ScoreDisplayMode
-    let details: EfficientAnimatedContentDetails?
-    let numericValue: Int
-    let displayValue: String?
-    let warnings: [JSONAny]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case efficientAnimatedContentDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case details = "details"
-        case numericValue = "numericValue"
-        case displayValue = "displayValue"
-        case warnings = "warnings"
-    }
-}
-
-// MARK: - EfficientAnimatedContentDetails
-struct EfficientAnimatedContentDetails: Codable {
-    let headings: [TentacledHeading]
-    let type: TypeEnum
-    let items: [IndigoItem]
-    let overallSavingsBytes: Int?
-    let overallSavingsMs: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case headings = "headings"
-        case type = "type"
-        case items = "items"
-        case overallSavingsBytes = "overallSavingsBytes"
-        case overallSavingsMs = "overallSavingsMs"
-    }
-}
-
-// MARK: - TentacledHeading
-struct TentacledHeading: Codable {
-    let text: String
-    let key: String
-    let itemType: String
-    let granularity: Double?
-    let displayUnit: String?
-
-    enum CodingKeys: String, CodingKey {
-        case text = "text"
-        case key = "key"
-        case itemType = "itemType"
-        case granularity = "granularity"
-        case displayUnit = "displayUnit"
-    }
-}
-
-// MARK: - IndigoItem
-struct IndigoItem: Codable {
-    let url: String
-    let totalBytes: Int
-
-    enum CodingKeys: String, CodingKey {
-        case url = "url"
-        case totalBytes = "totalBytes"
-    }
-}
-
-// MARK: - FinalScreenshot
-struct FinalScreenshot: Codable {
-    let id: String
-    let title: String
-    let finalScreenshotDescription: String
-    let score: JSONNull?
-    let scoreDisplayMode: ScoreDisplayMode
-    let details: FinalScreenshotDetails
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case finalScreenshotDescription = "description"
-        case score = "score"
-        case scoreDisplayMode = "scoreDisplayMode"
-        case details = "details"
-    }
-}
-
-// MARK: - FinalScreenshotDetails
-struct FinalScreenshotDetails: Codable {
-    let timing: Int
-    let timestamp: Int
-    let data: String
-    let type: String?
-
-    enum CodingKeys: String, CodingKey {
-        case timing = "timing"
-        case timestamp = "timestamp"
-        case data = "data"
-        case type = "type"
-    }
-}
-
-// MARK: - Categories
-struct Categories: Codable {
-    let performance: Performance
-
-    enum CodingKeys: String, CodingKey {
-        case performance = "performance"
-    }
-}
-
-// MARK: - Performance
-struct Performance: Codable {
-    let id: String
-    let title: String
-    let score: Double
-    let auditRefs: [AuditRef]
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case score = "score"
-        case auditRefs = "auditRefs"
-    }
-}
-
-// MARK: - AuditRef
-struct AuditRef: Codable {
-    let id: String
-    let weight: Int
-    let group: Group?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case weight = "weight"
-        case group = "group"
-    }
-}
-
-enum Group: String, Codable {
-    case budgets = "budgets"
-    case diagnostics = "diagnostics"
-    case loadOpportunities = "load-opportunities"
-    case metrics = "metrics"
-}
-
-// MARK: - CategoryGroups
-struct CategoryGroups: Codable {
-    let pwaInstallable: PwaFastReliableClass
-    let seoMobile: A11YAria
-    let diagnostics: A11YAria
-    let a11YBestPractices: A11YAria
-    let seoCrawl: A11YAria
-    let a11YColorContrast: A11YAria
-    let seoContent: A11YAria
-    let pwaOptimized: PwaFastReliableClass
-    let a11YNavigation: A11YAria
-    let pwaFastReliable: PwaFastReliableClass
-    let a11YAria: A11YAria
-    let a11YAudioVideo: A11YAria
-    let a11YLanguage: A11YAria
-    let a11YTablesLists: A11YAria
-    let a11YNamesLabels: A11YAria
-    let budgets: A11YAria
-    let metrics: PwaFastReliableClass
-    let loadOpportunities: A11YAria
-
-    enum CodingKeys: String, CodingKey {
-        case pwaInstallable = "pwa-installable"
-        case seoMobile = "seo-mobile"
-        case diagnostics = "diagnostics"
-        case a11YBestPractices = "a11y-best-practices"
-        case seoCrawl = "seo-crawl"
-        case a11YColorContrast = "a11y-color-contrast"
-        case seoContent = "seo-content"
-        case pwaOptimized = "pwa-optimized"
-        case a11YNavigation = "a11y-navigation"
-        case pwaFastReliable = "pwa-fast-reliable"
-        case a11YAria = "a11y-aria"
-        case a11YAudioVideo = "a11y-audio-video"
-        case a11YLanguage = "a11y-language"
-        case a11YTablesLists = "a11y-tables-lists"
-        case a11YNamesLabels = "a11y-names-labels"
-        case budgets = "budgets"
-        case metrics = "metrics"
-        case loadOpportunities = "load-opportunities"
-    }
-}
-
-// MARK: - A11YAria
-struct A11YAria: Codable {
-    let title: String
-    let a11YAriaDescription: String
-
-    enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case a11YAriaDescription = "description"
-    }
-}
-
-// MARK: - PwaFastReliableClass
-struct PwaFastReliableClass: Codable {
-    let title: String
-
-    enum CodingKeys: String, CodingKey {
-        case title = "title"
+        case networkUserAgent = "networkUserAgent"
+        case hostUserAgent = "hostUserAgent"
+        case benchmarkIndex = "benchmarkIndex"
     }
 }
 
@@ -902,16 +154,76 @@ struct ConfigSettings: Codable {
     }
 }
 
-// MARK: - Environment
-struct Environment: Codable {
-    let networkUserAgent: String
-    let hostUserAgent: String
-    let benchmarkIndex: Int
+// MARK: - Categories
+struct Categories: Codable {
+    // overall score
+    let performance: Performance
 
     enum CodingKeys: String, CodingKey {
-        case networkUserAgent = "networkUserAgent"
-        case hostUserAgent = "hostUserAgent"
-        case benchmarkIndex = "benchmarkIndex"
+        case performance = "performance"
+    }
+}
+
+// MARK: - CategoryGroups
+struct CategoryGroups: Codable {
+    let a11YLanguage: CategoryGroupsItem
+    let a11YTablesLists: CategoryGroupsItem
+    let a11YNamesLabels: CategoryGroupsItem
+    let budgets: CategoryGroupsItem
+    let metrics: CategoryGroupsItem
+    let loadOpportunities: CategoryGroupsItem
+    let pwaInstallable: CategoryGroupsItem
+    let seoMobile: CategoryGroupsItem
+    let diagnostics: CategoryGroupsItem
+    let a11YBestPractices: CategoryGroupsItem
+    let seoCrawl: CategoryGroupsItem
+    let a11YColorContrast: CategoryGroupsItem
+    let pwaOptimized: CategoryGroupsItem
+    let seoContent: CategoryGroupsItem
+    let a11YNavigation: CategoryGroupsItem
+    let pwaFastReliable: CategoryGroupsItem
+    let a11YAria: CategoryGroupsItem
+    let a11YAudioVideo: CategoryGroupsItem
+
+    enum CodingKeys: String, CodingKey {
+        case a11YLanguage = "a11y-language"
+        case a11YTablesLists = "a11y-tables-lists"
+        case a11YNamesLabels = "a11y-names-labels"
+        case budgets = "budgets"
+        case metrics = "metrics"
+        case loadOpportunities = "load-opportunities"
+        case pwaInstallable = "pwa-installable"
+        case seoMobile = "seo-mobile"
+        case diagnostics = "diagnostics"
+        case a11YBestPractices = "a11y-best-practices"
+        case seoCrawl = "seo-crawl"
+        case a11YColorContrast = "a11y-color-contrast"
+        case pwaOptimized = "pwa-optimized"
+        case seoContent = "seo-content"
+        case a11YNavigation = "a11y-navigation"
+        case pwaFastReliable = "pwa-fast-reliable"
+        case a11YAria = "a11y-aria"
+        case a11YAudioVideo = "a11y-audio-video"
+    }
+}
+
+// MARK: - CategoryGroupsItem
+struct CategoryGroupsItem: Codable {
+    let title: String
+    let description: String?
+
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case description = "description"
+    }
+}
+
+// MARK: - Timing
+struct Timing: Codable {
+    let total: Double
+
+    enum CodingKeys: String, CodingKey {
+        case total = "total"
     }
 }
 
@@ -961,65 +273,930 @@ struct RendererFormattedStrings: Codable {
     }
 }
 
-// MARK: - Timing
-struct Timing: Codable {
-    let total: Double
+// MARK: - =========== Audits JSON ===========
+
+// MARK: - Audits
+struct Audits: Codable {
+    let unminifiedJavascript: BootupTime
+    let redirects: DOMSize
+    let userTimings: BootupTime
+    // first-meaningful-paint
+    let firstMeaningfulPaint: PerformanceScore
+    // resource-summary statistic
+    let resourceSummary: PerformanceScore
+    let finalScreenshot: FinalScreenshot
+    let efficientAnimatedContent: EfficientAnimatedContent
+    let metrics: EfficientAnimatedContent
+    let timeToFirstByte: DOMSize
+    let renderBlockingResources: DOMSize
+    let usesTextCompression: EfficientAnimatedContent
+    let usesOptimizedImages: EfficientAnimatedContent
+    let networkRequests: CriticalRequestChains
+    let usesLongCacheTTL: BootupTime
+    // max-potential-fid
+    let maxPotentialFid: EfficientAnimatedContent
+    // Time to Interactive
+    let interactive: DOMSize
+    // screenshot-thumbnails
+    let screenshotThumbnails: Diagnostics
+    // third-party-summary
+    let thirdPartySummary: PerformanceScore
+    let networkRtt: PerformanceScore
+    let mainThreadTasks: DOMSize
+    let fontDisplay: PerformanceScore
+    let totalBlockingTime: DOMSize
+    // estimated-input-latency
+    let estimatedInputLatency: BootupTime
+    let firstContentfulPaint3G: CriticalRequestChains?
+    let usesRelPreconnect: EfficientAnimatedContent
+    let unminifiedCSS: DOMSize
+    let bootupTime: BootupTime
+    let offscreenImages: DOMSize
+    let networkServerLatency: PerformanceScore
+    let usesResponsiveImages: EfficientAnimatedContent
+    let unusedCSSRules: BootupTime
+    // speed-index
+    let speedIndex: PerformanceScore
+    // first-cpu-idle
+    let firstCPUIdle: PerformanceScore // CriticalRequestChains
+    let totalByteWeight: DOMSize
+    let mainthreadWorkBreakdown: BootupTime
+    // first-contentful-paint
+    let firstContentfulPaint: PerformanceScore // CriticalRequestChains
+    let usesWebpImages: EfficientAnimatedContent
+    let diagnostics: Diagnostics
+    let criticalRequestChains: CriticalRequestChains
+    let domSize: DOMSize
+    let usesRelPreload: EfficientAnimatedContent
+    let performanceBudget: Diagnostics
 
     enum CodingKeys: String, CodingKey {
-        case total = "total"
+        case unminifiedJavascript = "unminified-javascript"
+        case redirects = "redirects"
+        case userTimings = "user-timings"
+        case firstMeaningfulPaint = "first-meaningful-paint"
+        case resourceSummary = "resource-summary"
+        case finalScreenshot = "final-screenshot"
+        case efficientAnimatedContent = "efficient-animated-content"
+        case metrics = "metrics"
+        case timeToFirstByte = "time-to-first-byte"
+        case renderBlockingResources = "render-blocking-resources"
+        case usesTextCompression = "uses-text-compression"
+        case usesOptimizedImages = "uses-optimized-images"
+        case networkRequests = "network-requests"
+        case usesLongCacheTTL = "uses-long-cache-ttl"
+        case maxPotentialFid = "max-potential-fid"
+        case interactive = "interactive"
+        case screenshotThumbnails = "screenshot-thumbnails"
+        case thirdPartySummary = "third-party-summary"
+        case networkRtt = "network-rtt"
+        case mainThreadTasks = "main-thread-tasks"
+        case fontDisplay = "font-display"
+        case totalBlockingTime = "total-blocking-time"
+        case estimatedInputLatency = "estimated-input-latency"
+        case firstContentfulPaint3G = "first-contentful-paint-3g"
+        case usesRelPreconnect = "uses-rel-preconnect"
+        case unminifiedCSS = "unminified-css"
+        case bootupTime = "bootup-time"
+        case offscreenImages = "offscreen-images"
+        case networkServerLatency = "network-server-latency"
+        case usesResponsiveImages = "uses-responsive-images"
+        case unusedCSSRules = "unused-css-rules"
+        case speedIndex = "speed-index"
+        case firstCPUIdle = "first-cpu-idle"
+        case totalByteWeight = "total-byte-weight"
+        case mainthreadWorkBreakdown = "mainthread-work-breakdown"
+        case firstContentfulPaint = "first-contentful-paint"
+        case usesWebpImages = "uses-webp-images"
+        case diagnostics = "diagnostics"
+        case criticalRequestChains = "critical-request-chains"
+        case domSize = "dom-size"
+        case usesRelPreload = "uses-rel-preload"
+        case performanceBudget = "performance-budget"
     }
 }
 
-// MARK: - LoadingExperience
-struct LoadingExperience: Codable {
+// MARK: - BootupTime
+struct BootupTime: Codable {
     let id: String
-    let metrics: LoadingExperienceMetrics
-    let overallCategory: String
-    let initialUrl: String
+    let title: String
+    let description: String
+    let score: Double?
+    let scoreDisplayMode: ScoreDisplayMode
+    let displayValue: String?
+    let details: BootupTimeDetails?
+    let numericValue: Double?
+    let warnings: [JSONAny]?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        case metrics = "metrics"
-        case overallCategory = "overall_category"
-        case initialUrl = "initial_url"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case displayValue = "displayValue"
+        case details = "details"
+        case numericValue = "numericValue"
+        case warnings = "warnings"
     }
 }
 
-// MARK: - LoadingExperienceMetrics
-struct LoadingExperienceMetrics: Codable {
-    let firstInputDelayMs: FirstMs
-    let firstContentfulPaintMs: FirstMs
+enum ScoreDisplayMode: String, Codable {
+    case binary = "binary"
+    case informative = "informative"
+    case numeric = "numeric"
+    case manual = "manual"
+    case notApplicable = "notApplicable"
+}
+
+// MARK: - BootupTimeDetails
+struct BootupTimeDetails: Codable {
+    let summary: Summary?
+    let headings: [BootupTimeDetailsHeading]
+    let type: String
+    let items: [BootupTimeDetailsItem]
+    let overallSavingsMS: Int?
+    let overallSavingsBytes: Int?
 
     enum CodingKeys: String, CodingKey {
-        case firstInputDelayMs = "FIRST_INPUT_DELAY_MS"
-        case firstContentfulPaintMs = "FIRST_CONTENTFUL_PAINT_MS"
+        case summary = "summary"
+        case headings = "headings"
+        case type = "type"
+        case items = "items"
+        case overallSavingsMS = "overallSavingsMs"
+        case overallSavingsBytes = "overallSavingsBytes"
     }
 }
 
-// MARK: - FirstMs
-struct FirstMs: Codable {
-    let percentile: Int
-    let distributions: [Distribution]
-    let category: String
+// MARK: - BootupTimeDetailsHeading
+struct BootupTimeDetailsHeading: Codable {
+    let itemType: String?
+    let key: String
+    let text: String?
+    let granularity: Double?
+    let valueType: ValueType?
+    let label: Label?
+    let displayUnit: String?
 
     enum CodingKeys: String, CodingKey {
-        case percentile = "percentile"
-        case distributions = "distributions"
-        case category = "category"
+        case itemType = "itemType"
+        case key = "key"
+        case text = "text"
+        case granularity = "granularity"
+        case valueType = "valueType"
+        case label = "label"
+        case displayUnit = "displayUnit"
     }
 }
 
-// MARK: - Distribution
-struct Distribution: Codable {
-    let min: Int
-    let max: Int?
-    let proportion: Double
+enum Label: String, Codable {
+    case potentialSavings = "Potential Savings"
+    case size = "Size"
+    case timeSpent = "Time Spent"
+    case url = "URL"
+}
+
+enum ValueType: String, Codable {
+    case bytes = "bytes"
+    case thumbnail = "thumbnail"
+    case timespanMS = "timespanMs"
+    case url = "url"
+}
+
+// MARK: - BootupTimeDetailsItem
+struct BootupTimeDetailsItem: Codable {
+    let url: String?
+    let total: Double?
+    let scripting: Double?
+    let scriptParseCompile: Double?
+    let group: String?
+    let duration: Double?
+    let groupLabel: String?
+    let totalBytes: Int?
+    let wastedBytes: Double?
+    let wastedPercent: Double?
+    let cacheHitProbability: Double?
+    let cacheLifetimeMS: Int?
+    let debugData: DebugData?
 
     enum CodingKeys: String, CodingKey {
-        case min = "min"
-        case max = "max"
-        case proportion = "proportion"
+        case url = "url"
+        case total = "total"
+        case scripting = "scripting"
+        case scriptParseCompile = "scriptParseCompile"
+        case group = "group"
+        case duration = "duration"
+        case groupLabel = "groupLabel"
+        case totalBytes = "totalBytes"
+        case wastedBytes = "wastedBytes"
+        case wastedPercent = "wastedPercent"
+        case cacheHitProbability = "cacheHitProbability"
+        case cacheLifetimeMS = "cacheLifetimeMs"
+        case debugData = "debugData"
     }
+}
+
+// MARK: - DebugData
+struct DebugData: Codable {
+    let type: TypeEnum
+    let maxAge: Int
+    let debugDataPublic: Bool?
+    let staleWhileRevalidate: String?
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case maxAge = "max-age"
+        case debugDataPublic = "public"
+        case staleWhileRevalidate = "stale-while-revalidate"
+    }
+}
+
+enum TypeEnum: String, Codable {
+    case debugdata = "debugdata"
+}
+
+// MARK: - Summary
+struct Summary: Codable {
+    let wastedMS: Double?
+    let wastedBytes: WastedBytes?
+
+    enum CodingKeys: String, CodingKey {
+        case wastedMS = "wastedMs"
+        case wastedBytes = "wastedBytes"
+    }
+}
+
+enum WastedBytes: Codable {
+    case double(Double)
+    case integer(Int)
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(Int.self) {
+            self = .integer(x)
+            return
+        }
+        if let x = try? container.decode(Double.self) {
+            self = .double(x)
+            return
+        }
+        throw DecodingError.typeMismatch(WastedBytes.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for WastedBytes"))
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .double(let x):
+            try container.encode(x)
+        case .integer(let x):
+            try container.encode(x)
+        }
+    }
+}
+
+// MARK: - CriticalRequestChains
+struct CriticalRequestChains: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: Double?
+    let scoreDisplayMode: ScoreDisplayMode
+    let displayValue: String?
+    let details: CriticalRequestChainsDetails?
+    let numericValue: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case displayValue = "displayValue"
+        case details = "details"
+        case numericValue = "numericValue"
+    }
+}
+
+// MARK: - CriticalRequestChainsDetails
+struct CriticalRequestChainsDetails: Codable {
+    //let chains: Chains?
+    let longestChain: LongestChain?
+    let type: String
+    let headings: [CriticalRequestChainsDetailsHeading]?
+    let items: [CriticalRequestChainsDetailsItem]?
+
+    enum CodingKeys: String, CodingKey {
+        //case chains = "chains"
+        case longestChain = "longestChain"
+        case type = "type"
+        case headings = "headings"
+        case items = "items"
+    }
+}
+
+// MARK: - Chains
+struct Chains: Codable {
+    let the21117: The21117
+    let ff79Ccb42945C4Ffcdfadcc920188Bc2: Ff79Ccb42945C4Ffcdfadcc920188Bc2
+
+    enum CodingKeys: String, CodingKey {
+        case the21117 = "21.117"
+        case ff79Ccb42945C4Ffcdfadcc920188Bc2 = "FF79CCB42945C4FFCDFADCC920188BC2"
+    }
+}
+
+// MARK: - Ff79Ccb42945C4Ffcdfadcc920188Bc2
+struct Ff79Ccb42945C4Ffcdfadcc920188Bc2: Codable {
+    let children: Children
+    let request: Request
+
+    enum CodingKeys: String, CodingKey {
+        case children = "children"
+        case request = "request"
+    }
+}
+
+// MARK: - Children
+struct Children: Codable {
+    let ff79CCB42945C4FFCDFADCC920188BC2Redirect: FF79CCB42945C4FFCDFADCC920188BC2Redirect
+
+    enum CodingKeys: String, CodingKey {
+        case ff79CCB42945C4FFCDFADCC920188BC2Redirect = "FF79CCB42945C4FFCDFADCC920188BC2:redirect"
+    }
+}
+
+// MARK: - FF79CCB42945C4FFCDFADCC920188BC2Redirect
+struct FF79CCB42945C4FFCDFADCC920188BC2Redirect: Codable {
+    let children: [String: The21117]
+    let request: Request
+
+    enum CodingKeys: String, CodingKey {
+        case children = "children"
+        case request = "request"
+    }
+}
+
+// MARK: - The21117
+struct The21117: Codable {
+    let request: Request
+
+    enum CodingKeys: String, CodingKey {
+        case request = "request"
+    }
+}
+
+// MARK: - Request
+struct Request: Codable {
+    let url: String
+    let responseReceivedTime: Double
+    let endTime: Double
+    let startTime: Double
+    let transferSize: Int
+
+    enum CodingKeys: String, CodingKey {
+        case url = "url"
+        case responseReceivedTime = "responseReceivedTime"
+        case endTime = "endTime"
+        case startTime = "startTime"
+        case transferSize = "transferSize"
+    }
+}
+
+// MARK: - CriticalRequestChainsDetailsHeading
+struct CriticalRequestChainsDetailsHeading: Codable {
+    let itemType: String
+    let key: String
+    let text: String
+    let granularity: Double?
+    let displayUnit: String?
+
+    enum CodingKeys: String, CodingKey {
+        case itemType = "itemType"
+        case key = "key"
+        case text = "text"
+        case granularity = "granularity"
+        case displayUnit = "displayUnit"
+    }
+}
+
+// MARK: - CriticalRequestChainsDetailsItem
+struct CriticalRequestChainsDetailsItem: Codable {
+    let mimeType: String?
+    let resourceSize: Int
+    let endTime: Double
+    let startTime: Double
+    let transferSize: Int
+    let url: String
+    let statusCode: Int
+    let resourceType: ResourceType?
+
+    enum CodingKeys: String, CodingKey {
+        case mimeType = "mimeType"
+        case resourceSize = "resourceSize"
+        case endTime = "endTime"
+        case startTime = "startTime"
+        case transferSize = "transferSize"
+        case url = "url"
+        case statusCode = "statusCode"
+        case resourceType = "resourceType"
+    }
+}
+
+enum ResourceType: String, Codable {
+    case document = "Document"
+    case fetch = "Fetch"
+    case font = "Font"
+    case image = "Image"
+    case script = "Script"
+    case stylesheet = "Stylesheet"
+    case xhr = "XHR"
+    case other = "Other"
+}
+
+// MARK: - LongestChain
+struct LongestChain: Codable {
+    let transferSize: Int
+    let duration: Double
+    let length: Int
+
+    enum CodingKeys: String, CodingKey {
+        case transferSize = "transferSize"
+        case duration = "duration"
+        case length = "length"
+    }
+}
+
+// MARK: - Diagnostics
+struct Diagnostics: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: JSONNull?
+    let scoreDisplayMode: ScoreDisplayMode
+    let details: DiagnosticsDetails?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case details = "details"
+    }
+}
+
+// MARK: - DiagnosticsDetails
+struct DiagnosticsDetails: Codable {
+    let type: String
+    let items: [TentacledItem]
+    let scale: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case items = "items"
+        case scale = "scale"
+    }
+}
+
+// MARK: - TentacledItem
+struct TentacledItem: Codable {
+    let numStylesheets: Int?
+    let throughput: Double?
+    let numTasksOver100MS: Int?
+    let numTasksOver25MS: Int?
+    let numTasksOver50MS: Int?
+    let numRequests: Int?
+    let totalTaskTime: Double?
+    let mainDocumentTransferSize: Int?
+    let totalByteWeight: Int?
+    let numTasks: Int?
+    let numTasksOver10MS: Int?
+    let rtt: Double?
+    let numFonts: Int?
+    let maxRtt: Double?
+    let numTasksOver500MS: Int?
+    let maxServerLatency: JSONNull?
+    let numScripts: Int?
+    let timing: Int?
+    let timestamp: Double?
+    let data: String?
+
+    enum CodingKeys: String, CodingKey {
+        case numStylesheets = "numStylesheets"
+        case throughput = "throughput"
+        case numTasksOver100MS = "numTasksOver100ms"
+        case numTasksOver25MS = "numTasksOver25ms"
+        case numTasksOver50MS = "numTasksOver50ms"
+        case numRequests = "numRequests"
+        case totalTaskTime = "totalTaskTime"
+        case mainDocumentTransferSize = "mainDocumentTransferSize"
+        case totalByteWeight = "totalByteWeight"
+        case numTasks = "numTasks"
+        case numTasksOver10MS = "numTasksOver10ms"
+        case rtt = "rtt"
+        case numFonts = "numFonts"
+        case maxRtt = "maxRtt"
+        case numTasksOver500MS = "numTasksOver500ms"
+        case maxServerLatency = "maxServerLatency"
+        case numScripts = "numScripts"
+        case timing = "timing"
+        case timestamp = "timestamp"
+        case data = "data"
+    }
+}
+
+// MARK: - DOMSize
+struct DOMSize: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: Double?
+    let scoreDisplayMode: ScoreDisplayMode
+    let displayValue: String?
+    let details: PurpleDetails?
+    let numericValue: Double
+    let warnings: [JSONAny]?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case displayValue = "displayValue"
+        case details = "details"
+        case numericValue = "numericValue"
+        case warnings = "warnings"
+    }
+}
+
+// MARK: - PurpleDetails
+struct PurpleDetails: Codable {
+    let headings: [TentacledHeading]
+    let type: String
+    let items: [StickyItem]
+    let overallSavingsMS: Double?
+    let overallSavingsBytes: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case headings = "headings"
+        case type = "type"
+        case items = "items"
+        case overallSavingsMS = "overallSavingsMs"
+        case overallSavingsBytes = "overallSavingsBytes"
+    }
+}
+
+// MARK: - TentacledHeading
+struct TentacledHeading: Codable {
+    let text: String?
+    let key: String
+    let itemType: String?
+    let granularity: Double?
+    let valueType: ValueType?
+    let label: Label?
+
+    enum CodingKeys: String, CodingKey {
+        case text = "text"
+        case key = "key"
+        case itemType = "itemType"
+        case granularity = "granularity"
+        case valueType = "valueType"
+        case label = "label"
+    }
+}
+
+// MARK: - StickyItem
+struct StickyItem: Codable {
+    let value: String?
+    let statistic: String?
+    let element: Element?
+    let startTime: Double?
+    let duration: Double?
+    let wastedPercent: Double?
+    let url: String?
+    let requestStartTime: Double?
+    let totalBytes: Int?
+    let wastedBytes: Int?
+    let wastedMS: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case value = "value"
+        case statistic = "statistic"
+        case element = "element"
+        case startTime = "startTime"
+        case duration = "duration"
+        case wastedPercent = "wastedPercent"
+        case url = "url"
+        case requestStartTime = "requestStartTime"
+        case totalBytes = "totalBytes"
+        case wastedBytes = "wastedBytes"
+        case wastedMS = "wastedMs"
+    }
+}
+
+// MARK: - Element
+struct Element: Codable {
+    let type: String
+    let value: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case value = "value"
+    }
+}
+
+// MARK: - EfficientAnimatedContent
+struct EfficientAnimatedContent: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: Double?
+    let scoreDisplayMode: ScoreDisplayMode
+    let details: EfficientAnimatedContentDetails?
+    let numericValue: Double
+    // max-potential-fid
+    let displayValue: String?
+    let warnings: [JSONAny]?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case details = "details"
+        case numericValue = "numericValue"
+        case displayValue = "displayValue"
+        case warnings = "warnings"
+    }
+}
+
+// MARK: - EfficientAnimatedContentDetails
+struct EfficientAnimatedContentDetails: Codable {
+    let overallSavingsMS: Int?
+    let headings: [StickyHeading]?
+    let type: String
+    let items: [IndigoItem]
+    let overallSavingsBytes: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case overallSavingsMS = "overallSavingsMs"
+        case headings = "headings"
+        case type = "type"
+        case items = "items"
+        case overallSavingsBytes = "overallSavingsBytes"
+    }
+}
+
+// MARK: - StickyHeading
+struct StickyHeading: Codable {
+    let valueType: ValueType
+    let key: Key
+    let label: Label?
+
+    enum CodingKeys: String, CodingKey {
+        case valueType = "valueType"
+        case key = "key"
+        case label = "label"
+    }
+}
+
+enum Key: String, Codable {
+    case totalBytes = "totalBytes"
+    case url = "url"
+    case wastedBytes = "wastedBytes"
+    case wastedMS = "wastedMs"
+}
+
+// MARK: - IndigoItem
+struct IndigoItem: Codable {
+    let speedIndex: Int?
+    let observedSpeedIndexTs: Int?
+    let observedFirstContentfulPaint: Int?
+    let observedNavigationStartTs: Int?
+    let observedLargestContentfulPaintTs: Int?
+    let observedFirstVisualChange: Int?
+    let observedLoadTs: Int?
+    let firstMeaningfulPaint: Int?
+    let observedTraceEnd: Int?
+    let observedFirstMeaningfulPaint: Int?
+    let observedTraceEndTs: Int?
+    let firstCPUIdle: Int?
+    let observedFirstMeaningfulPaintTs: Int?
+    let observedDOMContentLoaded: Int?
+    let interactive: Int?
+    let observedFirstVisualChangeTs: Int?
+    let observedNavigationStart: Int?
+    let observedFirstContentfulPaintTs: Int?
+    let observedLoad: Int?
+    let observedLastVisualChangeTs: Int?
+    let observedLargestContentfulPaint: Int?
+    let observedDOMContentLoadedTs: Int?
+    let observedSpeedIndex: Int?
+    let estimatedInputLatency: Int?
+    let totalBlockingTime: Int?
+    let observedFirstPaint: Int?
+    let observedLastVisualChange: Int?
+    let firstContentfulPaint: Int?
+    let observedFirstPaintTs: Int?
+    let lcpInvalidated: Bool?
+    let url: String?
+    let totalBytes: Int?
+    let wastedBytes: Int?
+    let fromProtocol: Bool?
+    let isCrossOrigin: Bool?
+
+    enum CodingKeys: String, CodingKey {
+        case speedIndex = "speedIndex"
+        case observedSpeedIndexTs = "observedSpeedIndexTs"
+        case observedFirstContentfulPaint = "observedFirstContentfulPaint"
+        case observedNavigationStartTs = "observedNavigationStartTs"
+        case observedLargestContentfulPaintTs = "observedLargestContentfulPaintTs"
+        case observedFirstVisualChange = "observedFirstVisualChange"
+        case observedLoadTs = "observedLoadTs"
+        case firstMeaningfulPaint = "firstMeaningfulPaint"
+        case observedTraceEnd = "observedTraceEnd"
+        case observedFirstMeaningfulPaint = "observedFirstMeaningfulPaint"
+        case observedTraceEndTs = "observedTraceEndTs"
+        case firstCPUIdle = "firstCPUIdle"
+        case observedFirstMeaningfulPaintTs = "observedFirstMeaningfulPaintTs"
+        case observedDOMContentLoaded = "observedDomContentLoaded"
+        case interactive = "interactive"
+        case observedFirstVisualChangeTs = "observedFirstVisualChangeTs"
+        case observedNavigationStart = "observedNavigationStart"
+        case observedFirstContentfulPaintTs = "observedFirstContentfulPaintTs"
+        case observedLoad = "observedLoad"
+        case observedLastVisualChangeTs = "observedLastVisualChangeTs"
+        case observedLargestContentfulPaint = "observedLargestContentfulPaint"
+        case observedDOMContentLoadedTs = "observedDomContentLoadedTs"
+        case observedSpeedIndex = "observedSpeedIndex"
+        case estimatedInputLatency = "estimatedInputLatency"
+        case totalBlockingTime = "totalBlockingTime"
+        case observedFirstPaint = "observedFirstPaint"
+        case observedLastVisualChange = "observedLastVisualChange"
+        case firstContentfulPaint = "firstContentfulPaint"
+        case observedFirstPaintTs = "observedFirstPaintTs"
+        case lcpInvalidated = "lcpInvalidated"
+        case url = "url"
+        case totalBytes = "totalBytes"
+        case wastedBytes = "wastedBytes"
+        case fromProtocol = "fromProtocol"
+        case isCrossOrigin = "isCrossOrigin"
+    }
+}
+
+// MARK: - FinalScreenshot
+struct FinalScreenshot: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: JSONNull?
+    let scoreDisplayMode: ScoreDisplayMode
+    let details: FinalScreenshotDetails
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case details = "details"
+    }
+}
+
+// MARK: - FinalScreenshotDetails
+struct FinalScreenshotDetails: Codable {
+    let type: String?
+    let timing: Int
+    let timestamp: Int
+    let data: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case timing = "timing"
+        case timestamp = "timestamp"
+        case data = "data"
+    }
+}
+
+// MARK: - PerformanceScore
+struct PerformanceScore: Codable {
+    let id: String
+    let title: String
+    let description: String
+    let score: Double?
+    let scoreDisplayMode: ScoreDisplayMode
+    let details: FontDisplayDetails?
+    let warnings: [JSONAny]?
+    let displayValue: String?
+    let numericValue: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case description = "description"
+        case score = "score"
+        case scoreDisplayMode = "scoreDisplayMode"
+        case details = "details"
+        case warnings = "warnings"
+        case displayValue = "displayValue"
+        case numericValue = "numericValue"
+    }
+}
+
+// MARK: - FontDisplayDetails
+struct FontDisplayDetails: Codable {
+    let headings: [CriticalRequestChainsDetailsHeading]
+    let items: [IndecentItem]
+    let type: String
+    let summary: Summary?
+
+    enum CodingKeys: String, CodingKey {
+        case headings = "headings"
+        case items = "items"
+        case type = "type"
+        case summary = "summary"
+    }
+}
+
+// MARK: - IndecentItem
+struct IndecentItem: Codable {
+    let wastedMS: Double?
+    let url: String?
+    let resourceType: String?
+    let label: String?
+    let size: Int?
+    let requestCount: Int?
+    let blockingTime: Double?
+    let entity: Entity?
+    let mainThreadTime: Double?
+    let transferSize: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case wastedMS = "wastedMs"
+        case url = "url"
+        case resourceType = "resourceType"
+        case label = "label"
+        case size = "size"
+        case requestCount = "requestCount"
+        case blockingTime = "blockingTime"
+        case entity = "entity"
+        case mainThreadTime = "mainThreadTime"
+        case transferSize = "transferSize"
+    }
+}
+
+// MARK: - Entity
+struct Entity: Codable {
+    let url: String?
+    let type: String
+    let text: String
+
+    enum CodingKeys: String, CodingKey {
+        case url = "url"
+        case type = "type"
+        case text = "text"
+    }
+}
+
+// MARK: - Performance
+struct Performance: Codable {
+    let id: String
+    let title: String
+    // overall score - main score
+    // 0 to 49 (slow): Red
+    // 50 to 89 (average): Orange
+    // 90 to 100 (fast): Green
+    let score: Double
+    let auditRefs: [AuditRef]
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case score = "score"
+        case auditRefs = "auditRefs"
+    }
+}
+
+// MARK: - AuditRef
+struct AuditRef: Codable {
+    let id: String
+    let weight: Int
+    let group: Group?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case weight = "weight"
+        case group = "group"
+    }
+}
+
+enum Group: String, Codable {
+    case budgets = "budgets"
+    case diagnostics = "diagnostics"
+    case loadOpportunities = "load-opportunities"
+    case metrics = "metrics"
 }
 
 // MARK: - Encode/decode helpers
@@ -1032,6 +1209,10 @@ class JSONNull: Codable, Hashable {
 
     public var hashValue: Int {
         return 0
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        // No-op
     }
 
     public init() {}

@@ -18,26 +18,33 @@ class NewTestViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var urlTextField: UITextField!
     @IBOutlet private weak var responseTextView: UITextView!
+    @IBOutlet private weak var strategySegmentedControl: UISegmentedControl!
 
     // MARK: - IBAction
     @IBAction private func performRequest(_ sender: Any) {
         let url = urlTextField.text!
         if url.isValidURL {
-            requestToPageSpeed(url: url)
+            requestToPageSpeed(
+                url: url,
+                strategy: strategySegmentedControl.selectedSegmentIndex == 0 ? "mobile" : "desktop"
+            )
         }
     }
 
     func requestToPageSpeed(
         url: String,
+        strategy: String,
         completionHandler: @escaping (_ response: Response?, _ error: MoyaError?) -> Void = { _, _ in }
     ) {
-        provider.request(.runPagespeed(key: googleAPIKey, url: url)) { result in
+        provider.request(.runPagespeed(key: googleAPIKey, url: url, strategy: strategy)) { result in
             do {
                 let response = try result
                     .get()
                     .filter(statusCode: 200)
                 let pageSpeedResult = try response.map(PageSpeedResponse.self)
                 debugPrint(pageSpeedResult)
+                self.responseTextView.text = ""
+                debugPrint(pageSpeedResult, to: &self.responseTextView.text)
                 completionHandler(response, nil)
             } catch {
                 print(error)
