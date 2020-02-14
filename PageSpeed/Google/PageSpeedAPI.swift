@@ -9,7 +9,7 @@
 import Moya
 
 enum PageSpeedAPI {
-    case runPagespeed(key: String, url: String)
+    case runPagespeed(key: String, url: String, strategy: String)
 }
 
 extension PageSpeedAPI: TargetType {
@@ -34,8 +34,8 @@ extension PageSpeedAPI: TargetType {
 
     var task: Task {
         switch self {
-        case let .runPagespeed(key, url):
-            return .requestParameters(parameters: ["key": key, "url": url], encoding: URLEncoding.queryString)
+        case let .runPagespeed(key, url, strategy):
+            return .requestParameters(parameters: ["key": key, "url": url, "strategy": strategy], encoding: URLEncoding.queryString)
         }
     }
 
