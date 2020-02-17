@@ -20,6 +20,9 @@
 		FAA3A04623EB32E300426BB3 /* Stage-A.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */; };
 		FAA3A04923EB334A00426BB3 /* Stage-B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA3A04723EB334A00426BB3 /* Stage-B.storyboard */; };
 		FAA3A04C23EB342100426BB3 /* NewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */; };
+		FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */; };
+		FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */; };
+		FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		FAA3A04523EB32E300426BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Stage-A.storyboard"; sourceTree = "<group>"; };
 		FAA3A04823EB334A00426BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Stage-B.storyboard"; sourceTree = "<group>"; };
 		FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestViewController.swift; sourceTree = "<group>"; };
+		FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */,
+				FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */,
+				FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */,
+				FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -273,7 +282,10 @@
 				FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */,
 				FAA3A04223EAF21700426BB3 /* StringHelpers.swift in Sources */,
 				FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */,
+				FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */,
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,
+				FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */,
+				FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */,
 				FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
