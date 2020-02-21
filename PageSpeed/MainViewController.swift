@@ -12,16 +12,6 @@ import Moya
 // MARK: - MainTabBarController
 
 class MainTabBarController: UITabBarController {
-      fileprivate func test() {
-            GTMTestURLService(url: "google.com").start { response, error in
-                if let response = response {
-    print(response)
-                } else {
-                    print(error?.localizedDescription)
-                }
-            }
-        }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
