@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1434CA6CE273CD3DF906DA8C /* Pods_PageSpeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C99B797A87117114C23C21 /* Pods_PageSpeed.framework */; };
-		8451394423FD7B97007223C8 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394323FD7B96007223C8 /* CustomError.swift */; };
-		8451394F23FD7BAE007223C8 /* GTMatrixAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394623FD7BAE007223C8 /* GTMatrixAPI.swift */; };
-		8451395023FD7BAE007223C8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394823FD7BAE007223C8 /* Service.swift */; };
-		8451395123FD7BAE007223C8 /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394923FD7BAE007223C8 /* ServicesManager.swift */; };
-		8451395223FD7BAE007223C8 /* GTMartixStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394A23FD7BAE007223C8 /* GTMartixStructs.swift */; };
-		8451395323FD7BAE007223C8 /* GTMTestStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394C23FD7BAE007223C8 /* GTMTestStatusService.swift */; };
-		8451395423FD7BAE007223C8 /* GTMTestURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394D23FD7BAE007223C8 /* GTMTestURLService.swift */; };
-		8451395523FD7BAE007223C8 /* GTMTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451394E23FD7BAE007223C8 /* GTMTestService.swift */; };
 		FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */; };
 		FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */; };
 		FA6FD73623B8A7F90074E820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD73523B8A7F90074E820 /* Assets.xcassets */; };
@@ -36,14 +28,6 @@
 /* Begin PBXFileReference section */
 		61D8E8F8A2C24981D510683B /* Pods-PageSpeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PageSpeed.release.xcconfig"; path = "Target Support Files/Pods-PageSpeed/Pods-PageSpeed.release.xcconfig"; sourceTree = "<group>"; };
 		718763CC202EEF24803C7B67 /* Pods-PageSpeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PageSpeed.debug.xcconfig"; path = "Target Support Files/Pods-PageSpeed/Pods-PageSpeed.debug.xcconfig"; sourceTree = "<group>"; };
-		8451394323FD7B96007223C8 /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		8451394623FD7BAE007223C8 /* GTMatrixAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMatrixAPI.swift; sourceTree = "<group>"; };
-		8451394823FD7BAE007223C8 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		8451394923FD7BAE007223C8 /* ServicesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
-		8451394A23FD7BAE007223C8 /* GTMartixStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMartixStructs.swift; sourceTree = "<group>"; };
-		8451394C23FD7BAE007223C8 /* GTMTestStatusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMTestStatusService.swift; sourceTree = "<group>"; };
-		8451394D23FD7BAE007223C8 /* GTMTestURLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMTestURLService.swift; sourceTree = "<group>"; };
-		8451394E23FD7BAE007223C8 /* GTMTestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMTestService.swift; sourceTree = "<group>"; };
 		A4C99B797A87117114C23C21 /* Pods_PageSpeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageSpeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6FD72923B8A7EF0074E820 /* PageSpeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageSpeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,44 +69,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8451394223FD7B96007223C8 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				8451394323FD7B96007223C8 /* CustomError.swift */,
-			);
-			path = Errors;
-			sourceTree = "<group>";
-		};
-		8451394523FD7BAE007223C8 /* GTmetrix */ = {
-			isa = PBXGroup;
-			children = (
-				8451394623FD7BAE007223C8 /* GTMatrixAPI.swift */,
-				8451394723FD7BAE007223C8 /* Common */,
-				8451394A23FD7BAE007223C8 /* GTMartixStructs.swift */,
-				8451394B23FD7BAE007223C8 /* Services */,
-			);
-			path = GTmetrix;
-			sourceTree = "<group>";
-		};
-		8451394723FD7BAE007223C8 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				8451394823FD7BAE007223C8 /* Service.swift */,
-				8451394923FD7BAE007223C8 /* ServicesManager.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		8451394B23FD7BAE007223C8 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				8451394C23FD7BAE007223C8 /* GTMTestStatusService.swift */,
-				8451394D23FD7BAE007223C8 /* GTMTestURLService.swift */,
-				8451394E23FD7BAE007223C8 /* GTMTestService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		C2A7086CD5B4C9D791F0C260 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,11 +98,9 @@
 		FA6FD72B23B8A7EF0074E820 /* PageSpeed */ = {
 			isa = PBXGroup;
 			children = (
-				8451394223FD7B96007223C8 /* Errors */,
 				FA6FD74323B8AA700074E820 /* MainViewController.swift */,
 				FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */,
 				FAA3A04723EB334A00426BB3 /* Stage-B.storyboard */,
-				8451394523FD7BAE007223C8 /* GTmetrix */,
 				FAA3A03B23E8BDEE00426BB3 /* Google */,
 				FAA3A04023EAF1E200426BB3 /* Helpers */,
 				FAA3A04A23EB33B400426BB3 /* Test */,
@@ -334,22 +278,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA3A04C23EB342100426BB3 /* NewTestViewController.swift in Sources */,
-				8451395023FD7BAE007223C8 /* Service.swift in Sources */,
-				8451395523FD7BAE007223C8 /* GTMTestService.swift in Sources */,
-				8451395323FD7BAE007223C8 /* GTMTestStatusService.swift in Sources */,
 				FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */,
-				8451395123FD7BAE007223C8 /* ServicesManager.swift in Sources */,
 				FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */,
 				FAA3A04223EAF21700426BB3 /* StringHelpers.swift in Sources */,
 				FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */,
 				FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */,
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,
-				8451395423FD7BAE007223C8 /* GTMTestURLService.swift in Sources */,
-				8451394423FD7B97007223C8 /* CustomError.swift in Sources */,
 				FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */,
 				FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */,
-				8451394F23FD7BAE007223C8 /* GTMatrixAPI.swift in Sources */,
-				8451395223FD7BAE007223C8 /* GTMartixStructs.swift in Sources */,
 				FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
