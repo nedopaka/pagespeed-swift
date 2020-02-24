@@ -14,9 +14,9 @@ class TestResultsViewController: UIViewController {
     var url: String?
     var mobilePageSpeedResult, desktopPageSpeedResult: PageSpeedResponse?
     var servicesArr: [
-        (id: String, name: String)
+    (id: String, name: String)
     ]?
-
+    var gtmResponse: GTMTestStatusResponse?
     // MARK: - IBOutlets
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var testResultsTableView: UITableView!
@@ -66,9 +66,31 @@ extension TestResultsViewController: UITableViewDataSource {
             }
             return "\(mobileScore) \(desktopScore)"
         case "gtmetrix":
-            return "Overall Score"
+            let score = gtmResponse?.results?.pageSpeedScore ?? 0
+            return "Page Speed Score: \(score)"
         default:
             return ""
+        }
+    }
+}
+
+extension TestResultsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let id = servicesArr?[indexPath.row].id {
+            switch id {
+            case "pagespeed":
+                break
+            case "gtmetrix":
+                let controller: GTMResaultViewController? = UIStoryboard(
+                    name: "Stage-B",
+                    bundle: nil
+                ).instantiateViewController(identifier: "GTMResaultViewController")
+                    as? GTMResaultViewController
+                controller?.response = self.gtmResponse
+                self.navigationController?.pushViewController(controller!, animated: true)
+            default:
+                break
+            }
         }
     }
 }
