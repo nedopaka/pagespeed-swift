@@ -1,5 +1,5 @@
 //
-//  GTMartixStructs.swift
+//  GTMertixStructs.swift
 //  PageSpeed
 //
 //  Created by Admin on 09.02.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GTMTestResponse: Decodable {
+struct GTMetrixTestResponse: Decodable {
     var creditsLeft: Int
     var testID: String
     var pollStateURL: String
@@ -18,7 +18,7 @@ struct GTMTestResponse: Decodable {
         case pollStateURL = "poll_state_url"
     }
 }
-struct GTMTestResult: Decodable {
+struct GTMetrixTestResult: Decodable {
     var reportURL: String?
     var pageSpeedScore: Int?
     var yslowScore: Int?
@@ -68,14 +68,14 @@ enum TestState: String {
     case queued, started, completed, error
 }
 
-struct GTMTestStatusResponse: Decodable {
+struct GTMetrixTestStatusResponse: Decodable {
     var state: String
     var error: String
-    var results: GTMTestResult?
-    var resources: GTMTestResourse?
+    var results: GTMetrixTestResult?
+    var resources: GTMetrixTestResourse?
 }
 
-struct GTMTestResourse: Decodable {
+struct GTMetrixTestResourse: Decodable {
     var screenshot: String?
     var har: String?
     var pagespeed: String?

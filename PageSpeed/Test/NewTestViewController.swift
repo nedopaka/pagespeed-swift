@@ -20,7 +20,7 @@ class NewTestViewController: UIViewController {
     ]
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
-    var gtmResponse: GTMTestStatusResponse?
+    var gtMetrixResponse: GTMetrixTestStatusResponse?
     enum PageSpeedStrategy: String {
         case mobile
         case desktop
@@ -51,14 +51,14 @@ class NewTestViewController: UIViewController {
 
     // MARK: - Methods
     func processRequestsToServices (url: String) {
-        gtmResponse = nil
+        gtMetrixResponse = nil
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        GTMTestURLService(url: url).start { response, error in
+        GTMetrixTestURLService(url: url).start { response, error in
             if let error = error {
                 print(error)
             } else if let response = response {
-                self.gtmResponse = response
+                self.gtMetrixResponse = response
             }
             dispatchGroup.leave()
         }
@@ -77,7 +77,6 @@ class NewTestViewController: UIViewController {
                 dispatchGroup.leave()
             }
         }
-
         dispatchGroup.enter()
         requestToPageSpeed(
             url: url,
@@ -93,19 +92,18 @@ class NewTestViewController: UIViewController {
                 dispatchGroup.leave()
             }
         }
-
         dispatchGroup.notify(queue: .main) {
             let testResultsViewController = UIStoryboard(
                 name: "Stage-A",
                 bundle: nil
             ).instantiateViewController(identifier: "TestResultsViewController")
                 as? TestResultsViewController
-
             testResultsViewController?.url = self.urlTextField.text
             testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
             testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
             testResultsViewController?.servicesArr = self.servicesArr
-            testResultsViewController?.gtmResponse = self.gtmResponse
+
+            testResultsViewController?.gtmetrixResponse = self.gtMetrixResponse
             self.navigationController?.pushViewController(testResultsViewController!, animated: true)
         }
     }
@@ -138,7 +136,9 @@ class NewTestViewController: UIViewController {
         }
     }
 
-    func showAlert(title: String, message: String, dismissCompletion: (() -> Void)? = nil) {
+    func showAlert(title: String,
+                   message: String,
+                   dismissCompletion: (() -> Void)? = nil) {
         let alertController = UIAlertController(
             title: title,
             message: message,
@@ -149,7 +149,7 @@ class NewTestViewController: UIViewController {
             style: .cancel,
             handler: { ( _ : UIAlertAction) -> Void in
                 alertController.dismiss(animated: true, completion: dismissCompletion)
-        }
+            }
         )
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

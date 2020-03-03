@@ -8,7 +8,7 @@
 
 import Moya
 
-class GTMTestURLService: Service {
+class GTMetrixTestURLService: Service {
     internal var identifier: String = ""
     private var testID: String = ""
     private var timer: Timer?
@@ -18,9 +18,9 @@ class GTMTestURLService: Service {
         generate()
     }
 
-    func start (completion: @escaping (_ response: GTMTestStatusResponse?, _ error: Error?) -> Void) {
+    func start (completion: @escaping (_ response: GTMetrixTestStatusResponse?, _ error: Error?) -> Void) {
         started()
-        GTMTestService(url: url).run { response, error in
+        GTMetrixTestService(url: url).run { response, error in
             if let response = response {
                 self.testID = response.testID
                 self.checkStatus(completion: completion)
@@ -31,9 +31,9 @@ class GTMTestURLService: Service {
         }
     }
 
-    func checkStatus (completion: @escaping (_ response: GTMTestStatusResponse?, _ error: Error?) -> Void) {
+    func checkStatus (completion: @escaping (_ response: GTMetrixTestStatusResponse?, _ error: Error?) -> Void) {
         timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { timer in
-            GTMTestStatusService(testID: self.testID).run { response, error in
+            GTMetrixTestStatusService(testID: self.testID).run { response, error in
                 if let response = response {
                     if let state = TestState(rawValue: response.state) {
                         switch state {

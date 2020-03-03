@@ -8,23 +8,23 @@
 
 import Moya
 
-class GTMTestService: Service {
+class GTMetrixTestStatusService: Service {
     internal var identifier: String = ""
-    let url: String!
-    init (url: String) {
-        self.url = url
+    let testID: String!
+    init (testID: String) {
+        self.testID = testID
         generate()
     }
-    func run (completion: @escaping (_ response: GTMTestResponse?, _ error: Error?) -> Void) {
+    func run (completion: @escaping (_ response: GTMetrixTestStatusResponse?, _ error: Error?) -> Void) {
         started()
-        let provider = MoyaProvider<GTMatrixAPI>()
-        provider.request(.testPage(url: self.url)) { response in
+        let provider = MoyaProvider<GTMetrixAPI>()
+        provider.request(.testStatus(testID: self.testID)) { response in
             switch response {
             case .success(let result):
                 print(String(data: result.data, encoding: .utf8))
                 let decoder = JSONDecoder()
                 do {
-                    let testResponse = try decoder.decode(GTMTestResponse.self, from: result.data)
+                    let testResponse = try decoder.decode(GTMetrixTestStatusResponse.self, from: result.data)
                     completion(testResponse, nil)
                 } catch {
                     completion(nil, error)

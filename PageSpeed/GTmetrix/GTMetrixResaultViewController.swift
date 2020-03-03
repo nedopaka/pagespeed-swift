@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GTMResaultViewController: UITableViewController {
+class GTMetrixResaultViewController: UITableViewController {
 
     @IBOutlet private weak  var imageScreenShot: UIImageView!
     @IBOutlet private weak var labelPageTitle: UILabel!
@@ -17,7 +17,7 @@ class GTMResaultViewController: UITableViewController {
     @IBOutlet private weak var labelFullyLoadedTime: UILabel!
     @IBOutlet private weak var labelTotalPageSize: UILabel!
     @IBOutlet private weak var labelRequests: UILabel!
-    var response: GTMTestStatusResponse? {
+    var response: GTMetrixTestStatusResponse? {
         didSet {
             updateUI()
         }

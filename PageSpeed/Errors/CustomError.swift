@@ -10,10 +10,8 @@ import Foundation
 
 enum CustomError: Error {
     case custom(error: String)
-
     var localizedDescription: String {
         switch self {
-
         case .custom(let error):
             return error
         }

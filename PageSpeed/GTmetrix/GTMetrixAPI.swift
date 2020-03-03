@@ -8,12 +8,12 @@
 
 import Moya
 
-enum GTMatrixAPI {
+enum GTMetrixAPI {
     case testPage(url: String)
     case testStatus(testID: String)
 }
 
-extension GTMatrixAPI: TargetType {
+extension GTMetrixAPI: TargetType {
     var baseURL: URL {
         URL(string: "https://gtmetrix.com/api/0.1/")!
     }
