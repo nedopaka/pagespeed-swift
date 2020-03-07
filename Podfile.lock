@@ -9,10 +9,14 @@ PODS:
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
   - Result (4.1.0)
+  - SwiftyMarkdown (1.1.0)
+  - UICircularProgressRing (6.5.0)
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - Moya (~> 13.0)
+  - SwiftyMarkdown
+  - UICircularProgressRing
 
 SPEC REPOS:
   trunk:
@@ -20,13 +24,17 @@ SPEC REPOS:
     - Kingfisher
     - Moya
     - Result
+    - SwiftyMarkdown
+    - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SwiftyMarkdown: 033abc9dad9a37903f81aec5188cade436f40520
+  UICircularProgressRing: e6852e8f88e296cbbbe2720cccb55241acda6708
 
-PODFILE CHECKSUM: 8410887f3498a13da382d3f7617bd51deb51b970
+PODFILE CHECKSUM: 4a3e0b496262413e8d0fb9f1a6219d72237d8e11
 
 COCOAPODS: 1.8.4

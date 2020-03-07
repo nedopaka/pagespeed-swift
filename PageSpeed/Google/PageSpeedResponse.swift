@@ -683,7 +683,7 @@ struct CriticalRequestChainsDetailsHeading: Codable {
 struct CriticalRequestChainsDetailsItem: Codable {
     let mimeType: String?
     let resourceSize: Int
-    let endTime: Double
+    let endTime: Double? // should be checked
     let startTime: Double
     let transferSize: Int
     let url: String
@@ -707,6 +707,7 @@ enum ResourceType: String, Codable {
     case fetch = "Fetch"
     case font = "Font"
     case image = "Image"
+    case media = "Media"
     case script = "Script"
     case stylesheet = "Stylesheet"
     case xhr = "XHR"
