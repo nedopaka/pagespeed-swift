@@ -72,3 +72,25 @@ extension TestResultsViewController: UITableViewDataSource {
         }
     }
 }
+
+// MARK: - UITableViewDelegate
+extension TestResultsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch servicesArr?[indexPath.row].id {
+        case "pagespeed":
+            let pageSpeedResultsViewController = UIStoryboard(
+                name: "Stage-A",
+                bundle: nil
+            ).instantiateViewController(identifier: "PageSpeedResultViewController") as? PageSpeedResultViewController
+            pageSpeedResultsViewController?.url = url
+            pageSpeedResultsViewController?.mobilePageSpeedResult = mobilePageSpeedResult
+            pageSpeedResultsViewController?.desktopPageSpeedResult = desktopPageSpeedResult
+            navigationController?.pushViewController(
+                pageSpeedResultsViewController ?? UIViewController(),
+                animated: true
+            )
+        default:
+            return
+        }
+    }
+}
