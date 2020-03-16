@@ -28,11 +28,20 @@
 		FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD73723B8A7F90074E820 /* LaunchScreen.storyboard */; };
 		FA6FD74223B8A9050074E820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD74023B8A9050074E820 /* Main.storyboard */; };
 		FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD74323B8AA700074E820 /* MainViewController.swift */; };
+		FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */; };
+		FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */; };
 		FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */; };
 		FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A03E23E8D30300426BB3 /* PageSpeedResponse.swift */; };
 		FAA3A04223EAF21700426BB3 /* StringHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A04123EAF21700426BB3 /* StringHelpers.swift */; };
 		FAA3A04623EB32E300426BB3 /* Stage-A.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */; };
 		FAA3A04923EB334A00426BB3 /* Stage-B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA3A04723EB334A00426BB3 /* Stage-B.storyboard */; };
+
+		FAA3A04C23EB342100426BB3 /* NewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */; };
+		FAA8F553240FB4410019E59D /* LabDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */; };
+		FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F556241393D70019E59D /* UILabelHelpers.swift */; };
+		FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */; };
+		FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */; };
+		FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,11 +70,21 @@
 		FA6FD73A23B8A7F90074E820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6FD74123B8A9050074E820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6FD74323B8AA700074E820 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedResultViewController.swift; sourceTree = "<group>"; };
+		FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelpers.swift; sourceTree = "<group>"; };
 		FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedAPI.swift; sourceTree = "<group>"; };
 		FAA3A03E23E8D30300426BB3 /* PageSpeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedResponse.swift; sourceTree = "<group>"; };
 		FAA3A04123EAF21700426BB3 /* StringHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelpers.swift; sourceTree = "<group>"; };
 		FAA3A04523EB32E300426BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Stage-A.storyboard"; sourceTree = "<group>"; };
 		FAA3A04823EB334A00426BB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Stage-B.storyboard"; sourceTree = "<group>"; };
+
+		FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestViewController.swift; sourceTree = "<group>"; };
+		FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabDataTableViewCell.swift; sourceTree = "<group>"; };
+		FAA8F556241393D70019E59D /* UILabelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelpers.swift; sourceTree = "<group>"; };
+		FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +195,11 @@
 				FAA3A03B23E8BDEE00426BB3 /* Google */,
 				8485222124044B4B0005FC06 /* GTmetrix */,
 				FAA3A04023EAF1E200426BB3 /* Helpers */,
-				8485223424044BA30005FC06 /* Test */,
+
+				FAA3A04A23EB33B400426BB3 /* Test */,
+				FAC6BD42240EA99900B86530 /* PageSpeed Result */,
+				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
+
 				FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */,
 				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
 				FA6FD73523B8A7F90074E820 /* Assets.xcassets */,
@@ -200,10 +223,34 @@
 			isa = PBXGroup;
 			children = (
 				FAA3A04123EAF21700426BB3 /* StringHelpers.swift */,
+				FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */,
+				FAA8F556241393D70019E59D /* UILabelHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+
+		FAA3A04A23EB33B400426BB3 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */,
+				FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */,
+				FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */,
+				FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		FAC6BD42240EA99900B86530 /* PageSpeed Result */ = {
+			isa = PBXGroup;
+			children = (
+				FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */,
+				FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */,
+			);
+			path = "PageSpeed Result";
+			sourceTree = "<group>";
+		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,10 +386,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				8485222D24044B4B0005FC06 /* Service.swift in Sources */,
 				8485223C24044BA30005FC06 /* TestViewController.swift in Sources */,
 				8485223B24044BA30005FC06 /* TestResultsViewController.swift in Sources */,
 				8485222F24044B4B0005FC06 /* GTMetrixResultViewController.swift in Sources */,
+				FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */,
+				FAA3A04C23EB342100426BB3 /* NewTestViewController.swift in Sources */,
+				FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */,
+				FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */,
 				FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */,
 				8485223A24044BA30005FC06 /* NewTestViewController.swift in Sources */,
 				8485222E24044B4B0005FC06 /* ServicesManager.swift in Sources */,
@@ -357,6 +409,9 @@
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,
 				8485222024044B360005FC06 /* CustomError.swift in Sources */,
 				8485222C24044B4B0005FC06 /* GTMetrixAPI.swift in Sources */,
+				FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */,
+				FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */,
+				FAA8F553240FB4410019E59D /* LabDataTableViewCell.swift in Sources */,
 				FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */,
 				8450960D2417C24D00F3FDA4 /* GTMetrixResourceService.swift in Sources */,
 			);

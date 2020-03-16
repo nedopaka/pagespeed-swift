@@ -73,13 +73,24 @@ extension TestResultsViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: - UITableViewDelegate
 extension TestResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let id = servicesArr?[indexPath.row].id {
-            switch id {
-            case "pagespeed":
-                break
-            case "gtmetrix":
+        switch servicesArr?[indexPath.row].id {
+        case "pagespeed":
+            let pageSpeedResultsViewController = UIStoryboard(
+                name: "Stage-A",
+                bundle: nil
+            ).instantiateViewController(identifier: "PageSpeedResultViewController") as? PageSpeedResultViewController
+            pageSpeedResultsViewController?.url = url
+            pageSpeedResultsViewController?.mobilePageSpeedResult = mobilePageSpeedResult
+            pageSpeedResultsViewController?.desktopPageSpeedResult = desktopPageSpeedResult
+            navigationController?.pushViewController(
+                pageSpeedResultsViewController ?? UIViewController(),
+                animated: true
+            )
+        case "gtmetrix":
                 let controller: GTMetrixResultViewController? = UIStoryboard(
                     name: "Stage-B",
                     bundle: nil
@@ -87,9 +98,8 @@ extension TestResultsViewController: UITableViewDelegate {
                     as? GTMetrixResultViewController
                 controller?.response = self.gTMetrixResponse
                 self.navigationController?.pushViewController(controller!, animated: true)
-            default:
-                break
-            }
+        default:
+            return
         }
     }
 }

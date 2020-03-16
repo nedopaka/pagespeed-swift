@@ -8,5 +8,7 @@ target 'PageSpeed' do
   # Pods for PageSpeed
   pod 'Kingfisher', '~> 5.0'
   pod 'Moya', '~> 13.0'
-pod 'UICircularProgressRing'
+  pod 'UICircularProgressRing'
+  pod 'SwiftyMarkdown'
+
 end
