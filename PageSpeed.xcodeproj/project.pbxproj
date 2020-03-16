@@ -24,6 +24,8 @@
 		FAA3A04C23EB342100426BB3 /* NewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */; };
 		FAA8F553240FB4410019E59D /* LabDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */; };
 		FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F556241393D70019E59D /* UILabelHelpers.swift */; };
+		FAA8F55A241BDC920019E59D /* PageSpeedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F559241BDC920019E59D /* PageSpeedDataModel.swift */; };
+		FAA8F55C241D59DC0019E59D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F55B241D59DC0019E59D /* DBManager.swift */; };
 		FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */; };
 		FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */; };
 		FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */; };
@@ -51,6 +53,8 @@
 		FAA3A04B23EB342100426BB3 /* NewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestViewController.swift; sourceTree = "<group>"; };
 		FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabDataTableViewCell.swift; sourceTree = "<group>"; };
 		FAA8F556241393D70019E59D /* UILabelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelpers.swift; sourceTree = "<group>"; };
+		FAA8F559241BDC920019E59D /* PageSpeedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedDataModel.swift; sourceTree = "<group>"; };
+		FAA8F55B241D59DC0019E59D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		FAE87B9E23F879AD004BE8B7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		FAE87BA023F88920004BE8B7 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				FAA3A04A23EB33B400426BB3 /* Test */,
 				FAC6BD42240EA99900B86530 /* PageSpeed Result */,
 				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
+				FAA8F558241BDB7F0019E59D /* Data Models */,
 				FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */,
 				FA6FD73523B8A7F90074E820 /* Assets.xcassets */,
 				FA6FD74023B8A9050074E820 /* Main.storyboard */,
@@ -151,6 +156,15 @@
 				FAE87BA223F947F9004BE8B7 /* TestResultsViewController.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		FAA8F558241BDB7F0019E59D /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAA8F559241BDC920019E59D /* PageSpeedDataModel.swift */,
+				FAA8F55B241D59DC0019E59D /* DBManager.swift */,
+			);
+			path = "Data Models";
 			sourceTree = "<group>";
 		};
 		FAC6BD42240EA99900B86530 /* PageSpeed Result */ = {
@@ -308,7 +322,9 @@
 				FAE87BA323F947F9004BE8B7 /* TestResultsViewController.swift in Sources */,
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,
 				FAE87BA123F88920004BE8B7 /* ServiceTableViewCell.swift in Sources */,
+				FAA8F55C241D59DC0019E59D /* DBManager.swift in Sources */,
 				FAE87B9F23F879AD004BE8B7 /* TestViewController.swift in Sources */,
+				FAA8F55A241BDC920019E59D /* PageSpeedDataModel.swift in Sources */,
 				FAA8F553240FB4410019E59D /* LabDataTableViewCell.swift in Sources */,
 				FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */,
 			);
