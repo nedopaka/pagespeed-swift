@@ -1,5 +1,5 @@
 //
-//  GTMTestURLService.swift
+//  GTMetrixTestURLService.swift
 //  PageSpeed
 //
 //  Created by Admin on 10.02.2020.
@@ -8,7 +8,7 @@
 
 import Moya
 
-class GTMetrixTestURLService: Service {
+class GTMetrixURLService: Service {
     internal var identifier: String = ""
     private var testID: String = ""
     private var timer: Timer?
@@ -18,9 +18,9 @@ class GTMetrixTestURLService: Service {
         generate()
     }
 
-    func start (completion: @escaping (_ response: GTMetrixTestStatusResponse?, _ error: Error?) -> Void) {
+    func start (completion: @escaping (_ response: GTMetrixResponse?, _ error: Error?) -> Void) {
         started()
-        GTMetrixTestService(url: url).run { response, error in
+        GTMetrixResultService(url: url).run { response, error in
             if let response = response {
                 self.testID = response.testID
                 self.checkStatus(completion: completion)
@@ -31,9 +31,9 @@ class GTMetrixTestURLService: Service {
         }
     }
 
-    func checkStatus (completion: @escaping (_ response: GTMetrixTestStatusResponse?, _ error: Error?) -> Void) {
+    func checkStatus (completion: @escaping (_ response: GTMetrixResponse?, _ error: Error?) -> Void) {
         timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { timer in
-            GTMetrixTestStatusService(testID: self.testID).run { response, error in
+            GTMetrixService(testID: self.testID).run { response, error in
                 if let response = response {
                     if let state = TestState(rawValue: response.state) {
                         switch state {
@@ -44,7 +44,9 @@ class GTMetrixTestURLService: Service {
                         case .completed:
                             self.timer?.invalidate()
                             self.timer = nil
-                            completion(response, nil)
+                            var result = response
+                            result.url = self.url
+                            completion(result, nil)
                             self.finished()
                             print("completed")
                         case .error:

@@ -13,14 +13,17 @@ protocol Service: class {
 }
 
 extension Service {
+
     func generate() {
         if identifier.isEmpty {
             identifier = UUID().uuidString
         }
     }
+
     func started() {
         ServicesManager.manager.add(service: self)
     }
+
     func finished() {
         ServicesManager.manager.remove(service: self)
     }

@@ -13,10 +13,8 @@ class TestResultsViewController: UIViewController {
     // MARK: - Properties
     var url: String?
     var mobilePageSpeedResult, desktopPageSpeedResult: PageSpeedResponse?
-    var servicesArr: [
-    (id: String, name: String)
-    ]?
-    var gtmetrixResponse: GTMetrixTestStatusResponse?
+    var servicesArr: [(id: String, name: String)]?
+    var gTMetrixResponse: GTMetrixResponse?
     // MARK: - IBOutlets
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var testResultsTableView: UITableView!
@@ -66,8 +64,8 @@ extension TestResultsViewController: UITableViewDataSource {
             }
             return "\(mobileScore) \(desktopScore)"
         case "gtmetrix":
-            let score = gtmetrixResponse?.results?.pageSpeedScore ?? 0
-            let ySlowScore = gtmetrixResponse?.results?.yslowScore ?? 0
+            let score = gTMetrixResponse?.results?.pageSpeedScore ?? 0
+            let ySlowScore = gTMetrixResponse?.results?.yslowScore ?? 0
             return "Page Speed Score: \(score)" + " YSlow score: \(ySlowScore)"
         default:
             return ""
@@ -82,12 +80,12 @@ extension TestResultsViewController: UITableViewDelegate {
             case "pagespeed":
                 break
             case "gtmetrix":
-                let controller: GTMetrixResaultViewController? = UIStoryboard(
+                let controller: GTMetrixResultViewController? = UIStoryboard(
                     name: "Stage-B",
                     bundle: nil
                 ).instantiateViewController(identifier: "GTMResaultViewController")
-                    as? GTMetrixResaultViewController
-                controller?.response = self.gtmetrixResponse
+                    as? GTMetrixResultViewController
+                controller?.response = self.gTMetrixResponse
                 self.navigationController?.pushViewController(controller!, animated: true)
             default:
                 break

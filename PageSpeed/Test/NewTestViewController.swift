@@ -20,7 +20,7 @@ class NewTestViewController: UIViewController {
     ]
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
-    var gtMetrixResponse: GTMetrixTestStatusResponse?
+    var gtMetrixResponse: GTMetrixResponse?
     enum PageSpeedStrategy: String {
         case mobile
         case desktop
@@ -54,7 +54,7 @@ class NewTestViewController: UIViewController {
         gtMetrixResponse = nil
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        GTMetrixTestURLService(url: url).start { response, error in
+        GTMetrixURLService(url: url).start { response, error in
             if let error = error {
                 print(error)
             } else if let response = response {
@@ -102,8 +102,7 @@ class NewTestViewController: UIViewController {
             testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
             testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
             testResultsViewController?.servicesArr = self.servicesArr
-
-            testResultsViewController?.gtmetrixResponse = self.gtMetrixResponse
+            testResultsViewController?.gTMetrixResponse = self.gtMetrixResponse
             self.navigationController?.pushViewController(testResultsViewController!, animated: true)
         }
     }
@@ -136,9 +135,7 @@ class NewTestViewController: UIViewController {
         }
     }
 
-    func showAlert(title: String,
-                   message: String,
-                   dismissCompletion: (() -> Void)? = nil) {
+    func showAlert(title: String, message: String, dismissCompletion: (() -> Void)? = nil) {
         let alertController = UIAlertController(
             title: title,
             message: message,

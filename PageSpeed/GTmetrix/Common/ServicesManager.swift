@@ -8,7 +8,6 @@
 
 import Foundation
 
-// класс для хранения экземпляров сервисов, на время выполнения
 class ServicesManager {
     static let manager = ServicesManager()
     private var services: [String: Service]

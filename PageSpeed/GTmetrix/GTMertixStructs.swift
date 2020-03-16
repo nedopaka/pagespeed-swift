@@ -68,14 +68,16 @@ enum TestState: String {
     case queued, started, completed, error
 }
 
-struct GTMetrixTestStatusResponse: Decodable {
+struct GTMetrixResponse: Decodable {
+    var url: String?
+    var id: String?
     var state: String
     var error: String
     var results: GTMetrixTestResult?
-    var resources: GTMetrixTestResourse?
+    var resources: GTMetrixResourse?
 }
 
-struct GTMetrixTestResourse: Decodable {
+struct GTMetrixResourse: Decodable {
     var screenshot: String?
     var har: String?
     var pagespeed: String?

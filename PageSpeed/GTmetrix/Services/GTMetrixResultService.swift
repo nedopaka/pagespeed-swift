@@ -1,5 +1,5 @@
 //
-//  GTMTestService.swift
+//  GTMetrixTestService.swift
 //  PageSpeed
 //
 //  Created by Admin on 09.02.2020.
@@ -8,7 +8,7 @@
 
 import Moya
 
-class GTMetrixTestService: Service {
+class GTMetrixResultService: Service {
     internal var identifier: String = ""
     let url: String!
     init (url: String) {
