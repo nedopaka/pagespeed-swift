@@ -28,7 +28,7 @@ class GTMetrixResultViewController: UITableViewController {
     @IBOutlet private weak var buttonLoadPFD: UIButton!
     @IBOutlet private weak var activityLoadPDF: UIActivityIndicatorView!
     var urlPDF: URL?
-    var response: GTMetrixResponse? {
+    var response: GTMetrixResponseItem? {
         didSet {
             updateUI()
         }

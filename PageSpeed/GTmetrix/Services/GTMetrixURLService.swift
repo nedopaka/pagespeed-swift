@@ -46,6 +46,7 @@ class GTMetrixURLService: Service {
                             self.timer = nil
                             var result = response
                             result.url = self.url
+                            result.date = Date()
                             completion(result, nil)
                             self.finished()
                             print("completed")

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct GTMetrixTestResponse: Decodable {
     var creditsLeft: Int
@@ -74,10 +75,11 @@ struct GTMetrixResponse: Decodable {
     var state: String
     var error: String
     var results: GTMetrixTestResult?
-    var resources: GTMetrixResourse?
+    var resources: GTMetrixResource?
+    var date: Date?
 }
 
-struct GTMetrixResourse: Decodable {
+struct GTMetrixResource: Decodable {
     var screenshot: String?
     var har: String?
     var pagespeed: String?
@@ -100,3 +102,5 @@ struct GTMetrixResourse: Decodable {
         case filmstrip = "filmstrip"
     }
 }
+
+

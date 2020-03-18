@@ -14,7 +14,7 @@ class TestResultsViewController: UIViewController {
     var url: String?
     var mobilePageSpeedResult, desktopPageSpeedResult: PageSpeedResponse?
     var servicesArr: [(id: String, name: String)]?
-    var gTMetrixResponse: GTMetrixResponse?
+    var gTMetrixResponse: GTMetrixResponseItem?
     // MARK: - IBOutlets
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var testResultsTableView: UITableView!

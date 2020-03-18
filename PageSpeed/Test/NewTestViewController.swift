@@ -20,7 +20,7 @@ class NewTestViewController: UIViewController {
     ]
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
-    var gtMetrixResponse: GTMetrixResponse?
+    var gtMetrixResponse: GTMetrixResponseItem?
     enum PageSpeedStrategy: String {
         case mobile
         case desktop
@@ -58,7 +58,10 @@ class NewTestViewController: UIViewController {
             if let error = error {
                 print(error)
             } else if let response = response {
-                self.gtMetrixResponse = response
+                self.gtMetrixResponse = GTMetrixResponseItem(response: response)
+                if let gtMetrixResponse = self.gtMetrixResponse, let manager = DBManager.sharedInstance {
+                    manager.save(object: gtMetrixResponse)
+                }
             }
             dispatchGroup.leave()
         }
@@ -146,7 +149,7 @@ class NewTestViewController: UIViewController {
             style: .cancel,
             handler: { ( _ : UIAlertAction) -> Void in
                 alertController.dismiss(animated: true, completion: dismissCompletion)
-            }
+        }
         )
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

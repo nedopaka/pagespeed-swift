@@ -13,7 +13,7 @@ class DBManager {
 
     // MARK: - Properties
 
-    private var database: Realm
+    internal var database: Realm
     static let sharedInstance = DBManager()
 
     // MARK: - Init
