@@ -72,6 +72,13 @@ extension UIView {
     func removeSublayers() {
         self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
     }
+
+    func addTapGesture(numberOfTouchesRequired: Int, target: Any, action: Selector) {
+        let tapRecognizer = UITapGestureRecognizer(target: target, action: action)
+        tapRecognizer.numberOfTouchesRequired = numberOfTouchesRequired
+        addGestureRecognizer(tapRecognizer)
+        isUserInteractionEnabled = true
+    }
 }
 
 @IBDesignable

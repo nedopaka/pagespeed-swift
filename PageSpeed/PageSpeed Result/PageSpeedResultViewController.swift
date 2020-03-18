@@ -70,6 +70,8 @@ class PageSpeedResultViewController: UIViewController {
     @IBOutlet private weak var overallResultLabel: UILabel!
     @IBOutlet private weak var overallResultCircularProgressRingCanvas: UIView!
 
+    @IBOutlet weak var mapResult: UIView!
+
     @IBOutlet private weak var fieldDataOverallCategory: UILabel!
 
     // FCP Chart
@@ -140,6 +142,11 @@ class PageSpeedResultViewController: UIViewController {
         showFieldDataOverallCategory(result: .mobile)
         showResultDetails(result: .mobile)
         showFinalScreenshot(result: .mobile)
+        mapResult.addTapGesture(
+            numberOfTouchesRequired: 1,
+            target: self,
+            action: #selector(showPageSpeedInfoViewController)
+        )
     }
 
     override func viewDidLayoutSubviews() {
@@ -160,6 +167,12 @@ class PageSpeedResultViewController: UIViewController {
     }
 
     // MARK: - Methods
+
+    @objc func showPageSpeedInfoViewController() {
+        let pageSpeedInfoViewController = UIStoryboard(name: "Stage-A", bundle: nil)
+            .instantiateViewController(identifier: "PageSpeedInfoViewController")
+        navigationController?.pushViewController(pageSpeedInfoViewController, animated: true)
+    }
 
     func prepareLayout() {
         overallResultCircularProgressRing.value = 0
