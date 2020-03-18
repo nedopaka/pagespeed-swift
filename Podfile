@@ -10,5 +10,5 @@ target 'PageSpeed' do
   pod 'Moya', '~> 13.0'
   pod 'UICircularProgressRing'
   pod 'SwiftyMarkdown'
-
+  pod 'RealmSwift'
 end
