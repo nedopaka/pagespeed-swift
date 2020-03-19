@@ -105,7 +105,7 @@ class NewTestViewController: UIViewController {
             testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
             testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
             testResultsViewController?.servicesArr = self.servicesArr
-            testResultsViewController?.gTMetrixResponse = self.gtMetrixResponse
+            testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
             self.navigationController?.pushViewController(testResultsViewController!, animated: true)
         }
     }

@@ -20,7 +20,7 @@ class MainTabBarController: UITabBarController {
             .instantiateViewController(identifier: "NewTestViewController")
             as? NewTestViewController
         let historyViewController = UIStoryboard(name: "Stage-B", bundle: nil)
-        .instantiateViewController(identifier: "HistoryTableViewController") as? HistoryTableViewController
+        .instantiateViewController(identifier: "HistoryTableViewController")
         let supportViewController = UIViewController()
         let settingsViewController = UIViewController()
 

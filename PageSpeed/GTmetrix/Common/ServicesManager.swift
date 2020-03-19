@@ -8,6 +8,7 @@
 
 import Foundation
 
+///
 class ServicesManager {
     static let manager = ServicesManager()
     private var services: [String: Service]

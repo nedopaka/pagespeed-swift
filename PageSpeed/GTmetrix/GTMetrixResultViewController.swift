@@ -12,8 +12,8 @@ import QuickLook
 
 class GTMetrixResultViewController: UITableViewController {
 
-    @IBOutlet private weak var imageScreenShot: UIImageView!
-    @IBOutlet private weak var labelPageTitle: UILabel!
+    @IBOutlet private weak var screenShotImage: UIImageView!
+    @IBOutlet private weak var pageTitleLabel: UILabel!
     @IBOutlet private weak var ringGTMetrixScore: UICircularProgressRing!
     @IBOutlet private weak var ringGTMetrixYSlowScore: UICircularProgressRing!
     @IBOutlet private weak var labelFullyLoadedTime: UILabel!
@@ -38,22 +38,24 @@ class GTMetrixResultViewController: UITableViewController {
         if urlPDF == nil {
             buttonLoadPFD.isEnabled = false
             activityLoadPDF.startAnimating()
-            GTMetrixResourceService(testID: response?.id ?? "",
-                                    resource: .reportPdf).run { [weak self] _, data, error in
-                                        self?.buttonLoadPFD.isEnabled = true
-                                        self?.activityLoadPDF.stopAnimating()
-                                        if let data = data {
-                                            let fileName = NSUUID().uuidString + ".pdf"
-                                            let path = (NSTemporaryDirectory() as NSString).appendingPathComponent(fileName)
-                                            do {
-                                                let url = URL(fileURLWithPath: path)
-                                                try data.write(to: url)
-                                                self?.urlPDF = url
-                                                self?.openPDF()
-                                            } catch {
-                                                print(error)
-                                            }
-                                        }
+            GTMetrixResourceService(
+                testID: response?.id ?? "",
+                resource: .reportPdf
+            ).run { [weak self] _, data, error in
+                self?.buttonLoadPFD.isEnabled = true
+                self?.activityLoadPDF.stopAnimating()
+                if let data = data {
+                    let fileName = NSUUID().uuidString + ".pdf"
+                    let path = (NSTemporaryDirectory() as NSString).appendingPathComponent(fileName)
+                    do {
+                        let url = URL(fileURLWithPath: path)
+                        try data.write(to: url)
+                        self?.urlPDF = url
+                        self?.openPDF()
+                    } catch {
+                        print(error)
+                    }
+                }
             }
         } else {
             openPDF()
@@ -82,10 +84,10 @@ class GTMetrixResultViewController: UITableViewController {
             labelRumSpeedIndex?.text = "\(response.results?.rumSpeedIndex ?? 0)"
             print(response)
 
-            labelPageTitle?.text = response.url
+            pageTitleLabel?.text = response.url
             GTMetrixResourceService(testID: response.id ?? "", resource: .screenshot).run { [weak self] image, _, _ in
                 if let image = image {
-                    self?.imageScreenShot?.image = image
+                    self?.screenShotImage?.image = image
                 }
             }
         }

@@ -9,7 +9,7 @@
 import Foundation
 
 enum TestType {
-    case gTMetrix
+    case gtMetrix
     case pageSpeed
 }
 
