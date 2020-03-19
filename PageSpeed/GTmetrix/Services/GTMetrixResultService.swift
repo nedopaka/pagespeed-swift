@@ -1,8 +1,8 @@
 //
-//  GTMetrixTestService.swift
+//  GTMetrixResultService.swift
 //  PageSpeed
 //
-//  Created by Admin on 09.02.2020.
+//  Created by Ilya on 09.02.2020.
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
@@ -21,7 +21,6 @@ class GTMetrixResultService: Service {
         provider.request(.testPage(url: self.url)) { response in
             switch response {
             case .success(let result):
-                print(String(data: result.data, encoding: .utf8))
                 let decoder = JSONDecoder()
                 do {
                     let testResponse = try decoder.decode(GTMetrixTestResponse.self, from: result.data)

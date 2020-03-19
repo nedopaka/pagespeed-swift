@@ -1,8 +1,8 @@
 //
-//  GTMetrixResaultViewController.swift
+//  GTMetrixResultViewController.swift
 //  PageSpeed
 //
-//  Created by Admin on 19.02.2020.
+//  Created by Ilya on 19.02.2020.
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
@@ -14,19 +14,19 @@ class GTMetrixResultViewController: UITableViewController {
 
     @IBOutlet private weak var screenShotImage: UIImageView!
     @IBOutlet private weak var pageTitleLabel: UILabel!
-    @IBOutlet private weak var ringGTMetrixScore: UICircularProgressRing!
-    @IBOutlet private weak var ringGTMetrixYSlowScore: UICircularProgressRing!
-    @IBOutlet private weak var labelFullyLoadedTime: UILabel!
-    @IBOutlet private weak var labelTotalPageSize: UILabel!
-    @IBOutlet private weak var labelRequests: UILabel!
-    @IBOutlet private weak var labelHTMLLoadTime: UILabel!
-    @IBOutlet private weak var labelPageLoadTime: UILabel!
-    @IBOutlet private weak var labelPageBytes: UILabel!
-    @IBOutlet private weak var labelHTMLBytes: UILabel!
-    @IBOutlet private weak var labelPageElements: UILabel!
-    @IBOutlet private weak var labelRumSpeedIndex: UILabel!
-    @IBOutlet private weak var buttonLoadPFD: UIButton!
-    @IBOutlet private weak var activityLoadPDF: UIActivityIndicatorView!
+    @IBOutlet private weak var fullyLoadedTimeLabel: UILabel!
+    @IBOutlet private weak var totalPageSizeLabel: UILabel!
+    @IBOutlet private weak var requestsLabel: UILabel!
+    @IBOutlet private weak var hTMLLoadTimeLabel: UILabel!
+    @IBOutlet private weak var pageLoadTimeLabel: UILabel!
+    @IBOutlet private weak var pageBytesLabel: UILabel!
+    @IBOutlet private weak var hTMLBytesLabel: UILabel!
+    @IBOutlet private weak var pageElementsLabel: UILabel!
+    @IBOutlet private weak var rumSpeedIndexLabel: UILabel!
+    @IBOutlet private weak var loadPFDButton: UIButton!
+    @IBOutlet private weak var gtMetrixScoreLabel: UICircularProgressRing!
+    @IBOutlet private weak var gtMetrixYSlowScoreRing: UICircularProgressRing!
+    @IBOutlet private weak var loadPDFActivity: UIActivityIndicatorView!
     var urlPDF: URL?
     var response: GTMetrixResponseItem? {
         didSet {
@@ -36,14 +36,14 @@ class GTMetrixResultViewController: UITableViewController {
 
     @IBAction private func viewPDFButton(_ sender: UIButton) {
         if urlPDF == nil {
-            buttonLoadPFD.isEnabled = false
-            activityLoadPDF.startAnimating()
+            loadPFDButton.isEnabled = false
+            loadPDFActivity.startAnimating()
             GTMetrixResourceService(
                 testID: response?.id ?? "",
                 resource: .reportPdf
             ).run { [weak self] _, data, error in
-                self?.buttonLoadPFD.isEnabled = true
-                self?.activityLoadPDF.stopAnimating()
+                self?.loadPFDButton.isEnabled = true
+                self?.loadPDFActivity.stopAnimating()
                 if let data = data {
                     let fileName = NSUUID().uuidString + ".pdf"
                     let path = (NSTemporaryDirectory() as NSString).appendingPathComponent(fileName)
@@ -73,15 +73,15 @@ class GTMetrixResultViewController: UITableViewController {
 
     private func updateUI() {
         if let response = response {
-            labelFullyLoadedTime?.text = "\((response.results?.fullyLoadedTime ?? 0) / 1000) Sec"
-            labelTotalPageSize?.text = "\((response.results?.pageBytes ?? 0) / 1024) KB"
-            labelRequests?.text = "\(response.results?.pageElements ?? 0)"
-            labelHTMLLoadTime?.text = "\(response.results?.htmlLoadTime ?? 0) ms"
-            labelPageBytes?.text = "\(response.results?.pageBytes ?? 0)"
-            labelPageLoadTime?.text = "\(response.results?.onloadTime ?? 0) ms"
-            labelHTMLBytes?.text = "\(response.results?.htmlBytes ?? 0)"
-            labelPageElements?.text = "\(response.results?.pageElements ?? 0)"
-            labelRumSpeedIndex?.text = "\(response.results?.rumSpeedIndex ?? 0)"
+            fullyLoadedTimeLabel?.text = "\((response.results?.fullyLoadedTime ?? 0) / 1_000) Sec"
+            totalPageSizeLabel?.text = "\((response.results?.pageBytes ?? 0) / 1_024) KB"
+            requestsLabel?.text = "\(response.results?.pageElements ?? 0)"
+            hTMLLoadTimeLabel?.text = "\(response.results?.htmlLoadTime ?? 0) ms"
+            pageBytesLabel?.text = "\(response.results?.pageBytes ?? 0)"
+            pageLoadTimeLabel?.text = "\(response.results?.onloadTime ?? 0) ms"
+            hTMLBytesLabel?.text = "\(response.results?.htmlBytes ?? 0)"
+            pageElementsLabel?.text = "\(response.results?.pageElements ?? 0)"
+            rumSpeedIndexLabel?.text = "\(response.results?.rumSpeedIndex ?? 0)"
             print(response)
 
             pageTitleLabel?.text = response.url
@@ -94,16 +94,16 @@ class GTMetrixResultViewController: UITableViewController {
     }
 
     func updateRing() {
-        ringGTMetrixScore.maxValue = 100
-        ringGTMetrixScore.delegate = self
-        ringGTMetrixScore.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
-        ringGTMetrixScore.innerRingWidth = 10
-        ringGTMetrixScore.outerRingWidth = 5
-        ringGTMetrixYSlowScore.maxValue = 100
-        ringGTMetrixYSlowScore.delegate = self
-        ringGTMetrixYSlowScore.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
-        ringGTMetrixYSlowScore.innerRingWidth = 10
-        ringGTMetrixYSlowScore.outerRingWidth = 5
+        gtMetrixScoreLabel.maxValue = 100
+        gtMetrixScoreLabel.delegate = self
+        gtMetrixScoreLabel.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
+        gtMetrixScoreLabel.innerRingWidth = 10
+        gtMetrixScoreLabel.outerRingWidth = 5
+        gtMetrixYSlowScoreRing.maxValue = 100
+        gtMetrixYSlowScoreRing.delegate = self
+        gtMetrixYSlowScoreRing.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
+        gtMetrixYSlowScoreRing.innerRingWidth = 10
+        gtMetrixYSlowScoreRing.outerRingWidth = 5
     }
 
     override func viewDidLoad() {
@@ -114,10 +114,10 @@ class GTMetrixResultViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ringGTMetrixScore?.startProgress(to: CGFloat(response?.results?.pageSpeedScore ?? 0),
+        gtMetrixScoreLabel?.startProgress(to: CGFloat(response?.results?.pageSpeedScore ?? 0),
                                          duration: 2.0, completion: {
         })
-        ringGTMetrixYSlowScore?.startProgress(to: CGFloat(response?.results?.yslowScore ?? 0),
+        gtMetrixYSlowScoreRing?.startProgress(to: CGFloat(response?.results?.yslowScore ?? 0),
                                               duration: 2.0, completion: {
         })
     }

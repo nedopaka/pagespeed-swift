@@ -1,8 +1,8 @@
 //
-//  GTMetrixTestResourceService.swift
+//  GTMetrixResourceService.swift
 //  PageSpeed
 //
-//  Created by Admin on 10.03.2020.
+//  Created by Ilya on 10.03.2020.
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
@@ -27,7 +27,6 @@ class GTMetrixResourceService: Service {
         provider.request(.testResource(testID: self.testID, resource: resource.rawValue)) { [weak self] response in
             switch response {
             case .success(let result):
-                print(String(data: result.data, encoding: .utf8))
                 guard let resource = self?.resource else {
                     return
                 }

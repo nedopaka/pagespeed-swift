@@ -1,8 +1,8 @@
 //
-//  GTMetrixTestService.swift
+//  GTMetrixService.swift
 //  PageSpeed
 //
-//  Created by Admin on 09.02.2020.
+//  Created by Ilya on 09.02.2020.
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
