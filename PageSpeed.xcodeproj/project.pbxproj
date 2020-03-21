@@ -23,7 +23,7 @@
 		8485222D24044B4B0005FC06 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222424044B4B0005FC06 /* Service.swift */; };
 		8485222E24044B4B0005FC06 /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222524044B4B0005FC06 /* ServicesManager.swift */; };
 		8485222F24044B4B0005FC06 /* GTMetrixResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222624044B4B0005FC06 /* GTMetrixResultViewController.swift */; };
-		8485223024044B4B0005FC06 /* GTMertixStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222724044B4B0005FC06 /* GTMertixStructs.swift */; };
+		8485223024044B4B0005FC06 /* GTMertrixStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222724044B4B0005FC06 /* GTMertrixStructs.swift */; };
 		8485223124044B4B0005FC06 /* GTMetrixService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222924044B4B0005FC06 /* GTMetrixService.swift */; };
 		8485223224044B4B0005FC06 /* GTMetrixURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */; };
 		8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */; };
@@ -64,7 +64,7 @@
 		8485222424044B4B0005FC06 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		8485222524044B4B0005FC06 /* ServicesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
 		8485222624044B4B0005FC06 /* GTMetrixResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixResultViewController.swift; sourceTree = "<group>"; };
-		8485222724044B4B0005FC06 /* GTMertixStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMertixStructs.swift; sourceTree = "<group>"; };
+		8485222724044B4B0005FC06 /* GTMertrixStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMertrixStructs.swift; sourceTree = "<group>"; };
 		8485222924044B4B0005FC06 /* GTMetrixService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixService.swift; sourceTree = "<group>"; };
 		8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixURLService.swift; sourceTree = "<group>"; };
 		8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixResultService.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 			children = (
 				8485222624044B4B0005FC06 /* GTMetrixResultViewController.swift */,
 				8485222224044B4B0005FC06 /* GTMetrixAPI.swift */,
-				8485222724044B4B0005FC06 /* GTMertixStructs.swift */,
+				8485222724044B4B0005FC06 /* GTMertrixStructs.swift */,
 				8485222324044B4B0005FC06 /* Common */,
 				8485222824044B4B0005FC06 /* Services */,
 			);
@@ -422,7 +422,7 @@
 				FAA3A04223EAF21700426BB3 /* StringHelpers.swift in Sources */,
 				8485223224044B4B0005FC06 /* GTMetrixURLService.swift in Sources */,
 				FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */,
-				8485223024044B4B0005FC06 /* GTMertixStructs.swift in Sources */,
+				8485223024044B4B0005FC06 /* GTMertrixStructs.swift in Sources */,
 				84223AEE24226E83005899A1 /* HistoryCellDelegate.swift in Sources */,
 				8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */,
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,

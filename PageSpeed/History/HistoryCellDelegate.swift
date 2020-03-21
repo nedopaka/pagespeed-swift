@@ -13,6 +13,7 @@ enum TestType {
     case pageSpeed
 }
 
+/// Protocol for history cell
 protocol HistoryCellDelegate: class {
     var title: String { get }
     var subTitle: String { get }

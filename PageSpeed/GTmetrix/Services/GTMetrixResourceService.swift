@@ -8,9 +8,12 @@
 
 import Moya
 
+///enum resource types
 enum TestResourse: String {
     case screenshot, har, pagespeed, pagespeedFiles = "pagespeed-files", yslow, reportPdf = "report-pdf", video
 }
+
+///Service for getting resources of GTMetrix requests
 class GTMetrixResourceService: Service {
     internal var identifier: String = ""
     let testID: String!

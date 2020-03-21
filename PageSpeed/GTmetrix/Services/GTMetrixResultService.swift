@@ -7,7 +7,7 @@
 //
 
 import Moya
-
+///Service for initialization GTMetrix requests 
 class GTMetrixResultService: Service {
     internal var identifier: String = ""
     let url: String!
@@ -15,6 +15,7 @@ class GTMetrixResultService: Service {
         self.url = url
         generate()
     }
+
     func run (completion: @escaping (_ response: GTMetrixTestResponse?, _ error: Error?) -> Void) {
         started()
         let provider = MoyaProvider<GTMetrixAPI>()

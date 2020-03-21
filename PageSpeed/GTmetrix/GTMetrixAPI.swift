@@ -8,6 +8,7 @@
 
 import Moya
 
+///Provider for GTMetrix API 
 enum GTMetrixAPI {
     case testPage(url: String)
     case testStatus(testID: String)

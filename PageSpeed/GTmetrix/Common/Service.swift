@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/// Protocol for async services implementation 
 protocol Service: class {
     var identifier: String { get set }
 }

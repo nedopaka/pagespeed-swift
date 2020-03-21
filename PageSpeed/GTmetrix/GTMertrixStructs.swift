@@ -6,7 +6,6 @@
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 struct GTMetrixTestResponse: Decodable {
@@ -19,6 +18,8 @@ struct GTMetrixTestResponse: Decodable {
         case pollStateURL = "poll_state_url"
     }
 }
+
+// MARK: - GTMetrixTestResult
 struct GTMetrixTestResult: Decodable {
     var reportURL: String?
     var pageSpeedScore: Int?
@@ -69,6 +70,7 @@ enum TestState: String {
     case queued, started, completed, error
 }
 
+// MARK: - GTMetrixResponse
 struct GTMetrixResponse: Decodable {
     var url: String?
     var id: String?
@@ -79,6 +81,7 @@ struct GTMetrixResponse: Decodable {
     var date: Date?
 }
 
+// MARK: - GTMetrixResource
 struct GTMetrixResource: Decodable {
     var screenshot: String?
     var har: String?

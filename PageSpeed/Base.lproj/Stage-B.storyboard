@@ -517,8 +517,8 @@
                         <outlet property="fullyLoadedTimeLabel" destination="bge-7L-uGf" id="ewj-Ti-lEo"/>
                         <outlet property="gtMetrixScoreLabel" destination="csk-p1-v0n" id="n8k-i6-Xjy"/>
                         <outlet property="gtMetrixYSlowScoreRing" destination="xG8-kI-hom" id="gjn-f2-jcj"/>
-                        <outlet property="hTMLBytesLabel" destination="FVM-Qe-M0P" id="IhQ-Em-ZjI"/>
-                        <outlet property="hTMLLoadTimeLabel" destination="GKy-KG-IHm" id="phc-BE-jNO"/>
+                        <outlet property="htmlBytesLabel" destination="FVM-Qe-M0P" id="IhQ-Em-ZjI"/>
+                        <outlet property="htmlLoadTimeLabel" destination="GKy-KG-IHm" id="phc-BE-jNO"/>
                         <outlet property="loadPDFActivity" destination="aWn-wY-gx9" id="f80-0W-O51"/>
                         <outlet property="loadPFDButton" destination="g51-Um-Rif" id="J7R-qc-jqv"/>
                         <outlet property="pageBytesLabel" destination="5Ro-l2-LdS" id="f3C-hg-3M9"/>

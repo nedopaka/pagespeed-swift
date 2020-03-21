@@ -12,27 +12,27 @@ import QuickLook
 
 class GTMetrixResultViewController: UITableViewController {
 
-    @IBOutlet private weak var screenShotImage: UIImageView!
-    @IBOutlet private weak var pageTitleLabel: UILabel!
-    @IBOutlet private weak var fullyLoadedTimeLabel: UILabel!
-    @IBOutlet private weak var totalPageSizeLabel: UILabel!
-    @IBOutlet private weak var requestsLabel: UILabel!
-    @IBOutlet private weak var hTMLLoadTimeLabel: UILabel!
-    @IBOutlet private weak var pageLoadTimeLabel: UILabel!
-    @IBOutlet private weak var pageBytesLabel: UILabel!
-    @IBOutlet private weak var hTMLBytesLabel: UILabel!
-    @IBOutlet private weak var pageElementsLabel: UILabel!
-    @IBOutlet private weak var rumSpeedIndexLabel: UILabel!
-    @IBOutlet private weak var loadPFDButton: UIButton!
-    @IBOutlet private weak var gtMetrixScoreLabel: UICircularProgressRing!
-    @IBOutlet private weak var gtMetrixYSlowScoreRing: UICircularProgressRing!
-    @IBOutlet private weak var loadPDFActivity: UIActivityIndicatorView!
     var urlPDF: URL?
     var response: GTMetrixResponseItem? {
         didSet {
             updateUI()
         }
     }
+    @IBOutlet private weak var screenShotImage: UIImageView!
+    @IBOutlet private weak var pageTitleLabel: UILabel!
+    @IBOutlet private weak var fullyLoadedTimeLabel: UILabel!
+    @IBOutlet private weak var totalPageSizeLabel: UILabel!
+    @IBOutlet private weak var requestsLabel: UILabel!
+    @IBOutlet private weak var htmlLoadTimeLabel: UILabel!
+    @IBOutlet private weak var pageLoadTimeLabel: UILabel!
+    @IBOutlet private weak var pageBytesLabel: UILabel!
+    @IBOutlet private weak var htmlBytesLabel: UILabel!
+    @IBOutlet private weak var pageElementsLabel: UILabel!
+    @IBOutlet private weak var rumSpeedIndexLabel: UILabel!
+    @IBOutlet private weak var loadPFDButton: UIButton!
+    @IBOutlet private weak var gtMetrixScoreLabel: UICircularProgressRing!
+    @IBOutlet private weak var gtMetrixYSlowScoreRing: UICircularProgressRing!
+    @IBOutlet private weak var loadPDFActivity: UIActivityIndicatorView!
 
     @IBAction private func viewPDFButton(_ sender: UIButton) {
         if urlPDF == nil {
@@ -76,14 +76,13 @@ class GTMetrixResultViewController: UITableViewController {
             fullyLoadedTimeLabel?.text = "\((response.results?.fullyLoadedTime ?? 0) / 1_000) Sec"
             totalPageSizeLabel?.text = "\((response.results?.pageBytes ?? 0) / 1_024) KB"
             requestsLabel?.text = "\(response.results?.pageElements ?? 0)"
-            hTMLLoadTimeLabel?.text = "\(response.results?.htmlLoadTime ?? 0) ms"
+            htmlLoadTimeLabel?.text = "\(response.results?.htmlLoadTime ?? 0) ms"
             pageBytesLabel?.text = "\(response.results?.pageBytes ?? 0)"
             pageLoadTimeLabel?.text = "\(response.results?.onloadTime ?? 0) ms"
-            hTMLBytesLabel?.text = "\(response.results?.htmlBytes ?? 0)"
+            htmlBytesLabel?.text = "\(response.results?.htmlBytes ?? 0)"
             pageElementsLabel?.text = "\(response.results?.pageElements ?? 0)"
             rumSpeedIndexLabel?.text = "\(response.results?.rumSpeedIndex ?? 0)"
             print(response)
-
             pageTitleLabel?.text = response.url
             GTMetrixResourceService(testID: response.id ?? "", resource: .screenshot).run { [weak self] image, _, _ in
                 if let image = image {
@@ -115,7 +114,7 @@ class GTMetrixResultViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         gtMetrixScoreLabel?.startProgress(to: CGFloat(response?.results?.pageSpeedScore ?? 0),
-                                         duration: 2.0, completion: {
+                                          duration: 2.0, completion: {
         })
         gtMetrixYSlowScoreRing?.startProgress(to: CGFloat(response?.results?.yslowScore ?? 0),
                                               duration: 2.0, completion: {
@@ -163,6 +162,7 @@ extension GTMetrixResultViewController: UICircularProgressRingDelegate {
     }
 }
 
+// MARK: - QLPreviewControllerDataSource
 extension GTMetrixResultViewController: QLPreviewControllerDataSource {
 
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {

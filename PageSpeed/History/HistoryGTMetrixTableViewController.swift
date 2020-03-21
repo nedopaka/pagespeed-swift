@@ -33,6 +33,14 @@ class HistoryGTMetrixTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
+
+    func getItem(indexPath: IndexPath) -> HistoryCellDelegate? {
+        if indexPath.row < items.count {
+            return items[indexPath.row]
+        }
+        return nil
+    }
+
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -45,13 +53,6 @@ class HistoryGTMetrixTableViewController: UITableViewController {
             cell.detailTextLabel?.text = item.subTitle
         }
         return cell
-    }
-
-    func getItem(indexPath: IndexPath) -> HistoryCellDelegate? {
-        if indexPath.row < items.count {
-            return items[indexPath.row]
-        }
-        return nil
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

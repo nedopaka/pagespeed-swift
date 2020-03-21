@@ -149,7 +149,7 @@ class NewTestViewController: UIViewController {
             style: .cancel,
             handler: { ( _ : UIAlertAction) -> Void in
                 alertController.dismiss(animated: true, completion: dismissCompletion)
-        }
+            }
         )
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

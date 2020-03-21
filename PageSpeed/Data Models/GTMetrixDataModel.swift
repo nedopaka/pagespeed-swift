@@ -36,6 +36,7 @@ import RealmSwift
     }
 }
 
+// MARK: - GTMetrixTestResultItem
 @objcMembers class GTMetrixTestResultItem: Object {
     dynamic var reportURL: String?
     dynamic var pageSpeedScore: Int = 0
@@ -86,6 +87,7 @@ import RealmSwift
     }
 }
 
+// MARK: - GTMetrixResponseItem
 @objcMembers class GTMetrixResponseItem: Object {
     dynamic var url: String?
     dynamic var id: String?
@@ -108,6 +110,8 @@ import RealmSwift
         date = response.date
     }
 }
+
+// MARK: - GTMetrixResponseItem: HistoryCellDelegate
 extension GTMetrixResponseItem: HistoryCellDelegate {
     var title: String {
         return url ?? "Unknown URL"

@@ -7,7 +7,7 @@
 //
 
 import Moya
-
+///Service for getting GTMetrix status of requests and results 
 class GTMetrixService: Service {
     internal var identifier: String = ""
     let testID: String!
@@ -22,7 +22,6 @@ class GTMetrixService: Service {
         provider.request(.testStatus(testID: self.testID)) { response in
             switch response {
             case .success(let result):
-                print(String(data: result.data, encoding: .utf8))
                 let decoder = JSONDecoder()
                 do {
                     var testResponse = try decoder.decode(GTMetrixResponse.self, from: result.data)

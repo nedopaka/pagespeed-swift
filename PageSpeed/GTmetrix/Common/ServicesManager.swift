@@ -8,7 +8,7 @@
 
 import Foundation
 
-///
+/// Class for keeping service instances during runtime
 class ServicesManager {
     static let manager = ServicesManager()
     private var services: [String: Service]
