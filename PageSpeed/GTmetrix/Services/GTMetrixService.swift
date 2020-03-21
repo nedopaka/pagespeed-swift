@@ -7,6 +7,7 @@
 //
 
 import Moya
+
 ///Service for getting GTMetrix status of requests and results 
 class GTMetrixService: Service {
     internal var identifier: String = ""

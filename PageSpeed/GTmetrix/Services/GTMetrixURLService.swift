@@ -7,6 +7,7 @@
 //
 
 import Moya
+
 ///Main service for GTMetrix requests implementation 
 class GTMetrixURLService: Service {
     internal var identifier: String = ""
