@@ -1,5 +1,5 @@
 //
-//  GTMertixStructs.swift
+//  GTMetrixStructs.swift
 //  PageSpeed
 //
 //  Created by Ilya on 09.02.2020.
