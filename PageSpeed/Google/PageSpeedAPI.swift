@@ -23,7 +23,7 @@ extension PageSpeedAPI: TargetType {
             return "runPagespeed"
         }
     }
-
+    
     var method: Method {
         .get
     }
@@ -35,7 +35,8 @@ extension PageSpeedAPI: TargetType {
     var task: Task {
         switch self {
         case let .runPagespeed(key, url, strategy):
-            return .requestParameters(parameters: ["key": key, "url": url, "strategy": strategy], encoding: URLEncoding.queryString)
+            return .requestParameters(
+                parameters: ["key": key, "url": url, "strategy": strategy], encoding: URLEncoding.queryString)
         }
     }
 

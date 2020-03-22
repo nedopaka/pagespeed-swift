@@ -20,7 +20,7 @@ class NewTestViewController: UIViewController {
     ]
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
-
+    var gtMetrixResponse: GTMetrixResponseItem?
     enum PageSpeedStrategy: String {
         case mobile
         case desktop
@@ -51,8 +51,20 @@ class NewTestViewController: UIViewController {
 
     // MARK: - Methods
     func processRequestsToServices(url: String) {
+        gtMetrixResponse = nil
         let dispatchGroup = DispatchGroup()
-
+        dispatchGroup.enter()
+        GTMetrixURLService(url: url).start { response, error in
+            if let error = error {
+                print(error)
+            } else if let response = response {
+                self.gtMetrixResponse = GTMetrixResponseItem(response: response)
+                if let gtMetrixResponse = self.gtMetrixResponse, let manager = DBManager.sharedInstance {
+                    manager.save(object: gtMetrixResponse)
+                }
+            }
+            dispatchGroup.leave()
+        }
         dispatchGroup.enter()
         requestToPageSpeed(
             url: url,
@@ -68,7 +80,6 @@ class NewTestViewController: UIViewController {
                 dispatchGroup.leave()
             }
         }
-
         dispatchGroup.enter()
         requestToPageSpeed(
             url: url,
@@ -84,19 +95,17 @@ class NewTestViewController: UIViewController {
                 dispatchGroup.leave()
             }
         }
-
         dispatchGroup.notify(queue: .main) {
             let testResultsViewController = UIStoryboard(
                 name: "Stage-A",
                 bundle: nil
             ).instantiateViewController(identifier: "TestResultsViewController")
                 as? TestResultsViewController
-
             testResultsViewController?.url = self.urlTextField.text
             testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
             testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
             testResultsViewController?.servicesArr = self.servicesArr
-
+            testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
             self.navigationController?.pushViewController(testResultsViewController!, animated: true)
         }
     }
