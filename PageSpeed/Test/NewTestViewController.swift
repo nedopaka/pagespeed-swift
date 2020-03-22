@@ -50,7 +50,7 @@ class NewTestViewController: UIViewController {
     }
 
     // MARK: - Methods
-    func processRequestsToServices (url: String) {
+    func processRequestsToServices(url: String) {
         gtMetrixResponse = nil
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
