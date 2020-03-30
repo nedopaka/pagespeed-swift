@@ -32,6 +32,20 @@ struct PageSpeedResponse: Codable {
     }
 }
 
+// MARK: - PageSpeedError
+struct PageSpeedError: Codable {
+    let error: ProcessingError
+
+    enum CodingKeys: String, CodingKey {
+        case error = "error"
+    }
+}
+
+struct ProcessingError: Codable {
+    let code: Int
+    let message: String
+}
+
 // MARK: - =========== LoadingExperience JSON ===========
 
 // MARK: - LoadingExperience

@@ -63,6 +63,7 @@ class DBManager {
 
     func getPageSpeedV5Items() -> Results<PageSpeedV5Item> {
         let results: Results<PageSpeedV5Item> = database.objects(PageSpeedV5Item.self)
+            .sorted(byKeyPath: "analysisUTCTimestamp", ascending: false)
         return results
     }
 

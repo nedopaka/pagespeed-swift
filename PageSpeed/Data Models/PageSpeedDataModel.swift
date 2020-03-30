@@ -52,11 +52,13 @@ import RealmSwift
     dynamic var fastProportionFCP: Double = 0
     dynamic var averageProportionFCP: Double = 0
     dynamic var slowProportionFCP: Double = 0
+    dynamic var categoryFCP: String = ""
     // FID
     dynamic var percentileFID: Int = 0
     dynamic var fastProportionFID: Double = 0
     dynamic var averageProportionFID: Double = 0
     dynamic var slowProportionFID: Double = 0
+    dynamic var categoryFID: String = ""
 
     let testEntity = LinkingObjects(fromType: PageSpeedV5Item.self, property: "metrics")
 
@@ -68,12 +70,14 @@ import RealmSwift
         self.fastProportionFCP = metrics.firstContentfulPaintMS.distributions[0].proportion
         self.averageProportionFCP = metrics.firstContentfulPaintMS.distributions[1].proportion
         self.slowProportionFCP = metrics.firstContentfulPaintMS.distributions[2].proportion
+        self.categoryFCP = metrics.firstContentfulPaintMS.category
 
         // FID
         self.percentileFID = metrics.firstInputDelayMS.percentile
         self.fastProportionFID = metrics.firstInputDelayMS.distributions[0].proportion
         self.averageProportionFID = metrics.firstInputDelayMS.distributions[1].proportion
         self.slowProportionFID = metrics.firstInputDelayMS.distributions[2].proportion
+        self.categoryFID = metrics.firstInputDelayMS.category
     }
 
     override class func primaryKey() -> String? {

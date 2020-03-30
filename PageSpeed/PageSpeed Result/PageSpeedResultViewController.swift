@@ -11,35 +11,6 @@ import UICircularProgressRing
 import Kingfisher
 import SwiftyMarkdown
 
-enum PageSpeedResult {
-    case mobile
-    case desktop
-}
-
-enum PageSpeedColor: String {
-    case green = "#0cce6b"
-    case greenSecondary = "#018642"
-    case orange = "#ffa400"
-    case orangeSecondary = "#d04900"
-    case red = "#ff4e42"
-    case redSecondary = "#eb0f00"
-}
-
-enum PageSpeedCategory: String {
-    case FAST
-    case AVERAGE
-    case SLOW
-}
-
-enum PageSpeedLabData: CaseIterable {
-    case fcp
-    case fmp
-    case speedIndex
-    case firstCPUIdle
-    case timeToInteractive
-    case maxPotentialFirstInputDelay
-}
-
 // swiftlint:disable large_tuple
 class PageSpeedResultViewController: UIViewController {
 
@@ -70,7 +41,7 @@ class PageSpeedResultViewController: UIViewController {
     @IBOutlet private weak var overallResultLabel: UILabel!
     @IBOutlet private weak var overallResultCircularProgressRingCanvas: UIView!
 
-    @IBOutlet weak var mapResult: UIView!
+    @IBOutlet private weak var mapResult: UIView!
 
     @IBOutlet private weak var fieldDataOverallCategory: UILabel!
 

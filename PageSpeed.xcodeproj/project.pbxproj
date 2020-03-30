@@ -27,6 +27,8 @@
 		8485223124044B4B0005FC06 /* GTMetrixService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222924044B4B0005FC06 /* GTMetrixService.swift */; };
 		8485223224044B4B0005FC06 /* GTMetrixURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */; };
 		8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */; };
+		FA342930242F805100371A6F /* PageSpeedHistoryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */; };
+		FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */; };
 		FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */; };
 		FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */; };
 		FA6FD73623B8A7F90074E820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD73523B8A7F90074E820 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F556241393D70019E59D /* UILabelHelpers.swift */; };
 		FAA8F55A241BDC920019E59D /* PageSpeedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F559241BDC920019E59D /* PageSpeedDataModel.swift */; };
 		FAA8F55C241D59DC0019E59D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F55B241D59DC0019E59D /* DBManager.swift */; };
+		FAE258A9242E5C51000E6B7A /* PageSpeedHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE258A8242E5C51000E6B7A /* PageSpeedHistory.storyboard */; };
+		FAE258AD242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE258AC242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,8 @@
 		8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixURLService.swift; sourceTree = "<group>"; };
 		8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixResultService.swift; sourceTree = "<group>"; };
 		A4C99B797A87117114C23C21 /* Pods_PageSpeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageSpeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedHistoryItemViewController.swift; sourceTree = "<group>"; };
+		FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedGeneral.swift; sourceTree = "<group>"; };
 		FA6FD72923B8A7EF0074E820 /* PageSpeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageSpeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 		FAA8F556241393D70019E59D /* UILabelHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelpers.swift; sourceTree = "<group>"; };
 		FAA8F559241BDC920019E59D /* PageSpeedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedDataModel.swift; sourceTree = "<group>"; };
 		FAA8F55B241D59DC0019E59D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		FAE258A8242E5C51000E6B7A /* PageSpeedHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PageSpeedHistory.storyboard; sourceTree = "<group>"; };
+		FAE258AC242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedHistoryListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +206,6 @@
 		FA6FD72B23B8A7EF0074E820 /* PageSpeed */ = {
 			isa = PBXGroup;
 			children = (
-				84223AEA24226D7D005899A1 /* History */,
 				8485221E24044B360005FC06 /* Errors */,
 				FA6FD74323B8AA700074E820 /* MainViewController.swift */,
 				FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */,
@@ -209,6 +216,8 @@
 				FAA3A04A23EB33B400426BB3 /* Test */,
 				FAC6BD42240EA99900B86530 /* PageSpeed Result */,
 				FAA8F558241BDB7F0019E59D /* Data Models */,
+				84223AEA24226D7D005899A1 /* History */,
+				FAE258A7242E5BBB000E6B7A /* History - PageSpeed */,
 				FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */,
 				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
 				FA6FD73523B8A7F90074E820 /* Assets.xcassets */,
@@ -224,6 +233,7 @@
 			children = (
 				FAA3A03E23E8D30300426BB3 /* PageSpeedResponse.swift */,
 				FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */,
+				FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */,
 			);
 			path = Google;
 			sourceTree = "<group>";
@@ -267,6 +277,16 @@
 				FAA8F552240FB4410019E59D /* LabDataTableViewCell.swift */,
 			);
 			path = "PageSpeed Result";
+			sourceTree = "<group>";
+		};
+		FAE258A7242E5BBB000E6B7A /* History - PageSpeed */ = {
+			isa = PBXGroup;
+			children = (
+				FAE258A8242E5C51000E6B7A /* PageSpeedHistory.storyboard */,
+				FAE258AC242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift */,
+				FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */,
+			);
+			path = "History - PageSpeed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +354,7 @@
 				FA6FD74223B8A9050074E820 /* Main.storyboard in Resources */,
 				FAA3A04923EB334A00426BB3 /* Stage-B.storyboard in Resources */,
 				FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */,
+				FAE258A9242E5C51000E6B7A /* PageSpeedHistory.storyboard in Resources */,
 				FA6FD73623B8A7F90074E820 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +438,7 @@
 				FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */,
 				84223AE424225D98005899A1 /* NewTestViewController.swift in Sources */,
 				84223AE924226565005899A1 /* GTMetrixDataModel.swift in Sources */,
+				FAE258AD242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift in Sources */,
 				84223AE524225D98005899A1 /* TestViewController.swift in Sources */,
 				8421170E2423AF5700886374 /* HistoryTableViewController.swift in Sources */,
 				FAA3A04223EAF21700426BB3 /* StringHelpers.swift in Sources */,
@@ -433,7 +455,9 @@
 				FAA8F553240FB4410019E59D /* LabDataTableViewCell.swift in Sources */,
 				FA6FD72F23B8A7EF0074E820 /* SceneDelegate.swift in Sources */,
 				842117102423BE9600886374 /* DBManager+extension.swift in Sources */,
+				FA342930242F805100371A6F /* PageSpeedHistoryItemViewController.swift in Sources */,
 				8450960D2417C24D00F3FDA4 /* GTMetrixResourceService.swift in Sources */,
+				FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */,
 				84223AE724225D98005899A1 /* TestResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

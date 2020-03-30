@@ -18,6 +18,7 @@ class NewTestViewController: UIViewController {
         (id: "pagespeed", name: "Google PageSpeed Insights"),
         (id: "gtmetrix", name: "GTMetrix")
     ]
+    var isErrorAccured = false
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
     var gtMetrixResponse: GTMetrixResponseItem?
@@ -37,11 +38,13 @@ class NewTestViewController: UIViewController {
         var url = urlTextField.text!
 
         if url.isValidURL {
+            isErrorAccured = false
             processRequestsToServices(url: url)
         } else {
             url = "https://" + url
             if url.isValidURL {
                 urlTextField.text = url
+                isErrorAccured = false
                 processRequestsToServices(url: url)
             } else {
                 showAlert(title: "Info", message: "Please enter valid URL")
@@ -96,6 +99,7 @@ class NewTestViewController: UIViewController {
             }
         }
         dispatchGroup.notify(queue: .main) {
+            if self.isErrorAccured { return }
             let testResultsViewController = UIStoryboard(
                 name: "Stage-A",
                 bundle: nil
@@ -117,6 +121,23 @@ class NewTestViewController: UIViewController {
     ) {
         provider.request(.runPagespeed(key: googleAPIKey, url: url, strategy: strategy.rawValue)) { result in
             do {
+                let error = try result
+                    .get()
+                let pageSpeedError = try error.map(PageSpeedError.self)
+                self.isErrorAccured = true
+                self.showAlert(
+                    title: "PageSpeed Error: \(pageSpeedError.error.code)",
+                    message: pageSpeedError.error.message
+                ) {
+                    self.urlTextField.becomeFirstResponder()
+                    self.urlTextField.selectAll(nil)
+                }
+                print(pageSpeedError)
+                return
+            } catch {
+                print(error)
+            }
+            do {
                 let response = try result
                     .get()
                     .filter(statusCode: 200)
@@ -130,8 +151,13 @@ class NewTestViewController: UIViewController {
                 case .desktop:
                     self.desktopPageSpeedResult = pageSpeedResult
                 }
+                // store result to Realm
+                let testResult = PageSpeedV5Item(response: pageSpeedResult)
+                _ = DBManager.sharedInstance?.addPageSpeedV5Item(object: testResult)
+
                 completionHandler(response, nil)
             } catch {
+                self.isErrorAccured = true
                 print(error)
                 completionHandler(nil, error as? MoyaError)
             }
