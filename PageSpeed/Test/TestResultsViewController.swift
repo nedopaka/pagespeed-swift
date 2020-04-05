@@ -14,7 +14,8 @@ class TestResultsViewController: UIViewController {
     var url: String?
     var mobilePageSpeedResult, desktopPageSpeedResult: PageSpeedResponse?
     var gtMetrixResponse: GTMetrixResponseItem?
-    var servicesArr: [(id: String, name: String)]?
+    var servicesEnabledArr: [String]?
+
     // MARK: - IBOutlets
     @IBOutlet private weak var urlLabel: UILabel!
     @IBOutlet private weak var testResultsTableView: UITableView!
@@ -38,14 +39,15 @@ class TestResultsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension TestResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        servicesArr?.count ?? 0
+        servicesEnabledArr?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = testResultsTableView.dequeueReusableCell(withIdentifier: "TestResultsCell", for: indexPath)
 
-        cell.textLabel?.text = servicesArr?[indexPath.row].name
-        cell.detailTextLabel?.text = getServiceTestOverallResult(id: servicesArr?[indexPath.row].id ?? "")
+        let service = servicesEnabledArr?[indexPath.row]
+        cell.textLabel?.text = servicesArr.first { id, _ in id == service }?.name
+        cell.detailTextLabel?.text = getServiceTestOverallResult(id: service ?? "")
         return cell
     }
 
@@ -56,11 +58,11 @@ extension TestResultsViewController: UITableViewDataSource {
             var desktopScore = ""
             if let mobileResult = mobilePageSpeedResult {
                 let score = mobileResult.lighthouseResult.categories.performance.score * 100
-                mobileScore = "Mobile Overall Score: \(Int(score))"
+                mobileScore = "Mobile Score: \(Int(score))"
             }
             if let desktopResult = desktopPageSpeedResult {
                 let score = desktopResult.lighthouseResult.categories.performance.score * 100
-                desktopScore = "Desktop Overall Score: \(Int(score))"
+                desktopScore = "Desktop Score: \(Int(score))"
             }
             return "\(mobileScore) \(desktopScore)"
         case "gtmetrix":
@@ -73,11 +75,10 @@ extension TestResultsViewController: UITableViewDataSource {
     }
 }
 
-
 // MARK: - UITableViewDelegate
 extension TestResultsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch servicesArr?[indexPath.row].id {
+        switch servicesEnabledArr?[indexPath.row] {
         case "pagespeed":
             let pageSpeedResultsViewController = UIStoryboard(
                 name: "Stage-A",

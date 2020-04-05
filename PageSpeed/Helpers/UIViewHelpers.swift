@@ -79,6 +79,24 @@ extension UIView {
         addGestureRecognizer(tapRecognizer)
         isUserInteractionEnabled = true
     }
+
+    func addBottomBorder(color: UIColor, width: CGFloat, removeCurrentBorders: Bool = true) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+        if removeCurrentBorders {
+            (self as? UITextField)?.borderStyle = .none
+        }
+        self.layer.addSublayer(border)
+    }
+
+    func shake(duration: Double) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.duration = duration
+        animation.values = [-20, 20, -20, 20, -10, 10, -5, 5, 0]
+        layer.add(animation, forKey: "shake")
+    }
 }
 
 @IBDesignable

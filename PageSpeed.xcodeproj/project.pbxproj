@@ -48,6 +48,8 @@
 		FAA8F55C241D59DC0019E59D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8F55B241D59DC0019E59D /* DBManager.swift */; };
 		FAE258A9242E5C51000E6B7A /* PageSpeedHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE258A8242E5C51000E6B7A /* PageSpeedHistory.storyboard */; };
 		FAE258AD242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE258AC242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift */; };
+		FAF9727324352CAA00624923 /* UIViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF9727224352CAA00624923 /* UIViewControllerHelpers.swift */; };
+		FAF972752438C28900624923 /* ArrayHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF972742438C28900624923 /* ArrayHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		FAA8F55B241D59DC0019E59D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		FAE258A8242E5C51000E6B7A /* PageSpeedHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PageSpeedHistory.storyboard; sourceTree = "<group>"; };
 		FAE258AC242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedHistoryListViewController.swift; sourceTree = "<group>"; };
+		FAF9727224352CAA00624923 /* UIViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerHelpers.swift; sourceTree = "<group>"; };
+		FAF972742438C28900624923 /* ArrayHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +248,8 @@
 				FAA3A04123EAF21700426BB3 /* StringHelpers.swift */,
 				FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */,
 				FAA8F556241393D70019E59D /* UILabelHelpers.swift */,
+				FAF9727224352CAA00624923 /* UIViewControllerHelpers.swift */,
+				FAF972742438C28900624923 /* ArrayHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -448,7 +454,9 @@
 				84223AEE24226E83005899A1 /* HistoryCellDelegate.swift in Sources */,
 				8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */,
 				FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */,
+				FAF972752438C28900624923 /* ArrayHelpers.swift in Sources */,
 				8485222024044B360005FC06 /* CustomError.swift in Sources */,
+				FAF9727324352CAA00624923 /* UIViewControllerHelpers.swift in Sources */,
 				8485222C24044B4B0005FC06 /* GTMetrixAPI.swift in Sources */,
 				FAA8F55C241D59DC0019E59D /* DBManager.swift in Sources */,
 				FAA8F55A241BDC920019E59D /* PageSpeedDataModel.swift in Sources */,
