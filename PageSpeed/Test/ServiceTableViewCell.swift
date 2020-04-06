@@ -13,6 +13,7 @@ class ServiceTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     var id: String = ""
+    var serviceSwitchChangeCallback: (() -> Void)?
 
     var displayName: String {
         get {
@@ -38,7 +39,7 @@ class ServiceTableViewCell: UITableViewCell {
 
     // MARK: - IBActions
     @IBAction private func serviceSwitchValueChanged(_ sender: Any) {
-
+        serviceSwitchChangeCallback?()
     }
 
     override func awakeFromNib() {

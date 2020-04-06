@@ -9,15 +9,18 @@
 import UIKit
 import Moya
 
+var servicesArr = [
+    (id: "pagespeed", name: "Google PageSpeed Insights"),
+    (id: "gtmetrix", name: "GTMetrix")
+]
+
 class NewTestViewController: UIViewController {
 
     // MARK: - Properties
     let googleAPIKey = "AIzaSyBD3l3hyQYCJT3_yHCXcD8opyZ1uJer1EA"
     var provider = MoyaProvider<PageSpeedAPI>()
-    var servicesArr = [
-        (id: "pagespeed", name: "Google PageSpeed Insights"),
-        (id: "gtmetrix", name: "GTMetrix")
-    ]
+    var servicesEnabledArr: [String] = []
+    let dispatchGroup = DispatchGroup()
     var isErrorAccured = false
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
@@ -27,16 +30,31 @@ class NewTestViewController: UIViewController {
         case desktop
     }
 
+    private var servicesTableViewHeight: CGFloat {
+        servicesTableView.layoutIfNeeded()
+        return servicesTableView.contentSize.height
+    }
+
     // MARK: - IBOutlets
     @IBOutlet private weak var urlTextField: UITextField!
-    @IBOutlet private weak var responseTextView: UITextView!
-    @IBOutlet private weak var strategySegmentedControl: UISegmentedControl!
     @IBOutlet private weak var servicesTableView: UITableView!
+    @IBOutlet private weak var servicesTableViewHeightConstraint: NSLayoutConstraint!
 
     // MARK: - IBActions
     @IBAction private func performTest(_ sender: Any) {
         var url = urlTextField.text!
 
+        if url.isEmpty {
+            self.presentAlert(
+                title: "Attention",
+                message: "The URL field is empty. Fill the corresponding field.",
+                options: "OK"
+            ) { _ in
+                self.urlTextField.becomeFirstResponder()
+                self.urlTextField.shake(duration: 0.6)
+            }
+            return
+        }
         if url.isValidURL {
             isErrorAccured = false
             processRequestsToServices(url: url)
@@ -47,15 +65,56 @@ class NewTestViewController: UIViewController {
                 isErrorAccured = false
                 processRequestsToServices(url: url)
             } else {
-                showAlert(title: "Info", message: "Please enter valid URL")
+                self.presentAlert(
+                    title: "Attention",
+                    message: "The URL is not valid.",
+                    options: "OK"
+                ) { _ in
+                    self.urlTextField.becomeFirstResponder()
+                }
             }
         }
     }
 
     // MARK: - Methods
     func processRequestsToServices(url: String) {
-        gtMetrixResponse = nil
-        let dispatchGroup = DispatchGroup()
+        if servicesEnabledArr.isEmpty {
+            self.presentAlert(
+                title: "Attention",
+                message: "There are no services selected. Please, choose one to perform test.",
+                options: "OK"
+            ) { _ in
+                self.urlTextField.becomeFirstResponder()
+                self.servicesTableView.shake(duration: 0.6)
+            }
+            return
+        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            if self.servicesEnabledArr.contains("gtmetrix") {
+                self.addGTMetrixTestTask(url: url)
+            }
+            if self.servicesEnabledArr.contains("pagespeed") {
+                self.addPageSpeedTestTask(url: url, strategy: .mobile)
+                self.addPageSpeedTestTask(url: url, strategy: .desktop)
+            }
+            self.dispatchGroup.notify(queue: .main) {
+                if self.isErrorAccured { return }
+                let testResultsViewController = UIStoryboard(
+                    name: "Stage-A",
+                    bundle: nil
+                ).instantiateViewController(identifier: "TestResultsViewController")
+                    as? TestResultsViewController
+                testResultsViewController?.url = self.urlTextField.text
+                testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
+                testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
+                testResultsViewController?.servicesEnabledArr = self.servicesEnabledArr
+                testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
+                self.navigationController?.pushViewController(testResultsViewController!, animated: true)
+            }
+        }
+    }
+
+    func addGTMetrixTestTask(url: String) {
         dispatchGroup.enter()
         GTMetrixURLService(url: url).start { response, error in
             if let error = error {
@@ -66,51 +125,34 @@ class NewTestViewController: UIViewController {
                     manager.save(object: gtMetrixResponse)
                 }
             }
-            dispatchGroup.leave()
+            self.dispatchGroup.leave()
         }
+    }
+
+    func addPageSpeedTestTask(url: String, strategy: PageSpeedStrategy) {
         dispatchGroup.enter()
         requestToPageSpeed(
             url: url,
-            strategy: .mobile
+            strategy: strategy
         ) { response, error in
             if let error = error {
-                self.showAlert(title: (error.response?.statusCode.description)!, message: error.response!.description) {
-                    self.urlTextField.becomeFirstResponder()
-                    self.urlTextField.selectAll(nil)
-                }
+                self.presentErrorAlert(
+                    title: (error.response?.statusCode.description)!,
+                    message: error.response!.description
+                )
             }
-            DispatchQueue.main.async {
-                dispatchGroup.leave()
-            }
+            self.dispatchGroup.leave()
         }
-        dispatchGroup.enter()
-        requestToPageSpeed(
-            url: url,
-            strategy: .desktop
-        ) { response, error in
-            if let error = error {
-                self.showAlert(title: (error.response?.statusCode.description)!, message: error.response!.description) {
-                    self.urlTextField.becomeFirstResponder()
-                    self.urlTextField.selectAll(nil)
-                }
-            }
-            DispatchQueue.main.async {
-                dispatchGroup.leave()
-            }
-        }
-        dispatchGroup.notify(queue: .main) {
-            if self.isErrorAccured { return }
-            let testResultsViewController = UIStoryboard(
-                name: "Stage-A",
-                bundle: nil
-            ).instantiateViewController(identifier: "TestResultsViewController")
-                as? TestResultsViewController
-            testResultsViewController?.url = self.urlTextField.text
-            testResultsViewController?.mobilePageSpeedResult = self.mobilePageSpeedResult
-            testResultsViewController?.desktopPageSpeedResult = self.desktopPageSpeedResult
-            testResultsViewController?.servicesArr = self.servicesArr
-            testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
-            self.navigationController?.pushViewController(testResultsViewController!, animated: true)
+    }
+
+    func presentErrorAlert(title: String, message: String) {
+        self.presentAlert(
+            title: title,
+            message: message,
+            options: "OK"
+        ) { _ in
+            self.urlTextField.becomeFirstResponder()
+            self.urlTextField.selectAll(nil)
         }
     }
 
@@ -125,14 +167,12 @@ class NewTestViewController: UIViewController {
                     .get()
                 let pageSpeedError = try error.map(PageSpeedError.self)
                 self.isErrorAccured = true
-                self.showAlert(
+                self.presentErrorAlert(
                     title: "PageSpeed Error: \(pageSpeedError.error.code)",
                     message: pageSpeedError.error.message
-                ) {
-                    self.urlTextField.becomeFirstResponder()
-                    self.urlTextField.selectAll(nil)
-                }
+                )
                 print(pageSpeedError)
+                completionHandler(nil, nil)
                 return
             } catch {
                 print(error)
@@ -143,8 +183,6 @@ class NewTestViewController: UIViewController {
                     .filter(statusCode: 200)
                 let pageSpeedResult = try response.map(PageSpeedResponse.self)
                 debugPrint(pageSpeedResult)
-                self.responseTextView.text = ""
-                debugPrint(pageSpeedResult, to: &self.responseTextView.text)
                 switch strategy {
                 case .mobile:
                     self.mobilePageSpeedResult = pageSpeedResult
@@ -164,31 +202,23 @@ class NewTestViewController: UIViewController {
         }
     }
 
-    func showAlert(title: String, message: String, dismissCompletion: (() -> Void)? = nil) {
-        let alertController = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        let cancelAction = UIAlertAction(
-            title: "OK",
-            style: .cancel,
-            handler: { ( _ : UIAlertAction) -> Void in
-                alertController.dismiss(animated: true, completion: dismissCompletion)
-            }
-        )
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Test"
-        UIView.animate(withDuration: 2, animations: {
-            self.view.backgroundColor = .yellow
-        })
-        servicesTableView.separatorStyle = .none
+        servicesTableView.separatorStyle = .singleLine
+        for item in servicesArr {
+            servicesEnabledArr.append(item.id)
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = servicesTableViewHeight
+        servicesTableViewHeightConstraint.constant = height
+        servicesTableView.layoutIfNeeded()
+        servicesTableView.isScrollEnabled = false
+        urlTextField.addBottomBorder(color: .gray, width: 1)
     }
 }
 
@@ -205,10 +235,22 @@ extension NewTestViewController: UITableViewDataSource {
 
         cell?.id = service.id
         cell?.displayName = service.name
+        cell?.serviceSwitchChangeCallback = {
+            self.testConfig(id: service.id, enabled: cell?.serviceEnabled ?? false)
+        }
 
         cell?.separatorInset = .zero
         cell?.layoutMargins = .zero
         cell?.selectionStyle = .none
         return cell!
+    }
+
+    func testConfig(id: String, enabled: Bool) {
+        if enabled {
+            servicesEnabledArr.addItemIfNotExist(id)
+        } else {
+            servicesEnabledArr.removeItemIfExist(id)
+        }
+        print("switch \(id) \(enabled)")
     }
 }
