@@ -114,7 +114,6 @@ class NewTestViewController: UIViewController {
                 testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
                 self.navigationController?.pushViewController(testResultsViewController!, animated: true)
                 progressView.removeFromSuperview()
-
             }
         }
     }
