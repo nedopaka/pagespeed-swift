@@ -27,6 +27,9 @@
 		8485223124044B4B0005FC06 /* GTMetrixService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222924044B4B0005FC06 /* GTMetrixService.swift */; };
 		8485223224044B4B0005FC06 /* GTMetrixURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */; };
 		8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */; };
+		84F9A1D02440890500B900F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1CF2440890500B900F6 /* SettingsViewController.swift */; };
+		84F9A1D224408F5200B900F6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1D124408F5200B900F6 /* ProgressView.swift */; };
+		84F9A1D42440A8B300B900F6 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1D32440A8B300B900F6 /* SupportViewController.swift */; };
 		FA342930242F805100371A6F /* PageSpeedHistoryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */; };
 		FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */; };
 		FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */; };
@@ -35,8 +38,6 @@
 		FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD73723B8A7F90074E820 /* LaunchScreen.storyboard */; };
 		FA6FD74223B8A9050074E820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD74023B8A9050074E820 /* Main.storyboard */; };
 		FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD74323B8AA700074E820 /* MainViewController.swift */; };
-		FA74B1B92440613C0093FCE3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA74B1B82440613C0093FCE3 /* Welcome.storyboard */; };
-		FA74B1BB244067860093FCE3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */; };
 		FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */; };
 		FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */; };
 		FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */; };
@@ -76,6 +77,9 @@
 		8485222924044B4B0005FC06 /* GTMetrixService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixService.swift; sourceTree = "<group>"; };
 		8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixURLService.swift; sourceTree = "<group>"; };
 		8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixResultService.swift; sourceTree = "<group>"; };
+		84F9A1CF2440890500B900F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84F9A1D124408F5200B900F6 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		84F9A1D32440A8B300B900F6 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		A4C99B797A87117114C23C21 /* Pods_PageSpeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageSpeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedHistoryItemViewController.swift; sourceTree = "<group>"; };
 		FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedGeneral.swift; sourceTree = "<group>"; };
@@ -87,8 +91,6 @@
 		FA6FD73A23B8A7F90074E820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6FD74123B8A9050074E820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6FD74323B8AA700074E820 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		FA74B1B82440613C0093FCE3 /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
-		FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedResultViewController.swift; sourceTree = "<group>"; };
 		FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelpers.swift; sourceTree = "<group>"; };
 		FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedAPI.swift; sourceTree = "<group>"; };
@@ -216,6 +218,9 @@
 			children = (
 				8485221E24044B360005FC06 /* Errors */,
 				FA6FD74323B8AA700074E820 /* MainViewController.swift */,
+				84F9A1CF2440890500B900F6 /* SettingsViewController.swift */,
+				84F9A1D32440A8B300B900F6 /* SupportViewController.swift */,
+				84F9A1D124408F5200B900F6 /* ProgressView.swift */,
 				FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */,
 				FAA3A04723EB334A00426BB3 /* Stage-B.storyboard */,
 				FAA3A03B23E8BDEE00426BB3 /* Google */,
@@ -228,22 +233,12 @@
 				FAE258A7242E5BBB000E6B7A /* History - PageSpeed */,
 				FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */,
 				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
-				FA74B1B7244060D90093FCE3 /* Welcome */,
 				FA6FD73523B8A7F90074E820 /* Assets.xcassets */,
 				FA6FD74023B8A9050074E820 /* Main.storyboard */,
 				FA6FD73723B8A7F90074E820 /* LaunchScreen.storyboard */,
 				FA6FD73A23B8A7F90074E820 /* Info.plist */,
 			);
 			path = PageSpeed;
-			sourceTree = "<group>";
-		};
-		FA74B1B7244060D90093FCE3 /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				FA74B1B82440613C0093FCE3 /* Welcome.storyboard */,
-				FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */,
-			);
-			path = Welcome;
 			sourceTree = "<group>";
 		};
 		FAA3A03B23E8BDEE00426BB3 /* Google */ = {
@@ -376,7 +371,6 @@
 				FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */,
 				FAE258A9242E5C51000E6B7A /* PageSpeedHistory.storyboard in Resources */,
 				FA6FD73623B8A7F90074E820 /* Assets.xcassets in Resources */,
-				FA74B1B92440613C0093FCE3 /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,9 +442,11 @@
 			files = (
 				8485222D24044B4B0005FC06 /* Service.swift in Sources */,
 				8485222F24044B4B0005FC06 /* GTMetrixResultViewController.swift in Sources */,
+				84F9A1D42440A8B300B900F6 /* SupportViewController.swift in Sources */,
 				84223AE624225D98005899A1 /* ServiceTableViewCell.swift in Sources */,
 				FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */,
 				84223AEC24226E3C005899A1 /* HistoryGTMetrixTableViewController.swift in Sources */,
+				84F9A1D02440890500B900F6 /* SettingsViewController.swift in Sources */,
 				FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */,
 				FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */,
 				FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */,
@@ -459,7 +455,6 @@
 				FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */,
 				84223AE424225D98005899A1 /* NewTestViewController.swift in Sources */,
 				84223AE924226565005899A1 /* GTMetrixDataModel.swift in Sources */,
-				FA74B1BB244067860093FCE3 /* WelcomeViewController.swift in Sources */,
 				FAE258AD242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift in Sources */,
 				84223AE524225D98005899A1 /* TestViewController.swift in Sources */,
 				8421170E2423AF5700886374 /* HistoryTableViewController.swift in Sources */,
@@ -483,6 +478,7 @@
 				8450960D2417C24D00F3FDA4 /* GTMetrixResourceService.swift in Sources */,
 				FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */,
 				84223AE724225D98005899A1 /* TestResultsViewController.swift in Sources */,
+				84F9A1D224408F5200B900F6 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

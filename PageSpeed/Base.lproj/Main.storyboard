@@ -9,7 +9,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="d3v-UC-Xs2">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="fBa-T0-kKZ" customClass="MainTabBarController" customModule="PageSpeed" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="fBa-T0-kKZ" customClass="MainTabBarController" customModule="PageSpeed" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l8c-f5-gal">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
