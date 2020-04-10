@@ -2,7 +2,7 @@
 //  SupportViewController.swift
 //  PageSpeed
 //
-//  Created by Admin on 10.04.2020.
+//  Created by Ilya on 10.04.2020.
 //  Copyright © 2020 Stanford University. All rights reserved.
 //
 
