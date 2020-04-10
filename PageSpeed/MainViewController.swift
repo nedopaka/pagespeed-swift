@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let newTestViewController = UIStoryboard(name: "Stage-A", bundle: nil)
             .instantiateViewController(identifier: "NewTestViewController")
             as? NewTestViewController
@@ -25,10 +25,10 @@ class MainTabBarController: UITabBarController {
             .instantiateViewController(identifier: "SupportViewController")
         let settingsViewController = UIStoryboard(name: "Stage-B", bundle: nil)
             .instantiateViewController(identifier: "SettingsViewController")
-        
+
         let controllers = [newTestViewController, historyViewController, supportViewController, settingsViewController]
         var index = 0
-        
+
         _ = viewControllers?.map {
             ($0 as? UINavigationController)?.setViewControllers([controllers[index]!], animated: false)
             index += 1
