@@ -38,6 +38,8 @@
 		FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD73723B8A7F90074E820 /* LaunchScreen.storyboard */; };
 		FA6FD74223B8A9050074E820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6FD74023B8A9050074E820 /* Main.storyboard */; };
 		FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD74323B8AA700074E820 /* MainViewController.swift */; };
+		FA74B1B92440613C0093FCE3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA74B1B82440613C0093FCE3 /* Welcome.storyboard */; };
+		FA74B1BB244067860093FCE3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */; };
 		FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */; };
 		FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */; };
 		FAA3A03D23E8BF1900426BB3 /* PageSpeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */; };
@@ -91,6 +93,8 @@
 		FA6FD73A23B8A7F90074E820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6FD74123B8A9050074E820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6FD74323B8AA700074E820 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FA74B1B82440613C0093FCE3 /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		FA91D4E924029E4600CEAA08 /* PageSpeedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedResultViewController.swift; sourceTree = "<group>"; };
 		FA91D4EB2404286800CEAA08 /* UIViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelpers.swift; sourceTree = "<group>"; };
 		FAA3A03C23E8BF1900426BB3 /* PageSpeedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedAPI.swift; sourceTree = "<group>"; };
@@ -233,12 +237,22 @@
 				FAE258A7242E5BBB000E6B7A /* History - PageSpeed */,
 				FA6FD72E23B8A7EF0074E820 /* SceneDelegate.swift */,
 				FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */,
+				FA74B1B7244060D90093FCE3 /* Welcome */,
 				FA6FD73523B8A7F90074E820 /* Assets.xcassets */,
 				FA6FD74023B8A9050074E820 /* Main.storyboard */,
 				FA6FD73723B8A7F90074E820 /* LaunchScreen.storyboard */,
 				FA6FD73A23B8A7F90074E820 /* Info.plist */,
 			);
 			path = PageSpeed;
+			sourceTree = "<group>";
+		};
+		FA74B1B7244060D90093FCE3 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				FA74B1B82440613C0093FCE3 /* Welcome.storyboard */,
+				FA74B1BA244067860093FCE3 /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		FAA3A03B23E8BDEE00426BB3 /* Google */ = {
@@ -371,6 +385,7 @@
 				FA6FD73923B8A7F90074E820 /* LaunchScreen.storyboard in Resources */,
 				FAE258A9242E5C51000E6B7A /* PageSpeedHistory.storyboard in Resources */,
 				FA6FD73623B8A7F90074E820 /* Assets.xcassets in Resources */,
+				FA74B1B92440613C0093FCE3 /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +470,7 @@
 				FAA3A03F23E8D30300426BB3 /* PageSpeedResponse.swift in Sources */,
 				84223AE424225D98005899A1 /* NewTestViewController.swift in Sources */,
 				84223AE924226565005899A1 /* GTMetrixDataModel.swift in Sources */,
+				FA74B1BB244067860093FCE3 /* WelcomeViewController.swift in Sources */,
 				FAE258AD242E88D7000E6B7A /* PageSpeedHistoryListViewController.swift in Sources */,
 				84223AE524225D98005899A1 /* TestViewController.swift in Sources */,
 				8421170E2423AF5700886374 /* HistoryTableViewController.swift in Sources */,
