@@ -40,7 +40,6 @@ class ProgressView: UIView {
         view.backgroundColor = .lightGray
         return view
     }()
-
     var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
