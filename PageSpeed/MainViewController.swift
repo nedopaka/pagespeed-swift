@@ -21,8 +21,10 @@ class MainTabBarController: UITabBarController {
             as? NewTestViewController
         let historyViewController = UIStoryboard(name: "Stage-B", bundle: nil)
         .instantiateViewController(identifier: "HistoryTableViewController")
-        let supportViewController = UIViewController()
-        let settingsViewController = UIViewController()
+        let supportViewController = UIStoryboard(name: "Stage-B", bundle: nil)
+        .instantiateViewController(identifier: "SupportViewController")
+        let settingsViewController = UIStoryboard(name: "Stage-B", bundle: nil)
+        .instantiateViewController(identifier: "SettingsViewController")
 
         let controllers = [newTestViewController, historyViewController, supportViewController, settingsViewController]
         var index = 0

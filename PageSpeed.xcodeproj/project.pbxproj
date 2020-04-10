@@ -27,6 +27,9 @@
 		8485223124044B4B0005FC06 /* GTMetrixService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222924044B4B0005FC06 /* GTMetrixService.swift */; };
 		8485223224044B4B0005FC06 /* GTMetrixURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */; };
 		8485223324044B4B0005FC06 /* GTMetrixResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */; };
+		84F9A1D02440890500B900F6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1CF2440890500B900F6 /* SettingsViewController.swift */; };
+		84F9A1D224408F5200B900F6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1D124408F5200B900F6 /* ProgressView.swift */; };
+		84F9A1D42440A8B300B900F6 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A1D32440A8B300B900F6 /* SupportViewController.swift */; };
 		FA342930242F805100371A6F /* PageSpeedHistoryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */; };
 		FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */; };
 		FA6FD72D23B8A7EF0074E820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FD72C23B8A7EF0074E820 /* AppDelegate.swift */; };
@@ -74,6 +77,9 @@
 		8485222924044B4B0005FC06 /* GTMetrixService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixService.swift; sourceTree = "<group>"; };
 		8485222A24044B4B0005FC06 /* GTMetrixURLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixURLService.swift; sourceTree = "<group>"; };
 		8485222B24044B4B0005FC06 /* GTMetrixResultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTMetrixResultService.swift; sourceTree = "<group>"; };
+		84F9A1CF2440890500B900F6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84F9A1D124408F5200B900F6 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		84F9A1D32440A8B300B900F6 /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		A4C99B797A87117114C23C21 /* Pods_PageSpeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageSpeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA34292F242F805100371A6F /* PageSpeedHistoryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedHistoryItemViewController.swift; sourceTree = "<group>"; };
 		FA342931242F8BF800371A6F /* PageSpeedGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSpeedGeneral.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 			children = (
 				8485221E24044B360005FC06 /* Errors */,
 				FA6FD74323B8AA700074E820 /* MainViewController.swift */,
+				84F9A1CF2440890500B900F6 /* SettingsViewController.swift */,
+				84F9A1D32440A8B300B900F6 /* SupportViewController.swift */,
+				84F9A1D124408F5200B900F6 /* ProgressView.swift */,
 				FAA3A04423EB32E200426BB3 /* Stage-A.storyboard */,
 				FAA3A04723EB334A00426BB3 /* Stage-B.storyboard */,
 				FAA3A03B23E8BDEE00426BB3 /* Google */,
@@ -433,9 +442,11 @@
 			files = (
 				8485222D24044B4B0005FC06 /* Service.swift in Sources */,
 				8485222F24044B4B0005FC06 /* GTMetrixResultViewController.swift in Sources */,
+				84F9A1D42440A8B300B900F6 /* SupportViewController.swift in Sources */,
 				84223AE624225D98005899A1 /* ServiceTableViewCell.swift in Sources */,
 				FAA8F557241393D70019E59D /* UILabelHelpers.swift in Sources */,
 				84223AEC24226E3C005899A1 /* HistoryGTMetrixTableViewController.swift in Sources */,
+				84F9A1D02440890500B900F6 /* SettingsViewController.swift in Sources */,
 				FA91D4EA24029E4600CEAA08 /* PageSpeedResultViewController.swift in Sources */,
 				FA91D4EC2404286800CEAA08 /* UIViewHelpers.swift in Sources */,
 				FA6FD74423B8AA700074E820 /* MainViewController.swift in Sources */,
@@ -467,6 +478,7 @@
 				8450960D2417C24D00F3FDA4 /* GTMetrixResourceService.swift in Sources */,
 				FA342932242F8BF800371A6F /* PageSpeedGeneral.swift in Sources */,
 				84223AE724225D98005899A1 /* TestResultsViewController.swift in Sources */,
+				84F9A1D224408F5200B900F6 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

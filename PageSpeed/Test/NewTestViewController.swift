@@ -25,6 +25,7 @@ class NewTestViewController: UIViewController {
     var mobilePageSpeedResult: PageSpeedResponse?
     var desktopPageSpeedResult: PageSpeedResponse?
     var gtMetrixResponse: GTMetrixResponseItem?
+    var progressView: ProgressView?
     enum PageSpeedStrategy: String {
         case mobile
         case desktop
@@ -78,6 +79,8 @@ class NewTestViewController: UIViewController {
 
     // MARK: - Methods
     func processRequestsToServices(url: String) {
+        progressView = ProgressView()
+        view.addSubview(progressView!)
         if servicesEnabledArr.isEmpty {
             self.presentAlert(
                 title: "Attention",
@@ -110,6 +113,10 @@ class NewTestViewController: UIViewController {
                 testResultsViewController?.servicesEnabledArr = self.servicesEnabledArr
                 testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
                 self.navigationController?.pushViewController(testResultsViewController!, animated: true)
+                if let progressView = self.progressView{
+                    progressView.removeFromSuperview()
+                    self.progressView = nil
+                }
             }
         }
     }

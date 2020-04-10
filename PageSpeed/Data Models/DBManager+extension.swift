@@ -31,4 +31,17 @@ extension DBManager {
         } catch {}
         return nil
     }
+
+    func deleleHistory() {
+        do {
+
+            let realm = try Realm()
+            let gtMetrixItems = realm.objects(GTMetrixResponseItem.self)
+            let pageSpeedV5Items = realm.objects(PageSpeedV5Item.self)
+            try realm.write {
+                realm.delete(gtMetrixItems)
+                realm.delete(pageSpeedV5Items)
+            }
+        } catch {}
+    }
 }
