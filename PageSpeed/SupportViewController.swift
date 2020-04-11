@@ -9,8 +9,4 @@
 import UIKit
 
 class SupportViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

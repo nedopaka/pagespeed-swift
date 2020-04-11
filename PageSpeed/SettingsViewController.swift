@@ -13,8 +13,4 @@ class SettingsViewController: UIViewController {
     @IBAction private func clearHistoryAction(_ sender: Any) {
         DBManager.sharedInstance?.deleleHistory()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

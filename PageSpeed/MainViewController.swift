@@ -12,7 +12,7 @@ import Moya
 // MARK: - MainTabBarController
 
 class MainTabBarController: UITabBarController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,11 +39,11 @@ class MainTabBarController: UITabBarController {
 // MARK: - MainViewController
 
 class MainViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     /*
      // MARK: - Navigation
      
