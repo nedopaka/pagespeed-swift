@@ -101,6 +101,7 @@ class NewTestViewController: UIViewController {
                 self.addPageSpeedTestTask(url: url, strategy: .desktop)
             }
             self.dispatchGroup.notify(queue: .main) {
+                progressView.removeFromSuperview()
                 if self.isErrorAccured { return }
                 let testResultsViewController = UIStoryboard(
                     name: "Stage-A",
@@ -113,7 +114,6 @@ class NewTestViewController: UIViewController {
                 testResultsViewController?.servicesEnabledArr = self.servicesEnabledArr
                 testResultsViewController?.gtMetrixResponse = self.gtMetrixResponse
                 self.navigationController?.pushViewController(testResultsViewController!, animated: true)
-                progressView.removeFromSuperview()
             }
         }
     }
@@ -214,6 +214,26 @@ class NewTestViewController: UIViewController {
         for item in servicesArr {
             servicesEnabledArr.append(item.id)
         }
+        self.endEditingOnFocusOut()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(rotated),
+            name: UIDevice.orientationDidChangeNotification,
+            object: nil
+        )
+    }
+
+    deinit {
+       NotificationCenter.default.removeObserver(
+        self,
+        name: UIDevice.orientationDidChangeNotification,
+        object: nil
+       )
+    }
+
+    @objc func rotated() {
+        servicesTableView.layoutIfNeeded()
+        urlTextField.addBottomBorder(color: .gray, width: 1)
     }
 
     override func viewDidLayoutSubviews() {

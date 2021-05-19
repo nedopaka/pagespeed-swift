@@ -46,4 +46,13 @@ extension UIViewController {
         }
         return topViewController!
     }
+
+    func endEditingOnFocusOut() {
+        let tap = UITapGestureRecognizer(
+            target: view,
+            action: #selector(view.endEditing)
+        )
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
 }

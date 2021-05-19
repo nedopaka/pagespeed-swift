@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +34,7 @@
                                             <segment title="Desktop"/>
                                         </segments>
                                     </segmentedControl>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhC-uY-kWZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhC-uY-kWZ">
                                         <rect key="frame" x="0.0" y="283" width="414" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
@@ -41,23 +43,23 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-CL-Cdj">
                                         <rect key="frame" x="0.0" y="313" width="414" height="505"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Xzd-4e-jKJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Xzd-4e-jKJ" firstAttribute="bottom" secondItem="1WF-iC-u20" secondAttribute="bottom" id="C6L-Uf-iLf"/>
                             <constraint firstItem="Xzd-4e-jKJ" firstAttribute="trailing" secondItem="1WF-iC-u20" secondAttribute="trailing" id="Z2O-qg-hWg"/>
                             <constraint firstItem="1WF-iC-u20" firstAttribute="leading" secondItem="Xzd-4e-jKJ" secondAttribute="leading" id="ela-LC-4xq"/>
                             <constraint firstItem="1WF-iC-u20" firstAttribute="top" secondItem="Xzd-4e-jKJ" secondAttribute="top" id="fjI-bo-EcS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Xzd-4e-jKJ"/>
                     </view>
                     <connections>
                         <outlet property="responseTextView" destination="HYj-CL-Cdj" id="YRQ-yh-8bV"/>
@@ -114,7 +116,7 @@
                                                                 <subviews>
                                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fqc-yW-tzB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="128" id="NPp-ep-y18"/>
                                                                         </constraints>
@@ -133,7 +135,7 @@
                                                                                             </connections>
                                                                                         </switch>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3e-Gh-2Yl">
-                                                                                            <rect key="frame" x="72" y="11.5" width="42" height="20.5"/>
+                                                                                            <rect key="frame" x="72" y="11.5" width="41.5" height="20.5"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                             <nil key="textColor"/>
                                                                                             <nil key="highlightedColor"/>
@@ -164,7 +166,7 @@
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbW-Ii-rjC">
                                                         <rect key="frame" x="0.0" y="476.5" width="374" height="1"/>
-                                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Lqt-es-VuT"/>
                                                         </constraints>
@@ -172,22 +174,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vax-8g-9ft">
                                                         <rect key="frame" x="0.0" y="527.5" width="374" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sul-uJ-kLo" customClass="UIButtonDesignable" customModule="PageSpeed" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sul-uJ-kLo" customClass="UIButtonDesignable" customModule="PageSpeed" customModuleProvider="target">
                                                                 <rect key="frame" x="37" y="0.0" width="300" height="50"/>
-                                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="8zW-nA-g7K"/>
-                                                                    <constraint firstAttribute="width" constant="300" id="Jsh-3J-cTj"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Jsh-3J-cTj"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Test"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="performTest:" destination="AkP-gj-XD7" eventType="touchUpInside" id="088-nQ-Bzk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="Sul-uJ-kLo" firstAttribute="centerY" secondItem="vax-8g-9ft" secondAttribute="centerY" id="327-da-rjE"/>
                                                             <constraint firstItem="Sul-uJ-kLo" firstAttribute="centerX" secondItem="vax-8g-9ft" secondAttribute="centerX" id="G9v-0g-h91"/>
@@ -195,9 +202,12 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="iCT-T7-6HI" secondAttribute="trailing" id="Q6L-l2-eN1"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="cRo-TJ-ZPQ" secondAttribute="bottom" constant="20" symbolic="YES" id="a5S-wU-utT"/>
                                             <constraint firstAttribute="trailing" secondItem="cRo-TJ-ZPQ" secondAttribute="trailing" constant="20" symbolic="YES" id="bU6-YR-VpS"/>
@@ -217,14 +227,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="nhi-uI-uyz"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WOk-gi-DxZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gdT-Qk-a59" firstAttribute="top" secondItem="WOk-gi-DxZ" secondAttribute="top" id="QgH-GD-5un"/>
                             <constraint firstItem="WOk-gi-DxZ" firstAttribute="trailing" secondItem="gdT-Qk-a59" secondAttribute="trailing" id="jJ8-nM-t08"/>
                             <constraint firstItem="WOk-gi-DxZ" firstAttribute="bottom" secondItem="gdT-Qk-a59" secondAttribute="bottom" id="nn3-Zs-EcA"/>
                             <constraint firstItem="gdT-Qk-a59" firstAttribute="leading" secondItem="WOk-gi-DxZ" secondAttribute="leading" id="peA-CD-ELK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="WOk-gi-DxZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="kc0-mk-PTR"/>
                     <connections>
@@ -260,7 +270,7 @@
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uHT-qT-NZC">
                                                 <rect key="frame" x="0.0" y="40.5" width="374" height="757.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TestResultsCell" textLabel="u2b-p6-tJu" detailTextLabel="zSI-dd-xfU" style="IBUITableViewCellStyleSubtitle" id="CKD-AP-Eef">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="55.5"/>
@@ -270,7 +280,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u2b-p6-tJu">
-                                                                    <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                                                    <rect key="frame" x="20" y="10" width="33" height="20.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -295,7 +305,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5fU-8K-e6M" secondAttribute="bottom" id="857-0P-R5N"/>
                                     <constraint firstItem="5fU-8K-e6M" firstAttribute="top" secondItem="eGH-Zf-VGC" secondAttribute="top" constant="20" symbolic="YES" id="GMO-5P-QuZ"/>
@@ -304,14 +314,14 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ekk-tN-o4h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eGH-Zf-VGC" firstAttribute="leading" secondItem="Ekk-tN-o4h" secondAttribute="leading" id="BVX-Qe-rzs"/>
                             <constraint firstItem="Ekk-tN-o4h" firstAttribute="trailing" secondItem="eGH-Zf-VGC" secondAttribute="trailing" id="Fzt-Nx-4Io"/>
                             <constraint firstItem="Ekk-tN-o4h" firstAttribute="bottom" secondItem="eGH-Zf-VGC" secondAttribute="bottom" id="mQ8-MQ-MUj"/>
                             <constraint firstItem="eGH-Zf-VGC" firstAttribute="top" secondItem="Ekk-tN-o4h" secondAttribute="top" id="n1i-Pk-hU7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ekk-tN-o4h"/>
                     </view>
                     <connections>
                         <outlet property="testResultsTableView" destination="uHT-qT-NZC" id="GXE-5G-dAx"/>
@@ -348,7 +358,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-we-lP8">
                                                         <rect key="frame" x="0.0" y="49" width="414" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="linkColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfS-Bm-A5g">
@@ -365,7 +375,7 @@
                                                                 </connections>
                                                             </segmentedControl>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="linkColor"/>
                                                         <constraints>
                                                             <constraint firstItem="vIN-fa-J8T" firstAttribute="centerY" secondItem="JfS-Bm-A5g" secondAttribute="centerY" id="Th0-DE-g71"/>
                                                             <constraint firstItem="vIN-fa-J8T" firstAttribute="centerX" secondItem="JfS-Bm-A5g" secondAttribute="centerX" id="Z5k-BL-WKL"/>
@@ -388,7 +398,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstItem="24a-ng-dni" firstAttribute="centerX" secondItem="SLY-qv-MYR" secondAttribute="centerX" id="49r-x8-ape"/>
                                                                             <constraint firstItem="24a-ng-dni" firstAttribute="centerY" secondItem="SLY-qv-MYR" secondAttribute="centerY" id="QY0-q9-7fE"/>
@@ -412,7 +422,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="SLY-qv-MYR" firstAttribute="centerX" secondItem="egu-qo-WKQ" secondAttribute="centerX" id="7Tn-1s-XoB"/>
                                                                     <constraint firstAttribute="height" constant="218" id="OyM-tB-EcK"/>
@@ -421,7 +431,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="218" id="Ms7-gW-61y"/>
                                                             <constraint firstItem="egu-qo-WKQ" firstAttribute="centerY" secondItem="03V-oJ-Pqk" secondAttribute="centerY" id="prM-r6-gqo"/>
@@ -479,7 +489,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="UYv-nE-mbX" firstAttribute="centerY" secondItem="0bs-Yp-P4v" secondAttribute="centerY" id="Bsd-Rj-eQQ"/>
                                                                                     <constraint firstItem="cux-Nv-6O3" firstAttribute="leading" secondItem="UYv-nE-mbX" secondAttribute="trailing" constant="5" id="F9B-J2-fhK"/>
@@ -509,7 +519,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="Szq-m9-Ajw" firstAttribute="leading" secondItem="z9H-dI-xPM" secondAttribute="leading" id="Pay-UX-GAG"/>
                                                                                     <constraint firstItem="5lR-va-n7a" firstAttribute="leading" secondItem="Szq-m9-Ajw" secondAttribute="trailing" constant="5" id="WZS-r5-OSg"/>
@@ -539,7 +549,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="nkQ-kE-ip9" firstAttribute="leading" secondItem="q9p-Ha-9zu" secondAttribute="leading" id="O1j-fv-olJ"/>
                                                                                     <constraint firstItem="nkQ-kE-ip9" firstAttribute="centerY" secondItem="q9p-Ha-9zu" secondAttribute="centerY" id="OcC-Ar-DqN"/>
@@ -557,7 +567,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="340" id="2UF-fQ-XHL"/>
                                                                     <constraint firstAttribute="height" constant="58" id="3s7-bw-G3D"/>
@@ -567,7 +577,7 @@
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="makeCircular" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" systemColor="opaqueSeparatorColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
@@ -575,14 +585,14 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="77" id="DDx-Dr-eeK"/>
                                                             <constraint firstItem="sqZ-ND-q5x" firstAttribute="centerX" secondItem="4eb-bY-fTE" secondAttribute="centerX" id="bP7-rn-uxH"/>
                                                             <constraint firstItem="sqZ-ND-q5x" firstAttribute="centerY" secondItem="4eb-bY-fTE" secondAttribute="centerY" id="dbS-4x-fEb"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph6-T5-G1a">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph6-T5-G1a">
                                                         <rect key="frame" x="0.0" y="480" width="414" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
@@ -636,16 +646,16 @@
                                                                 <rect key="frame" x="72" y="34" width="270" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHg-38-wCO">
-                                                                        <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfv-TN-MaV" customClass="UIViewDesignable" customModule="PageSpeed" customModuleProvider="target">
                                                                         <rect key="frame" x="130" y="0.0" width="140" height="20"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F6-nu-1Oe">
-                                                                                <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                                <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -654,9 +664,9 @@
                                                                                 <rect key="frame" x="80" y="0.0" width="60" height="20"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fq-oo-cRk">
-                                                                                        <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                                        <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
@@ -704,7 +714,7 @@
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNm-MA-eXt">
                                                                 <rect key="frame" x="57" y="74" width="300" height="1"/>
-                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="RMn-Xq-WlR"/>
                                                                     <constraint firstAttribute="width" constant="300" id="RR4-JL-bZA"/>
@@ -755,16 +765,16 @@
                                                                 <rect key="frame" x="72" y="128" width="270" height="20"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPq-27-gP7">
-                                                                        <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R33-Yv-Cht" customClass="UIViewDesignable" customModule="PageSpeed" customModuleProvider="target">
                                                                         <rect key="frame" x="130" y="0.0" width="140" height="20"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6q-jY-Ljj">
-                                                                                <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                                <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -773,9 +783,9 @@
                                                                                 <rect key="frame" x="80" y="0.0" width="60" height="20"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRg-ca-HLy">
-                                                                                        <rect key="frame" x="10" y="0.0" width="14" height="20.5"/>
+                                                                                        <rect key="frame" x="10" y="0.0" width="15.5" height="20.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
@@ -822,7 +832,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="168" id="0KJ-nV-LZC"/>
                                                             <constraint firstItem="mb2-hv-Y0H" firstAttribute="centerX" secondItem="yo5-Ij-zWE" secondAttribute="centerX" id="Afi-hB-AXg"/>
@@ -841,13 +851,13 @@
                                                         <rect key="frame" x="0.0" y="717" width="414" height="45"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Screenshot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daF-zs-DjU">
-                                                                <rect key="frame" x="30" y="8" width="188" height="29"/>
+                                                                <rect key="frame" x="30" y="8" width="187" height="29"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                                         <constraints>
                                                             <constraint firstItem="daF-zs-DjU" firstAttribute="leading" secondItem="80P-Kl-H1D" secondAttribute="leading" constant="30" id="5TO-Sd-VUx"/>
                                                             <constraint firstItem="daF-zs-DjU" firstAttribute="centerY" secondItem="80P-Kl-H1D" secondAttribute="centerY" id="AqC-51-h5D"/>
@@ -857,14 +867,14 @@
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTW-sD-S0U">
                                                         <rect key="frame" x="0.0" y="782" width="414" height="428"/>
-                                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="linkColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="428" id="BtQ-19-Nnf"/>
                                                         </constraints>
                                                     </imageView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcq-EC-FOV">
                                                         <rect key="frame" x="0.0" y="1230" width="414" height="128"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="128" id="bDp-cm-oAn"/>
                                                         </constraints>
@@ -884,7 +894,7 @@
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-bY-CMD" customClass="UIViewDesignable" customModule="PageSpeed" customModuleProvider="target">
                                                                                             <rect key="frame" x="3" y="3" width="18" height="18"/>
-                                                                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="18" id="Je0-mo-Ki7"/>
                                                                                                 <constraint firstAttribute="height" constant="18" id="TZM-gp-ADm"/>
@@ -912,9 +922,9 @@
                                                                                         </label>
                                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2PX-df-qDm">
                                                                                             <rect key="frame" x="0.0" y="20.5" width="268" height="267"/>
-                                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                            <color key="textColor" systemColor="labelColor"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -956,16 +966,16 @@
                                                     </tableView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L5Y-pU-D6X">
                                                         <rect key="frame" x="0.0" y="1378" width="414" height="239.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="I4c-Te-Ggq" firstAttribute="leading" secondItem="qup-8M-jda" secondAttribute="leading" id="OLl-Fe-Gmo"/>
                                             <constraint firstItem="I4c-Te-Ggq" firstAttribute="top" secondItem="qup-8M-jda" secondAttribute="top" constant="20" symbolic="YES" id="pd9-rG-X3R"/>
@@ -985,14 +995,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="qpq-CA-ysm"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IfR-ha-F51"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IfR-ha-F51" firstAttribute="trailing" secondItem="vCC-yt-KjZ" secondAttribute="trailing" id="Fpn-3q-r7g"/>
                             <constraint firstItem="vCC-yt-KjZ" firstAttribute="leading" secondItem="IfR-ha-F51" secondAttribute="leading" id="GMm-If-reF"/>
                             <constraint firstItem="vCC-yt-KjZ" firstAttribute="top" secondItem="IfR-ha-F51" secondAttribute="top" id="j0l-jj-Etl"/>
                             <constraint firstItem="IfR-ha-F51" firstAttribute="bottom" secondItem="vCC-yt-KjZ" secondAttribute="bottom" id="pcf-c7-TRC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="IfR-ha-F51"/>
                     </view>
                     <connections>
                         <outlet property="averageFCPChart" destination="Cfv-TN-MaV" id="d9a-cQ-dGf"/>
@@ -1024,6 +1034,7 @@
                         <outlet property="slowFIDChart" destination="zhV-w0-KJc" id="HIo-1u-F2C"/>
                         <outlet property="slowFIDChartLabel" destination="dRg-ca-HLy" id="2bw-Lb-Aai"/>
                         <outlet property="slowFIDChartWidthConstraint" destination="15F-a7-Bks" id="jaw-LT-BV4"/>
+                        <outlet property="speedDataCanvas" destination="yo5-Ij-zWE" id="ak2-Wc-oyY"/>
                         <outlet property="timeFCPLabel" destination="HdC-oe-UlM" id="KCP-R1-euM"/>
                         <outlet property="timeFIDLabel" destination="i1o-YE-bnv" id="Y4O-x4-WxH"/>
                         <outlet property="timestampTextView" destination="L5Y-pU-D6X" id="yTE-w6-PEo"/>
@@ -1062,18 +1073,18 @@
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PageSpeed Web Image" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-GN-vtV">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="428"/>
-                                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="linkColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="428" id="a63-YK-SBy"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-y1-1TR">
                                                                 <rect key="frame" x="0.0" y="457" width="374" height="280"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">PageSpeed Insights (PSI) reports on the performance of a page on both mobile and desktop devices, and provides suggestions on how that page may be improved.
 
 PSI provides both lab and field data about a page. Lab data is useful for debugging performance issues, as it is collected in a controlled environment. However, it may not capture real-world bottlenecks. Field data is useful for capturing true, real-world user experience - but has a more limited set of metrics.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1090,9 +1101,9 @@ PSI provides both lab and field data about a page. Lab data is useful for debugg
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IMl-t8-Wpe">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="158.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">At the top of the report, PSI provides a score which summarizes the page’s performance. This score is determined by running Lighthouse to collect and analyze lab data about the page. A score of 90 or above is considered fast, and 50 to 90 is considered moderate. Below 50 is considered to be slow.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1109,13 +1120,13 @@ PSI provides both lab and field data about a page. Lab data is useful for debugg
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pP9-FL-18R">
                                                                 <rect key="frame" x="0.0" y="57.5" width="374" height="138"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">The color-coding maps to these Performance score ranges:
 
 0 to 49 (slow): Red
 50 to 89 (average): Orange
 90 to 100 (fast): Green</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1132,9 +1143,9 @@ PSI provides both lab and field data about a page. Lab data is useful for debugg
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AhB-BN-QT2">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="138"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">When PSI is given a URL, it will look it up in the Chrome User Experience Report (CrUX) dataset. If available, PSI reports the First Contentful Paint (FCP) and the First Input Delay (FID) metric data for the origin and potentially the specific page URL.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1151,9 +1162,9 @@ PSI provides both lab and field data about a page. Lab data is useful for debugg
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQ8-D6-Vrd">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="117.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">PSI also classifies field data into 3 buckets, describing experiences deemed fast, moderate, or slow. PSI sets the following thresholds for fast / moderate / slow, based on our analysis of the CrUX dataset:</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1176,11 +1187,11 @@ PSI provides both lab and field data about a page. Lab data is useful for debugg
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m5r-dV-sTc">
                                                                 <rect key="frame" x="0.0" y="57.5" width="374" height="442.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">PSI presents a distribution of these metrics so that developers can understand the range of FCP and FID values for that page or origin. This distribution is also split into three categories: Fast, Moderate, and Slow, denoted with green, orange, and red bars. For example, seeing 14% within FCP's orange bar indicates that 14% of all observed FCP values fall between 1,000ms and 3,000ms. This data represents an aggregate view of all page loads over the previous 30 days.
 
 Above the distribution bars, PSI reports the 75th percentile First Contentful Paint and the 95th percentile First Input Delay, presented in seconds and milliseconds respectfully. These percentiles are selected so that developers can understand the most frustrating user experiences on their site. These field metric values are classified as fast/moderate/slow by applying the same thresholds shown above.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1197,13 +1208,13 @@ Above the distribution bars, PSI reports the 75th percentile First Contentful Pa
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wgB-dh-MYQ">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="138"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">An overall label is calculated from the field metric values:
 
 Fast: If both FCP and FID are Fast.
 Slow: If any either FCP or FID is Slow.
 Moderate: All other cases.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1220,9 +1231,9 @@ Moderate: All other cases.</string>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-uV-FKr">
                                                                 <rect key="frame" x="0.0" y="57.5" width="374" height="117.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">The difference between the field data in PSI versus the Chrome User Experience Report on BigQuery, is that PSI’s data is updated daily for the trailing 30 day period. The data set on BigQuery is only updated monthly.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1239,9 +1250,9 @@ Moderate: All other cases.</string>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fK0-9R-6eE">
                                                                 <rect key="frame" x="0.0" y="29" width="374" height="158.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">PSI uses Lighthouse to analyze the given URL, generating a performance score that estimates the page's performance on different metrics, including: First Contentful Paint, First Meaningful Paint, Speed Index, First CPU Idle, Time to Interactive, and Estimated Input Latency.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
@@ -1250,7 +1261,7 @@ Moderate: All other cases.</string>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="g7w-q1-5Zb" firstAttribute="leading" secondItem="du8-g0-L0l" secondAttribute="leading" constant="20" symbolic="YES" id="8KW-vK-Qgb"/>
                                             <constraint firstAttribute="bottom" secondItem="g7w-q1-5Zb" secondAttribute="bottom" constant="20" symbolic="YES" id="g6r-LI-rfc"/>
@@ -1270,14 +1281,14 @@ Moderate: All other cases.</string>
                                 <viewLayoutGuide key="frameLayoutGuide" id="lII-bA-iw9"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="TBE-Zc-gTp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="D54-5w-TVy" firstAttribute="top" secondItem="TBE-Zc-gTp" secondAttribute="top" id="M2u-QX-r29"/>
                             <constraint firstItem="TBE-Zc-gTp" firstAttribute="trailing" secondItem="D54-5w-TVy" secondAttribute="trailing" id="j89-EW-dgQ"/>
                             <constraint firstItem="TBE-Zc-gTp" firstAttribute="bottom" secondItem="D54-5w-TVy" secondAttribute="bottom" id="nq8-3T-7bX"/>
                             <constraint firstItem="D54-5w-TVy" firstAttribute="leading" secondItem="TBE-Zc-gTp" secondAttribute="leading" id="q94-Xx-JNu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TBE-Zc-gTp"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YaA-zG-nRu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1285,11 +1296,16 @@ Moderate: All other cases.</string>
             <point key="canvasLocation" x="4320" y="212"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Sul-uJ-kLo">
+            <size key="intrinsicContentSize" width="34" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Cloud Image" width="50" height="50"/>
         <image name="PageSpeed FCP FID Table Image" width="407" height="125"/>
         <image name="PageSpeed Web Image" width="244" height="435"/>
-        <image name="info.circle" catalog="system" width="64" height="60"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <namedColor name="PageSpeedAverageColor">
             <color red="1" green="0.64313725490196083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1299,5 +1315,29 @@ Moderate: All other cases.</string>
         <namedColor name="PageSpeedSlowColor">
             <color red="1" green="0.30588235294117649" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -32,9 +32,9 @@ class DBManager {
 
     static func migrateToNewSchema() {
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 1 {
+                if oldSchemaVersion < 3 {
                     // Auto update
                     print("New Schema description: \(migration.newSchema.description)")
                 }

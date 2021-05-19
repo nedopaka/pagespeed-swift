@@ -347,7 +347,7 @@
                                                             <constraint firstAttribute="height" constant="77" id="wY5-ub-BDM"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvz-XL-O2U">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvz-XL-O2U">
                                                         <rect key="frame" x="0.0" y="472" width="414" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
@@ -789,6 +789,7 @@
                         <outlet property="slowFIDChart" destination="3jc-cf-MZx" id="xwZ-kE-bVC"/>
                         <outlet property="slowFIDChartLabel" destination="Zt0-Eo-IlV" id="kMD-7V-67G"/>
                         <outlet property="slowFIDChartWidthConstraint" destination="Zmf-ne-wmO" id="wjJ-FU-wHI"/>
+                        <outlet property="speedDataCanvas" destination="Pn6-NU-HAa" id="IuF-UO-As8"/>
                         <outlet property="strategyLabel" destination="C5F-ft-LQx" id="ire-mY-V8Z"/>
                         <outlet property="timeFCPLabel" destination="x2r-fj-n1u" id="sBG-MK-NwO"/>
                         <outlet property="timeFIDLabel" destination="fFu-iL-wEw" id="Ek0-t1-8E3"/>

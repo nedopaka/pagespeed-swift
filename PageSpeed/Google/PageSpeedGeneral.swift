@@ -26,6 +26,10 @@ enum PageSpeedCategory: String {
     case FAST
     case AVERAGE
     case SLOW
+    case NODATA = """
+    Field Data:
+    The Chrome User Experience Report does not have sufficient real-world speed data for this page.
+    """
 }
 
 enum PageSpeedLabData: CaseIterable {

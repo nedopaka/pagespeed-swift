@@ -38,7 +38,7 @@ class PageSpeedHistoryListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension PageSpeedHistoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DBManager.sharedInstance?.getPageSpeedV5Items().count ?? 0
+        DBManager.sharedInstance?.getPageSpeedV5Items().count ?? 0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

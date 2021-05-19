@@ -15,7 +15,7 @@ import RealmSwift
     dynamic var url: String = ""
     dynamic var strategy: String = ""
     dynamic var performanceScore: Double = 0
-    dynamic var overallCategory: String = ""
+    dynamic var overallCategory: String?
     dynamic var metrics: PageSpeedV5Metrics?
     dynamic var labData: PageSpeedV5LabData?
     dynamic var finalScreenshot: String = ""
@@ -33,7 +33,9 @@ import RealmSwift
         let metrics = response.loadingExperience.metrics
         let audits = response.lighthouseResult.audits
 
-        self.metrics = PageSpeedV5Metrics(metrics: metrics)
+        if let metrics = metrics {
+            self.metrics = PageSpeedV5Metrics(metrics: metrics)
+        }
         self.labData = PageSpeedV5LabData(audits: audits)
 
         self.finalScreenshot = response.lighthouseResult.audits.finalScreenshot.details.data
@@ -41,7 +43,7 @@ import RealmSwift
     }
 
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
 }
 

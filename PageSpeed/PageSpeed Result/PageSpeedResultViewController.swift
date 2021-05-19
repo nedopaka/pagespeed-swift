@@ -45,6 +45,7 @@ class PageSpeedResultViewController: UIViewController {
 
     @IBOutlet private weak var fieldDataOverallCategory: UILabel!
 
+    @IBOutlet private weak var speedDataCanvas: UIView!
     // FCP Chart
     @IBOutlet private weak var iconFCP: UIView!
     @IBOutlet private weak var timeFCPLabel: UILabel!
@@ -172,6 +173,13 @@ class PageSpeedResultViewController: UIViewController {
         case .desktop:
             category = desktopLoadingOverallCategory
         }
+        if category == nil {
+            fieldDataOverallCategory.text = PageSpeedCategory.NODATA.rawValue
+            fieldDataOverallCategory.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            speedDataCanvas.isHidden = true
+            return
+        }
+        speedDataCanvas.isHidden = false
         let color: UIColor?
         switch category {
         case .FAST:
@@ -203,14 +211,20 @@ class PageSpeedResultViewController: UIViewController {
         overallMobileScore = (mobilePageSpeedResult?.lighthouseResult.categories.performance.score ?? 0) * 100
         overallDesktopScore = (desktopPageSpeedResult?.lighthouseResult.categories.performance.score ?? 0) * 100
         if let mobilePageSpeedResult = mobilePageSpeedResult {
-            mobileFCP = getFCP(pageSpeedResult: mobilePageSpeedResult)
-            mobileFID = getFID(pageSpeedResult: mobilePageSpeedResult)
-            mobileLoadingOverallCategory = getLoadingOverallCategory(pageSpeedResult: mobilePageSpeedResult)
+            if let category = getLoadingOverallCategory(pageSpeedResult: mobilePageSpeedResult) {
+                mobileLoadingOverallCategory = category
+                mobileFCP = getFCP(pageSpeedResult: mobilePageSpeedResult)
+                mobileFID = getFID(pageSpeedResult: mobilePageSpeedResult)
+            }
         }
         if let desktopPageSpeedResult = desktopPageSpeedResult {
             desktopFCP = getFCP(pageSpeedResult: desktopPageSpeedResult)
             desktopFID = getFID(pageSpeedResult: desktopPageSpeedResult)
-            desktopLoadingOverallCategory = getLoadingOverallCategory(pageSpeedResult: desktopPageSpeedResult)
+            if let category = getLoadingOverallCategory(pageSpeedResult: desktopPageSpeedResult) {
+                desktopLoadingOverallCategory = category
+                desktopFCP = getFCP(pageSpeedResult: desktopPageSpeedResult)
+                desktopFID = getFID(pageSpeedResult: desktopPageSpeedResult)
+            }
         }
     }
 
@@ -277,49 +291,51 @@ class PageSpeedResultViewController: UIViewController {
     }
 
     func getLoadingOverallCategory(pageSpeedResult: PageSpeedResponse) -> PageSpeedCategory? {
-        let overallCategory = pageSpeedResult
+        if let overallCategory = pageSpeedResult
             .loadingExperience
-            .overallCategory
-        return PageSpeedCategory(rawValue: overallCategory)
+            .overallCategory {
+            return PageSpeedCategory(rawValue: overallCategory)
+        }
+        return nil
     }
 
     func getFCP(pageSpeedResult: PageSpeedResponse) -> MetricResult {
         // time in ms
         let timeFCP = pageSpeedResult
             .loadingExperience
-            .metrics
+            .metrics?
             .firstContentfulPaintMS
-            .percentile
+            .percentile ?? 0
 
         let fastFCP = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstContentfulPaintMS
                 .distributions[0]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let averageFCP = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstContentfulPaintMS
                 .distributions[1]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let slowFCP = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstContentfulPaintMS
                 .distributions[2]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let categoryFCP = pageSpeedResult
             .loadingExperience
-            .metrics
+            .metrics?
             .firstContentfulPaintMS
-            .category
+            .category ?? ""
 
         return (timeFCP, fastFCP, averageFCP, slowFCP, categoryFCP)
     }
@@ -328,39 +344,39 @@ class PageSpeedResultViewController: UIViewController {
         // time in ms
         let timeFID = pageSpeedResult
             .loadingExperience
-            .metrics
+            .metrics?
             .firstInputDelayMS
-            .percentile
+            .percentile ?? 0
 
         let fastFID = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstInputDelayMS
                 .distributions[0]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let averageFID = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstInputDelayMS
                 .distributions[1]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let slowFID = Int(
             ((pageSpeedResult
                 .loadingExperience
-                .metrics
+                .metrics?
                 .firstInputDelayMS
                 .distributions[2]
-                .proportion) * 100).rounded()
+                .proportion ?? 0) * 100).rounded()
             )
         let categoryFID = pageSpeedResult
             .loadingExperience
-            .metrics
+            .metrics?
             .firstInputDelayMS
-            .category
+            .category ?? ""
 
         return (time: timeFID, fast: fastFID, average: averageFID, slow: slowFID, categoryFID)
     }

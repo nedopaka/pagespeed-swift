@@ -37,6 +37,7 @@ class PageSpeedHistoryItemViewController: UIViewController {
 
     @IBOutlet private weak var fieldDataOverallCategory: UILabel!
 
+    @IBOutlet private weak var speedDataCanvas: UIView!
     // FCP Chart
     @IBOutlet private weak var iconFCP: UIView!
     @IBOutlet private weak var timeFCPLabel: UILabel!
@@ -165,7 +166,12 @@ class PageSpeedHistoryItemViewController: UIViewController {
     func showFieldDataOverallCategory(result: PageSpeedV5Item) {
         let color: UIColor?
 
-        let category = result.overallCategory
+        guard let category = result.overallCategory else {
+            fieldDataOverallCategory.text = PageSpeedCategory.NODATA.rawValue
+            fieldDataOverallCategory.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            speedDataCanvas.isHidden = true
+            return
+        }
         switch PageSpeedCategory(rawValue: category) {
         case .FAST:
             color = UIColor(named: "PageSpeedFastSecondaryColor")

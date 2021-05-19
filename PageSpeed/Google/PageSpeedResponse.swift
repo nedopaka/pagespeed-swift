@@ -16,7 +16,7 @@ struct PageSpeedResponse: Codable {
     // horizontal charts FCP, FID
     let loadingExperience: LoadingExperience
     // horizontal charts FCP, FID origin
-    let originLoadingExperience: LoadingExperience
+    let originLoadingExperience: LoadingExperience?
     // overall scores, details
     let lighthouseResult: LighthouseResult
     let analysisUTCTimestamp: String
@@ -50,10 +50,10 @@ struct ProcessingError: Codable {
 
 // MARK: - LoadingExperience
 struct LoadingExperience: Codable {
-    let id: String
+    let id: String?
     // horizontal charts FCP, FID
-    let metrics: LoadingExperienceMetrics
-    let overallCategory: String
+    let metrics: LoadingExperienceMetrics?
+    let overallCategory: String?
     let initialURL: String
 
     enum CodingKeys: String, CodingKey {
@@ -144,7 +144,7 @@ struct LighthouseResult: Codable {
 struct Environment: Codable {
     let networkUserAgent: String
     let hostUserAgent: String
-    let benchmarkIndex: Int
+    let benchmarkIndex: Double
 
     enum CodingKeys: String, CodingKey {
         case networkUserAgent = "networkUserAgent"
@@ -353,7 +353,7 @@ struct Audits: Codable {
         case finalScreenshot = "final-screenshot"
         case efficientAnimatedContent = "efficient-animated-content"
         case metrics = "metrics"
-        case timeToFirstByte = "time-to-first-byte"
+        case timeToFirstByte = "server-response-time"
         case renderBlockingResources = "render-blocking-resources"
         case usesTextCompression = "uses-text-compression"
         case usesOptimizedImages = "uses-optimized-images"
