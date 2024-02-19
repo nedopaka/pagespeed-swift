@@ -11,6 +11,7 @@
 7. All extensions and supporting classes should be stored at **Helpers** folder in a proper file (e.g. **String** extensions in **Helpers/StringHelpers.swift**).
 8. `CREATE SEPARATE STORYBOARD FOR A FLOWS/VIEWS THAT YOU'RE DEVELOPING AND RESPONSIBLE FOR`.
 9. `MAKE CHANGES TO YOUR STORYBOARDS ONLY TO DECREASE MERGE CONFLICTS`.
+10. Other: [Tools and tips to scale your iOS project along with your team](https://benoitpasquier.com/tools-tips-to-scale-ios-project-and-team/)
 
 ## Правила разработки
 
@@ -23,3 +24,4 @@
 7. Все расширения и сопутствующие классы должны храниться в папке **Helpers** в отдельном файле, который соответствует тому или иному классу (например, расширения для **String** должны храниться в **Helpers/StringHelpers.swift**).
 8. `ИСПОЛЬЗОВАТЬ ОТДЕЛЬНЫЙ STORYBOARD ДЛЯ СВОИХ ОТОБРАЖЕНИЙ`.
 9. `ВНОСИТЬ ИЗМЕНЕНИЯ ТОЛЬКО В СВОИ STORYBOARDS ДЛЯ МИНИМИЗАЦИИ КОНФЛИКТОВ В РЕПОЗИТОРИИ`.
+10. Другое: [Tools and tips to scale your iOS project along with your team](https://benoitpasquier.com/tools-tips-to-scale-ios-project-and-team/)
